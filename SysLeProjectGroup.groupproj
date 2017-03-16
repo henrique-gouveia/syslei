@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A8AEF4BD-3259-4CA2-9279-8BB332139279}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SysLe.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\SysLe.Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SysLe">
+        <MSBuild Projects="SysLe.dproj"/>
+    </Target>
+    <Target Name="SysLe:Clean">
+        <MSBuild Projects="SysLe.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SysLe:Make">
+        <MSBuild Projects="SysLe.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SysLe_Tests">
+        <MSBuild Projects="Tests\SysLe.Tests.dproj"/>
+    </Target>
+    <Target Name="SysLe_Tests:Clean">
+        <MSBuild Projects="Tests\SysLe.Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SysLe_Tests:Make">
+        <MSBuild Projects="Tests\SysLe.Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SysLe;SysLe_Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SysLe:Clean;SysLe_Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SysLe:Make;SysLe_Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
