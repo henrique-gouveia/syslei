@@ -3,10 +3,10 @@
         <ProjectGuid>{A8AEF4BD-3259-4CA2-9279-8BB332139279}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="SysLe.dproj">
+        <Projects Include="Syslei.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Tests\SysLe.Tests.dproj">
+        <Projects Include="Tests\Syslei.Tests.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,32 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="SysLe">
-        <MSBuild Projects="SysLe.dproj"/>
+    <Target Name="Syslei">
+        <MSBuild Projects="Syslei.dproj"/>
     </Target>
-    <Target Name="SysLe:Clean">
-        <MSBuild Projects="SysLe.dproj" Targets="Clean"/>
+    <Target Name="Syslei:Clean">
+        <MSBuild Projects="Syslei.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="SysLe:Make">
-        <MSBuild Projects="SysLe.dproj" Targets="Make"/>
+    <Target Name="Syslei:Make">
+        <MSBuild Projects="Syslei.dproj" Targets="Make"/>
     </Target>
-    <Target Name="SysLe_Tests">
-        <MSBuild Projects="Tests\SysLe.Tests.dproj"/>
+    <Target Name="Syslei_Tests">
+        <MSBuild Projects="Tests\Syslei.Tests.dproj"/>
     </Target>
-    <Target Name="SysLe_Tests:Clean">
-        <MSBuild Projects="Tests\SysLe.Tests.dproj" Targets="Clean"/>
+    <Target Name="Syslei_Tests:Clean">
+        <MSBuild Projects="Tests\Syslei.Tests.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="SysLe_Tests:Make">
-        <MSBuild Projects="Tests\SysLe.Tests.dproj" Targets="Make"/>
+    <Target Name="Syslei_Tests:Make">
+        <MSBuild Projects="Tests\Syslei.Tests.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="SysLe;SysLe_Tests"/>
+        <CallTarget Targets="Syslei;Syslei_Tests"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="SysLe:Clean;SysLe_Tests:Clean"/>
+        <CallTarget Targets="Syslei:Clean;Syslei_Tests:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="SysLe:Make;SysLe_Tests:Make"/>
+        <CallTarget Targets="Syslei:Make;Syslei_Tests:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

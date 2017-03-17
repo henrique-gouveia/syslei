@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{DA7428C3-E98C-496E-BF9A-1B5D5D3C0122}</ProjectGuid>
         <ProjectVersion>18.1</ProjectVersion>
-        <MainSource>SysLe.Tests.dpr</MainSource>
+        <MainSource>Syslei.Tests.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -55,7 +55,7 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UsingDelphiRTL>true</UsingDelphiRTL>
-        <SanitizedProjectName>SysLe_Tests</SanitizedProjectName>
+        <SanitizedProjectName>Syslei_Tests</SanitizedProjectName>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UnitSearchPath>.\External\SQLite3;..\Source\Models\Entities;..\Source\Modules;..\Source\Registrations;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
@@ -98,7 +98,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
@@ -106,6 +105,12 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Repositories.Pessoa.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Registrations.ContainerResolver.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestDB.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestDB.Consts.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestSession.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -124,7 +129,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">SysLe.Tests.dpr</Source>
+                    <Source Name="MainSource">Syslei.Tests.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\TCFDsg230.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\TCFDsg230.bpl not found</Excluded_Packages>
@@ -147,9 +152,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\SysLe.Tests.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Bin\Delphi10Seattle\Win32\Syslei.Tests.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>SysLe_Tests.exe</RemoteName>
+                        <RemoteName>Syslei_Tests.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
