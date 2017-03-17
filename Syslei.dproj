@@ -102,6 +102,18 @@
         </DelphiCompile>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas"/>
+        <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Consts.pas"/>
+        <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Firebird.pas">
+            <Form>FirebirdConnectionModule</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Interfaces.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Connections.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Interfaces.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Modules.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Repositories.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.SpringRegisters.pas"/>
         <DCCReference Include="Source\View\Syslei.Views.Main.pas">
             <Form>MainView</Form>
         </DCCReference>

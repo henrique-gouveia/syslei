@@ -107,10 +107,10 @@
         </DelphiCompile>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Pessoa.pas"/>
-        <DCCReference Include="Source\Syslei.Tests.Registrations.ContainerResolver.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Consts.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestSession.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Registrations.ResolverTypes.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

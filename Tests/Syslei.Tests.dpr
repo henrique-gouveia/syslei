@@ -17,10 +17,10 @@ uses
   DUnitX.TestFramework,
   Syslei.Tests.Repositories.Lote in 'Source\Syslei.Tests.Repositories.Lote.pas',
   Syslei.Tests.Repositories.Pessoa in 'Source\Syslei.Tests.Repositories.Pessoa.pas',
-  Syslei.Tests.Registrations.ContainerResolver in 'Source\Syslei.Tests.Registrations.ContainerResolver.pas',
   Syslei.Tests.TestDB in 'Source\Syslei.Tests.TestDB.pas',
   Syslei.Tests.TestDB.Consts in 'Source\Syslei.Tests.TestDB.Consts.pas',
-  Syslei.Tests.TestSession in 'Source\Syslei.Tests.TestSession.pas';
+  Syslei.Tests.TestSession in 'Source\Syslei.Tests.TestSession.pas',
+  Syslei.Tests.Registrations.ResolverTypes in 'Source\Syslei.Tests.Registrations.ResolverTypes.pas';
 
 begin
 {$IFDEF TESTINSIGHT}
