@@ -16,6 +16,10 @@ type
     [Test]
     procedure TestResolveDBConnection;
     [Test]
+    procedure TestResolveLoteFinder;
+    [Test]
+    procedure TestResolvePessoaFinder;
+    [Test]
     procedure TestResolveLoteRepository;
     [Test]
     procedure TestResolvePessoaRepository;
@@ -37,6 +41,7 @@ uses
   Syslei.Registrations,
   Syslei.Models.Entities.Lote,
   Syslei.Models.Entities.Pessoa,
+  Syslei.Models.Finders.Interfaces,
   Syslei.Modules.Connections.Consts,
   Syslei.Modules.Connections.Firebird,
   Syslei.Modules.Connections.Interfaces,
@@ -91,6 +96,32 @@ begin
     Assert.IsNotNull(connectionOne, 'Tipo IDBConnection não foi resolvido');
     Assert.IsNotNull(connectionTwo, 'Tipo IDBConnection não foi resolvido');
     Assert.AreEqual(connectionOne, connectionTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveLoteFinder;
+var
+  loteFinder: IEntityFinder<TLote>;
+begin
+  try
+    loteFinder := GlobalContainer.Resolve<IEntityFinder<TLote>>();
+    Assert.IsNotNull(loteFinder, 'Tipo IEntityFinder<TLote> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePessoaFinder;
+var
+  pessoaFinder: IEntityFinder<TPessoa>;
+begin
+  try
+    pessoaFinder := GlobalContainer.Resolve<IEntityFinder<TPessoa>>();
+    Assert.IsNotNull(pessoaFinder, 'Tipo IEntityFinder<TPessoa> não foi resolvido');
   except
     on E: Exception do
       Assert.Fail(E.Message);

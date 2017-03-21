@@ -20,7 +20,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.ImgList,
 
-  Syslei.PresentationMode.Views.Vcl.Forms;
+  Syslei.PresentationModel.View.VCLForm;
 
 type
   TBaseView = class(TForm)

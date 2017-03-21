@@ -1,4 +1,4 @@
-unit Syslei.PresentationMode.Views.Interfaces;
+unit Syslei.PresentationModel.View.Interfaces;
 
 interface
 

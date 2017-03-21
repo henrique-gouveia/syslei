@@ -1,11 +1,11 @@
-unit Syslei.PresentationMode.Views.Vcl.Forms;
+unit Syslei.PresentationModel.View.VCLForm;
 
 interface
 
 uses
   System.Classes,
   Vcl.Forms,
-  Syslei.PresentationMode.Views.Interfaces;
+  Syslei.PresentationModel.View.Interfaces;
 
 type
   TForm = class(Vcl.Forms.TForm, IView)
@@ -44,20 +44,6 @@ begin
   TForm(Result).FRefCount := 1;
 end;
 
-function TForm._AddRef: Integer;
-begin
-  Inc(FRefCount);
-  Result := FRefCount;
-end;
-
-function TForm._Release: Integer;
-begin
-  Dec(FRefCount);
-  Result := FRefCount;
-  if Result = 0 then
-    Destroy;
-end;
-
 procedure TForm.AfterConstruction;
 begin
   Dec(FRefCount);
@@ -81,6 +67,20 @@ end;
 function TForm.ShowModalView: Integer;
 begin
   Result := ShowModal;
+end;
+
+function TForm._AddRef: Integer;
+begin
+  Inc(FRefCount);
+  Result := FRefCount;
+end;
+
+function TForm._Release: Integer;
+begin
+  Dec(FRefCount);
+  Result := FRefCount;
+  if Result = 0 then
+    Destroy;
 end;
 
 {$ENDREGION}

@@ -17,8 +17,8 @@ uses
 
   RLReport,
 
-  Syslei.PresentationMode.Views.Interfaces,
-  Syslei.PresentationMode.Views.Vcl.Forms;
+  Syslei.PresentationModel.View.Interfaces,
+  Syslei.PresentationModel.View.VCLForm;
 
 type
   TReportBaseView = class(TForm, IReportPreview)

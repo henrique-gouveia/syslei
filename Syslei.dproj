@@ -102,36 +102,48 @@
         </DelphiCompile>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas"/>
+        <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas"/>
+        <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Simple.pas"/>
         <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Consts.pas"/>
         <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Firebird.pas">
             <Form>FirebirdConnectionModule</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Interfaces.pas"/>
-        <DCCReference Include="Source\PresentationModel\Syslei.PresentationMode.Views.Interfaces.pas"/>
-        <DCCReference Include="Source\PresentationModel\Syslei.PresentationMode.Views.Vcl.Forms.pas"/>
+        <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.Dialog.pas"/>
+        <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.Dialog.VCL.pas"/>
+        <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.View.Interfaces.pas"/>
+        <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.View.VCLForm.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Connections.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Finders.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Interfaces.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Modules.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Repositories.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.SpringRegisters.pas"/>
-        <DCCReference Include="Source\View\Syslei.Views.Base.pas">
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Interfaces.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Domain.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Filter.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Finder.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Manager.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Report.pas"/>
+        <DCCReference Include="Source\Views\Syslei.Views.Base.pas">
             <Form>BaseView</Form>
         </DCCReference>
-        <DCCReference Include="Source\View\Syslei.Views.Base.Finder.pas">
+        <DCCReference Include="Source\Views\Syslei.Views.Base.Finder.pas">
             <Form>FinderBaseView</Form>
         </DCCReference>
-        <DCCReference Include="Source\View\Syslei.Views.Base.Filter.pas">
+        <DCCReference Include="Source\Views\Syslei.Views.Base.Filter.pas">
             <Form>FilterBaseView</Form>
         </DCCReference>
-        <DCCReference Include="Source\View\Syslei.Views.Base.Manager.pas">
+        <DCCReference Include="Source\Views\Syslei.Views.Base.Manager.pas">
             <Form>ManagerBaseView</Form>
         </DCCReference>
-        <DCCReference Include="Source\View\Syslei.Views.Base.Report.pas">
+        <DCCReference Include="Source\Views\Syslei.Views.Base.Report.pas">
             <Form>ReportBaseView</Form>
         </DCCReference>
-        <DCCReference Include="Source\View\Syslei.Views.Main.pas">
+        <DCCReference Include="Source\Views\Syslei.Views.Main.pas">
             <Form>MainView</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">

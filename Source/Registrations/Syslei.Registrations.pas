@@ -12,6 +12,7 @@ implementation
 
 uses
   Syslei.Registrations.Connections,
+  Syslei.Registrations.Finders,
   Syslei.Registrations.Interfaces,
   Syslei.Registrations.Modules,
   Syslei.Registrations.Repositories;
@@ -23,6 +24,7 @@ begin
   registerTypeExecutor := TSpringRegisterTypeExecutor.Create;
 
   registerTypeExecutor.AddRegister(TConnectionRegiterType.Create());
+  registerTypeExecutor.AddRegister(TFindersRegisterType.Create());
   registerTypeExecutor.AddRegister(TModulesRegiterType.Create());
   registerTypeExecutor.AddRegister(TRepositoriesRegisterType.Create());
 
