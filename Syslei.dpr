@@ -2,6 +2,9 @@ program Syslei;
 
 uses
   Vcl.Forms,
+  Vcl.Styles,
+  Vcl.Themes,
+  Spring.Container,
   Syslei.Models.Entities.Lote in 'Source\Models\Entities\Syslei.Models.Entities.Lote.pas',
   Syslei.Models.Entities.Pessoa in 'Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas',
   Syslei.Models.Finders.Interfaces in 'Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas',
@@ -20,6 +23,7 @@ uses
   Syslei.Registrations.Modules in 'Source\Registrations\Syslei.Registrations.Modules.pas',
   Syslei.Registrations.Repositories in 'Source\Registrations\Syslei.Registrations.Repositories.pas',
   Syslei.Registrations.SpringRegisters in 'Source\Registrations\Syslei.Registrations.SpringRegisters.pas',
+  Syslei.Registrations.Views in 'Source\Registrations\Syslei.Registrations.Views.pas',
   Syslei.ViewModels.Interfaces in 'Source\ViewModels\Syslei.ViewModels.Interfaces.pas',
   Syslei.ViewModels.Base in 'Source\ViewModels\Syslei.ViewModels.Base.pas',
   Syslei.ViewModels.Base.Domain in 'Source\ViewModels\Syslei.ViewModels.Base.Domain.pas',
@@ -37,6 +41,18 @@ uses
 {$R *.res}
 
 begin
+  TStyleManager.TrySetStyle('Amethyst Kamri');
+{$IFDEF DEBUG}
+  ReportMemoryLeaksOnShutdown := True;
+{$ENDIF}
+  RegisterTypes();
+
   Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.HintPause := 10000;
+
+  GlobalContainer.Resolve<TFirebirdConnectionModule>();
+  GlobalContainer.Resolve<TMainView>();
+
   Application.Run;
 end.

@@ -15,7 +15,8 @@ uses
   Syslei.Registrations.Finders,
   Syslei.Registrations.Interfaces,
   Syslei.Registrations.Modules,
-  Syslei.Registrations.Repositories;
+  Syslei.Registrations.Repositories,
+  Syslei.Registrations.Views;
 
 procedure RegisterTypes;
 var
@@ -27,6 +28,7 @@ begin
   registerTypeExecutor.AddRegister(TFindersRegisterType.Create());
   registerTypeExecutor.AddRegister(TModulesRegiterType.Create());
   registerTypeExecutor.AddRegister(TRepositoriesRegisterType.Create());
+  registerTypeExecutor.AddRegister(TViewsRegiterType.Create());
 
   registerTypeExecutor.Execute();
 end;

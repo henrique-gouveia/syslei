@@ -21,7 +21,8 @@ type
     const numero: String = '';
     const lanceInicial: Double = 0;
     const status: Integer = 0;
-    const tipo: Integer = 0): Variant;
+    const tipo: Integer = 0;
+    const dataCadastro: TDate = 0): Variant;
 
   function InsertPessoa(
     const nome: String = 'PESSOA';
@@ -72,9 +73,11 @@ function InsertLote(
   const numero: String;
   const lanceInicial: Double;
   const status: Integer;
-  const tipo: Integer): Variant;
+  const tipo: Integer;
+  const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(LOTE_INSERT_COMMAND, [doadorId, descricao, numero, lanceInicial, status, tipo]);
+  TestDB.ExecSQL(LOTE_INSERT_COMMAND, [
+    doadorId, descricao, numero, lanceInicial, status, tipo, dataCadastro]);
   Result := TestDB.GetLastInsertRowID();;
 end;
 
