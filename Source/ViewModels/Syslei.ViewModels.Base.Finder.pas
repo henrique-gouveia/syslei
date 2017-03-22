@@ -33,8 +33,8 @@ type
   protected
     property EntityFinder: IEntityFinder<TEntity> read FEntityFinder;
   public
-    constructor Create; reintroduce; overload; virtual;
     destructor Destroy; override;
+    procedure AfterConstruction; override;
 
     procedure Novo(Sender: TObject); virtual;
     procedure Avulsa(Sender: TObject); virtual;
@@ -55,17 +55,17 @@ uses
 
 {$REGION 'TFinderViewModelBase<TEntity>' }
 
-constructor TFinderViewModelBase<TEntity>.Create;
-begin
-  inherited Create;
-  FSearchProperty := TPropertyData.Create;
-  FSearchProperties := TCollections.CreateObjectList<TPropertyData>() as IObjectList;
-end;
-
 destructor TFinderViewModelBase<TEntity>.Destroy;
 begin
   FreeAndNil(FSearchProperty);
   inherited;
+end;
+
+procedure TFinderViewModelBase<TEntity>.AfterConstruction;
+begin
+  inherited;
+  FSearchProperty := TPropertyData.Create;
+  FSearchProperties := TCollections.CreateObjectList<TPropertyData>() as IObjectList;
 end;
 
 procedure TFinderViewModelBase<TEntity>.Novo(Sender: TObject);

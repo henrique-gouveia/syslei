@@ -1,201 +1,51 @@
-inherited FinderBaseView: TFinderBaseView
-  Caption = 'Finder View'
-  OnClose = FormClose
-  OnShow = FormShow
+inherited PessoaFinderView: TPessoaFinderView
+  Caption = 'Localizar Pessoa'
+  OnDestroy = FormDestroy
+  ExplicitWidth = 650
+  ExplicitHeight = 450
   PixelsPerInch = 96
   TextHeight = 16
-  inherited topPanel: TPanel
-    object novoButton: TSpeedButton
-      Left = 154
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Novo
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 122
-      ExplicitTop = -6
-      ExplicitHeight = 50
-    end
-    object exataButton: TSpeedButton
-      Left = 394
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Exata
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 371
-      ExplicitHeight = 50
-    end
-    object avulsaButton: TSpeedButton
-      Left = 234
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Avulsa
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 451
-      ExplicitHeight = 50
-    end
-    object inicialButton: TSpeedButton
-      Left = 314
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Inicial
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 320
-      ExplicitTop = -6
-      ExplicitHeight = 50
-    end
-    object okButton: TSpeedButton
-      Left = 474
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Ok
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 611
-      ExplicitHeight = 50
-    end
-    object sairButton: TSpeedButton
-      Left = 554
-      Top = 0
-      Width = 80
-      Height = 55
-      Action = Sair
-      Align = alRight
-      Layout = blGlyphTop
-      ExplicitLeft = 578
-      ExplicitHeight = 50
-    end
-  end
   inherited contentPanel: TPanel
-    object headerPanel: TPanel
-      AlignWithMargins = True
-      Left = 3
-      Top = 3
-      Width = 626
-      Height = 65
-      Margins.Bottom = 1
-      Align = alTop
-      BevelKind = bkFlat
-      BevelOuter = bvNone
-      Ctl3D = False
-      ParentCtl3D = False
-      TabOrder = 0
-      object propertyNameBox: TGroupBox
-        AlignWithMargins = True
-        Left = 3
-        Top = 3
-        Width = 185
-        Height = 55
-        Align = alLeft
-        Caption = 'Buscar Por.:'
-        TabOrder = 0
-        object propertyNameCombo: TComboBox
-          AlignWithMargins = True
-          Left = 9
-          Top = 25
-          Width = 167
-          Height = 24
-          Margins.Left = 8
-          Margins.Top = 8
-          Margins.Right = 8
-          Margins.Bottom = 8
-          Align = alClient
-          BevelKind = bkFlat
-          Style = csDropDownList
-          CharCase = ecUpperCase
-          TabOrder = 0
+    inherited dataGrid: TDBGrid
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'Id'
+          Title.Alignment = taCenter
+          Title.Caption = 'C'#243'digo'
+          Visible = True
         end
-      end
-      object propertyValueBox: TGroupBox
-        AlignWithMargins = True
-        Left = 194
-        Top = 3
-        Width = 425
-        Height = 55
-        Align = alClient
-        Caption = 'Dado.:'
-        TabOrder = 1
-        object propertyValueEdit: TEdit
-          AlignWithMargins = True
-          Left = 9
-          Top = 25
-          Width = 407
-          Height = 21
-          Margins.Left = 8
-          Margins.Top = 8
-          Margins.Right = 8
-          Margins.Bottom = 8
-          Align = alClient
-          CharCase = ecUpperCase
-          TabOrder = 0
-          ExplicitHeight = 22
+        item
+          Expanded = False
+          FieldName = 'Nome'
+          Title.Alignment = taCenter
+          Width = 360
+          Visible = True
         end
-      end
-    end
-    object dataGrid: TDBGrid
-      AlignWithMargins = True
-      Left = 3
-      Top = 72
-      Width = 626
-      Height = 280
-      Align = alClient
-      DataSource = dataSource
-      DrawingStyle = gdsGradient
-      GradientEndColor = clGray
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-      TabOrder = 1
-      TitleFont.Charset = ANSI_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -13
-      TitleFont.Name = 'Verdana'
-      TitleFont.Style = []
+        item
+          Expanded = False
+          FieldName = 'CPF'
+          Title.Alignment = taCenter
+          Width = 150
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DataCadastro'
+          Title.Alignment = taCenter
+          Title.Caption = 'Data de Cadastro'
+          Visible = True
+        end>
     end
   end
   inherited actions: TActionList
-    object Novo: TAction
-      Caption = 'Novo-F5'
-      ImageIndex = 0
-      ShortCut = 116
-    end
-    object Avulsa: TAction
-      Caption = 'Avulsa-F6'
-      ImageIndex = 1
-      ShortCut = 117
-    end
-    object Inicial: TAction
-      Caption = 'Inicial-F7'
-      ImageIndex = 2
-      ShortCut = 118
-    end
-    object Exata: TAction
-      Caption = 'Exata-F8'
-      ImageIndex = 3
-      ShortCut = 119
-    end
-    object Ok: TAction
-      Caption = 'Ok-F9'
-      ImageIndex = 4
-      ShortCut = 120
+    inherited Ok: TAction
       OnExecute = OkExecute
-    end
-    object Sair: TAction
-      Caption = 'Sair-ESC'
-      ImageIndex = 5
-      ShortCut = 27
-      OnExecute = SairExecute
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010106003000500018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010106003000540018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -796,8 +646,30 @@ inherited FinderBaseView: TFinderBaseView
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
   end
-  object dataSource: TDataSource
+  inherited dataSource: TDataSource
+    DataSet = dataSet
+  end
+  object bindings: TBindingGroup
     Left = 38
-    Top = 180
+    Top = 274
+    Bindings = <>
+  end
+  object dataSet: TObjectDataSet
+    Left = 38
+    Top = 226
+    object dataSetId: TIntegerField
+      FieldName = 'Id'
+    end
+    object dataSetNome: TWideStringField
+      FieldName = 'Nome'
+      Size = 60
+    end
+    object dataSetCPF: TWideStringField
+      FieldName = 'CPF'
+      Size = 12
+    end
+    object dataSetDataCadastro: TDateField
+      FieldName = 'DataCadastro'
+    end
   end
 end

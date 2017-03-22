@@ -15,6 +15,14 @@ type
 
 implementation
 
+uses
+  Syslei.ViewModels.Base.Finder,
+  Syslei.Views.Consts,
+  Syslei.PresentationModel.Dialog,
+  Syslei.PresentationModel.View.Interfaces,
+
+  Spring.Container;
+
 {$REGION 'TPessoaManagerViewModel' }
 
 procedure TPessoaManagerViewModel.Novo(Sender: TObject);
@@ -24,9 +32,21 @@ begin
 end;
 
 procedure TPessoaManagerViewModel.Buscar(Sender: TObject);
+var
+  view: IView;
+  finderViewModel: TFinderViewModelBase<TPessoa>;
 begin
   inherited;
-
+  view := GlobalContainer.Resolve<IView>(PESSOA_FINDER_VIEW_NAME);
+  if Assigned(view) and (view.ShowModalView() = mrOk) then
+  begin
+    if view.GetDataContext() is TFinderViewModelBase<TPessoa> then
+    begin
+      finderViewModel := TFinderViewModelBase<TPessoa>(view.GetDataContext());
+      EntityId := finderViewModel.Entity.Id;
+      ActiveControl := 'idEdit';
+    end;
+  end;
 end;
 
 {$ENDREGION}

@@ -26,7 +26,8 @@ uses
 
   Data.DB,
 
-  Syslei.Views.Base;
+  Syslei.Views.Base,
+  DSharp.Bindings.VCLControls;
 
 type
   TFinderBaseView = class(TBaseView)
@@ -49,15 +50,35 @@ type
     Exata: TAction;
     Ok: TAction;
     Sair: TAction;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure OkExecute(Sender: TObject);
     procedure SairExecute(Sender: TObject);
   end;
-
-var
-  FinderBaseView: TFinderBaseView;
 
 implementation
 
 {$R *.dfm}
+
+procedure TFinderBaseView.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  dataSource.DataSet.Close;
+end;
+
+procedure TFinderBaseView.FormShow(Sender: TObject);
+begin
+  inherited;
+  if Assigned(dataSource.DataSet) then
+    dataSource.DataSet.Open;
+end;
+
+procedure TFinderBaseView.OkExecute(Sender: TObject);
+begin
+  inherited;
+  if Assigned(dataSource.DataSet) and not dataSource.DataSet.IsEmpty() then
+    ModalResult := mrOk;
+end;
 
 procedure TFinderBaseView.SairExecute(Sender: TObject);
 begin

@@ -20,6 +20,7 @@ uses
 
   Syslei.Views.Consts,
   Syslei.Views.Main,
+  Syslei.Views.Finders.Pessoa,
   Syslei.Views.Managers.Pessoa,
 
   Syslei.ViewModels.Consts,
@@ -47,6 +48,16 @@ begin
         Application.CreateForm(TMainView, Result);
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(MAIN_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TPessoaFinderView>(PESSOA_FINDER_VIEW_NAME)
+    .DelegateTo(
+      function: TPessoaFinderView
+      begin
+        Application.CreateForm(TPessoaFinderView, Result);
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(container.Resolve<TObject>(PESSOA_FINDER_VIEW_MODEL_NAME), Result);
       end);
 
   container

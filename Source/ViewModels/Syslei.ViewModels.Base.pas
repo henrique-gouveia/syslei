@@ -5,6 +5,7 @@ interface
 uses
   System.Classes,
   Syslei.PresentationModel.Dialog,
+
   DSharp.Bindings.Notifications,
 
   Spring,
@@ -35,6 +36,7 @@ type
     property Dialog: IDialog read FDialog;
   public
     constructor Create; reintroduce; overload; virtual;
+
     class function NewInstance: TObject; override;
     procedure AfterConstruction; override;
 

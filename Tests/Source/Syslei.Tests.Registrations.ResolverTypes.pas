@@ -30,6 +30,10 @@ type
     [Test]
     procedure TestResolvePessoaManagerViewModel;
     [Test]
+    procedure TestResolvePessoaFinderView;
+    [Test]
+    procedure TestResolvePessoaFinderViewModel;
+    [Test]
     procedure TestResolveSession;
   end;
 
@@ -203,6 +207,36 @@ begin
     Assert.IsNotNull(pessoaManagerViewModelOne, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.IsNotNull(pessoaManagerViewModelTwo, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.AreEqual(pessoaManagerViewModelOne, pessoaManagerViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePessoaFinderView;
+var
+  pessoaFinderView: IView;
+begin
+  try
+    pessoaFinderView := GlobalContainer.Resolve<IView>(PESSOA_FINDER_VIEW_NAME);
+    Assert.IsNotNull(pessoaFinderView, 'Tipo TPessoaFinderView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePessoaFinderViewModel;
+var
+  pessoaFinderViewModelOne, pessoaFinderViewModelTwo: TObject;
+begin
+  try
+    pessoaFinderViewModelOne := GlobalContainer.Resolve<TObject>(PESSOA_FINDER_VIEW_MODEL_NAME);
+    pessoaFinderViewModelTwo := GlobalContainer.Resolve<TObject>(PESSOA_FINDER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(pessoaFinderViewModelOne, 'Tipo TPessoaFinderViewModel não foi resolvido');
+    Assert.IsNotNull(pessoaFinderViewModelTwo, 'Tipo TPessoaFinderViewModel não foi resolvido');
+    Assert.AreEqual(pessoaFinderViewModelOne, pessoaFinderViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

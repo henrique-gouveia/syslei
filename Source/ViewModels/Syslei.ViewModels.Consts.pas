@@ -4,6 +4,7 @@ interface
 
 const
   MAIN_VIEW_MODEL_NAME = 'mainModelView';
+  PESSOA_FINDER_VIEW_MODEL_NAME = 'pessoaFinderViewModel';
   PESSOA_MANAGER_VIEW_MODEL_NAME = 'pessoaManagerViewModel';
 
 implementation
