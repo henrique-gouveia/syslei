@@ -11,7 +11,7 @@ type
   {$IFDEF FIREBIRD_DB}
   [Sequence('GEN_PESSOA_ID', 0, 1)]
   {$ENDIF}
-  TPessoa = class
+  TPessoa = class(TObject)
   private
     [Column('ID', [cpPrimaryKey])]
     {$IFDEF SQLITE_DB}
@@ -26,6 +26,8 @@ type
     [Column('DATA_CADASTRO')]
     FDataCadastro: TDate;
   public
+    constructor Create; virtual;
+
     property Id: Integer read FId write FId;
     property Nome: String read FNome write FNome;
     property Cpf: String read FCpf write FCpf;
@@ -33,5 +35,18 @@ type
   end;
 
 implementation
+
+uses
+  System.SysUtils;
+
+{$REGION 'TPessoa' }
+
+constructor TPessoa.Create;
+begin
+  inherited Create;
+  FDataCadastro := Date();
+end;
+
+{$ENDREGION}
 
 end.

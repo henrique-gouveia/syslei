@@ -32,10 +32,17 @@ type
     Novo: TAction;
     Ok: TAction;
     Sair: TAction;
+    procedure SairExecute(Sender: TObject);
   end;
 
 implementation
 
 {$R *.dfm}
+
+procedure TFilterBaseView.SairExecute(Sender: TObject);
+begin
+  inherited;
+  Close();
+end;
 
 end.

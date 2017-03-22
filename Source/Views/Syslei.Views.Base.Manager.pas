@@ -35,10 +35,17 @@ type
     Excluir: TAction;
     Buscar: TAction;
     Sair: TAction;
+    procedure SairExecute(Sender: TObject);
   end;
 
 implementation
 
 {$R *.dfm}
+
+procedure TManagerBaseView.SairExecute(Sender: TObject);
+begin
+  inherited;
+  Close();
+end;
 
 end.

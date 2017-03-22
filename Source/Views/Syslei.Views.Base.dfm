@@ -11,6 +11,7 @@ object BaseView: TBaseView
   Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 16
   object topPanel: TPanel

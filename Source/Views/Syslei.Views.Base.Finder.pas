@@ -49,6 +49,7 @@ type
     Exata: TAction;
     Ok: TAction;
     Sair: TAction;
+    procedure SairExecute(Sender: TObject);
   end;
 
 var
@@ -57,5 +58,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFinderBaseView.SairExecute(Sender: TObject);
+begin
+  inherited;
+  Close();
+end;
 
 end.

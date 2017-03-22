@@ -51,9 +51,15 @@ begin
 end;
 
 class function TViewModelBase.NewInstance: TObject;
+var
+  interfaceTable: PInterfaceTable;
 begin
   Result := inherited NewInstance;
-  TViewModelBase(Result).FRefCount := 1;
+  interfaceTable := Result.GetInterfaceTable;
+  if Assigned(interfaceTable) and (interfaceTable.EntryCount > 0) then
+    TViewModelBase(Result).FRefCount := 1
+  else
+    TViewModelBase(Result).FRefCount := 2;
 end;
 
 procedure TViewModelBase.AfterConstruction;

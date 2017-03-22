@@ -14,6 +14,8 @@ type
     [Test]
     procedure TestResolveConnectionModuleWhenTryByInterface;
     [Test]
+    procedure TestResolveControlStringConverter;
+    [Test]
     procedure TestResolveDBConnection;
     [Test]
     procedure TestResolveLoteFinder;
@@ -23,6 +25,10 @@ type
     procedure TestResolveLoteRepository;
     [Test]
     procedure TestResolvePessoaRepository;
+    [Test]
+    procedure TestResolvePessoaManagerView;
+    [Test]
+    procedure TestResolvePessoaManagerViewModel;
     [Test]
     procedure TestResolveSession;
   end;
@@ -34,17 +40,23 @@ uses
 
   FireDAC.Comp.Client,
 
+  DSharp.Core.DataConversion,
+
   Spring.Container,
   Spring.Persistence.Core.Interfaces,
   Spring.Persistence.Core.Session,
 
-  Syslei.Registrations,
+  Syslei.Conversions.Consts,
   Syslei.Models.Entities.Lote,
   Syslei.Models.Entities.Pessoa,
   Syslei.Models.Finders.Interfaces,
   Syslei.Modules.Connections.Consts,
   Syslei.Modules.Connections.Firebird,
   Syslei.Modules.Connections.Interfaces,
+  Syslei.PresentationModel.View.Interfaces,
+  Syslei.Registrations,
+  Syslei.Views.Consts,
+  Syslei.ViewModels.Consts,
   Syslei.Tests.TestSession;
 
 {$REGION 'TSpringResolverTest' }
@@ -79,6 +91,19 @@ begin
     Assert.IsNotNull(connectionModuleOne, 'Tipo IConnectionModule<TFDConnection> não foi resolvido');
     Assert.IsNotNull(connectionModuleTwo, 'Tipo IConnectionModule<TFDConnection> não foi resolvido');
     Assert.AreEqual(connectionModuleOne, connectionModuleTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveControlStringConverter;
+var
+  controlStringConverter: IValueConverter;
+begin
+  try
+    controlStringConverter := GlobalContainer.Resolve<IValueConverter>(CONVERSION_CONTROL_STRING_NAME, [nil]);
+    Assert.IsNotNull(controlStringConverter, 'Tipo TControlStringConverter não foi resolvido');
   except
     on E: Exception do
       Assert.Fail(E.Message);
@@ -148,6 +173,36 @@ begin
   try
     pessoaRepository := GlobalContainer.Resolve<IPagedRepository<TPessoa,Integer>>();
     Assert.IsNotNull(pessoaRepository, 'Tipo IPagedRepository<TPessoa,Integer> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePessoaManagerView;
+var
+  pessoaManagerView: IView;
+begin
+  try
+    pessoaManagerView := GlobalContainer.Resolve<IView>(PESSOA_MANAGER_VIEW_NAME);
+    Assert.IsNotNull(pessoaManagerView, 'Tipo TPessoaManagerView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePessoaManagerViewModel;
+var
+  pessoaManagerViewModelOne, pessoaManagerViewModelTwo: TObject;
+begin
+  try
+    pessoaManagerViewModelOne := GlobalContainer.Resolve<TObject>(PESSOA_MANAGER_VIEW_MODEL_NAME);
+    pessoaManagerViewModelTwo := GlobalContainer.Resolve<TObject>(PESSOA_MANAGER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(pessoaManagerViewModelOne, 'Tipo TPessoaManagerViewModel não foi resolvido');
+    Assert.IsNotNull(pessoaManagerViewModelTwo, 'Tipo TPessoaManagerViewModel não foi resolvido');
+    Assert.AreEqual(pessoaManagerViewModelOne, pessoaManagerViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

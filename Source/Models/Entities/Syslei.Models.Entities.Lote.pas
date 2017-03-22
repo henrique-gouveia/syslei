@@ -41,7 +41,7 @@ type
     [Column('DATA_CADASTRO')]
     FDataCadastro: TDate;
   public
-    constructor Create;
+    constructor Create; virtual;
     destructor Destroy; override;
 
     property Id: Integer read FId write FId;
@@ -57,12 +57,16 @@ type
 
 implementation
 
+uses
+  System.SysUtils;
+
 {$REGION 'TLote' }
 
 constructor TLote.Create;
 begin
   inherited Create;
   FDoador := TPessoa.Create;
+  FDataCadastro := Date();
 end;
 
 destructor TLote.Destroy;

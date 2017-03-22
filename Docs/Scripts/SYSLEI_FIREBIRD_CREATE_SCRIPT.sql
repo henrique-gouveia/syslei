@@ -44,7 +44,7 @@ ID                   INTEGER                        NOT NULL,
 NOME                 VARCHAR(60)                    NOT NULL      COLLATE PT_BR,
 CPF                  VARCHAR(12)                                  COLLATE PT_BR,
 DATA_CADASTRO        DATE,
-CONSTRAINT PK_FUNCIONARIO PRIMARY KEY (ID)
+CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
 );
 
 /*==============================================================*/

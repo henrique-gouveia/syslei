@@ -102,6 +102,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="Source\Conversions\Syslei.Conversions.Consts.pas"/>
+        <DCCReference Include="Source\Conversions\Syslei.Conversions.ControlString.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas"/>
         <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas"/>
@@ -118,11 +120,13 @@
         <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.View.VCLForm.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Connections.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.Conversions.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Finders.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Interfaces.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Modules.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Repositories.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.SpringRegisters.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.ViewModels.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Views.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Interfaces.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.pas"/>
@@ -131,6 +135,9 @@
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Finder.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Manager.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Report.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Consts.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Managers.Pessoa.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Main.pas"/>
         <DCCReference Include="Source\Views\Syslei.Views.Base.pas">
             <Form>BaseView</Form>
         </DCCReference>
@@ -145,6 +152,11 @@
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Base.Report.pas">
             <Form>ReportBaseView</Form>
+        </DCCReference>
+        <DCCReference Include="Source\Views\Syslei.Views.Consts.pas"/>
+        <DCCReference Include="Source\Views\Syslei.Views.Managers.Pessoa.pas">
+            <Form>PessoaManagerView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Main.pas">
             <Form>MainView</Form>

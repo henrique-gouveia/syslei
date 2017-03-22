@@ -30,6 +30,7 @@ type
     SysleiConnection: TFDConnection;
     guixWaitCursor: TFDGUIxWaitCursor;
     firebirdDriverLink: TFDPhysFBDriverLink;
+    procedure DataModuleCreate(Sender: TObject);
   protected
     function GetConnection: TFDConnection; virtual;
     function GetDriverName: String; virtual;
@@ -42,6 +43,11 @@ implementation
 {$R *.dfm}
 
 {$REGION 'TFirebirdConnectionModule' }
+
+procedure TFirebirdConnectionModule.DataModuleCreate(Sender: TObject);
+begin
+  SysleiConnection.Connected := True;
+end;
 
 function TFirebirdConnectionModule.GetConnection: TFDConnection;
 begin

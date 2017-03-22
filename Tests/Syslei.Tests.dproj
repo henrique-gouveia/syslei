@@ -57,7 +57,7 @@
         <UsingDelphiRTL>true</UsingDelphiRTL>
         <SanitizedProjectName>Syslei_Tests</SanitizedProjectName>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>.\External\SQLite3;..\Source\Models\Entities;..\Source\Models\Finders;..\Source\Modules;..\Source\Registrations;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>.\External\SQLite3;..\Source\Conversions;..\Source\Models\Entities;..\Source\Models\Finders;..\Source\Modules;..\Source\PresentationModel;..\Source\Registrations;..\Source\ViewModels;..\Source\Views;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <DCC_DcuOutput>.\Dcu\Delphi10Seattle\$(Platform)</DCC_DcuOutput>
         <DCC_ExeOutput>.\Bin\Delphi10Seattle\$(Platform)</DCC_ExeOutput>
