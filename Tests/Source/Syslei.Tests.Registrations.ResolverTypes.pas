@@ -34,7 +34,11 @@ type
     [Test]
     procedure TestResolvePessoaManagerViewModel;
     [Test]
+    procedure TestResolveLoteFinderView;
+    [Test]
     procedure TestResolvePessoaFinderView;
+    [Test]
+    procedure TestResolveLoteFinderViewModel;
     [Test]
     procedure TestResolvePessoaFinderViewModel;
     [Test]
@@ -247,6 +251,19 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveLoteFinderView;
+var
+  loteFinderView: IView;
+begin
+  try
+    loteFinderView := GlobalContainer.Resolve<IView>(LOTE_FINDER_VIEW_NAME);
+    Assert.IsNotNull(loteFinderView, 'Tipo TLoteFinderView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolvePessoaFinderView;
 var
   pessoaFinderView: IView;
@@ -254,6 +271,23 @@ begin
   try
     pessoaFinderView := GlobalContainer.Resolve<IView>(PESSOA_FINDER_VIEW_NAME);
     Assert.IsNotNull(pessoaFinderView, 'Tipo TPessoaFinderView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveLoteFinderViewModel;
+var
+  loteFinderViewModelOne, loteFinderViewModelTwo: TObject;
+begin
+  try
+    loteFinderViewModelOne := GlobalContainer.Resolve<TObject>(LOTE_FINDER_VIEW_MODEL_NAME);
+    loteFinderViewModelTwo := GlobalContainer.Resolve<TObject>(LOTE_FINDER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(loteFinderViewModelOne, 'Tipo TLoteFinderViewModel não foi resolvido');
+    Assert.IsNotNull(loteFinderViewModelTwo, 'Tipo TLoteFinderViewModel não foi resolvido');
+    Assert.AreEqual(loteFinderViewModelOne, loteFinderViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

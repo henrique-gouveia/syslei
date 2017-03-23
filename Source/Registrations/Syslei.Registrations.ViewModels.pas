@@ -17,6 +17,7 @@ implementation
 uses
   Syslei.ViewModels.Consts,
   Syslei.ViewModels.Main,
+  Syslei.ViewModels.Finders.Lote,
   Syslei.ViewModels.Finders.Pessoa,
   Syslei.ViewModels.Managers.Lote,
   Syslei.ViewModels.Managers.Pessoa;
@@ -28,6 +29,10 @@ begin
   inherited;
   container
     .RegisterType<TObject, TMainViewModel>(MAIN_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TLoteFinderViewModel>(LOTE_FINDER_VIEW_MODEL_NAME)
     .AsSingleton();
 
   container

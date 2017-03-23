@@ -3,6 +3,8 @@ unit Syslei.PresentationModel.View.VCLForm;
 interface
 
 uses
+  Winapi.Windows,
+  Winapi.Messages,
   System.Classes,
   Vcl.Forms,
   Syslei.PresentationModel.View.Interfaces;
@@ -24,6 +26,8 @@ type
     // IView
     procedure ShowView;
     function ShowModalView: Integer;
+
+    procedure WndProc(var Message: TMessage); override;
   public
     constructor Create; reintroduce; overload; virtual;
     class function NewInstance: TObject; override;
@@ -67,6 +71,13 @@ end;
 function TForm.ShowModalView: Integer;
 begin
   Result := ShowModal;
+end;
+
+procedure TForm.WndProc(var Message: TMessage);
+begin
+  inherited;
+  if (Message.Msg in [WM_SETCURSOR, WM_SETFOCUS]) then
+    ActiveChanged;
 end;
 
 function TForm._AddRef: Integer;

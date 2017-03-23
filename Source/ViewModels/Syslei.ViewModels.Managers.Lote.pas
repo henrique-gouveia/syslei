@@ -12,6 +12,9 @@ uses
 
 type
   TLoteManagerViewModel = class(TManagerViewModelBase<TLote>)
+  private const
+    ID_CONTROL_NAME = 'idEdit';
+    DOADOR_ID_CONTROL_NAME = 'doadorIdEdit';
   private
     FDoador: TPessoa;
     FDoadorId: Integer;
@@ -40,7 +43,14 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+
+  Syslei.ViewModels.Base.Finder,
+  Syslei.Views.Consts,
+  Syslei.PresentationModel.Dialog,
+  Syslei.PresentationModel.View.Interfaces,
+
+  Spring.Container;
 
 {$REGION 'TLoteManagerViewModel' }
 
@@ -53,15 +63,53 @@ end;
 procedure TLoteManagerViewModel.Novo(Sender: TObject);
 begin
   inherited;
-  ActiveControl := 'idEdit';
+  ActiveControl := ID_CONTROL_NAME;
   Doador := TPessoa.Create;
   DoadorId := 0;
 end;
 
 procedure TLoteManagerViewModel.Buscar(Sender: TObject);
+var
+  view: IView;
+  {$REGION 'ShowFinderViews'}
+  procedure ShowDoadorFinderView;
+  var
+    doadorfinderViewModel: TFinderViewModelBase<TPessoa>;
+  begin
+    view := GlobalContainer.Resolve<IView>(PESSOA_FINDER_VIEW_NAME);
+    if Assigned(view) and (view.ShowModalView() = mrOk) then
+    begin
+      if view.GetDataContext() is TFinderViewModelBase<TPessoa> then
+      begin
+        doadorFinderViewModel := TFinderViewModelBase<TPessoa>(view.GetDataContext());
+        DoadorId := doadorFinderViewModel.Entity.Id;
+        ActiveControl := DOADOR_ID_CONTROL_NAME;
+      end;
+    end;
+  end;
+
+  procedure ShowLoteFinderView;
+  var
+    lotefinderViewModel: TFinderViewModelBase<TLote>;
+  begin
+    view := GlobalContainer.Resolve<IView>(LOTE_FINDER_VIEW_NAME);
+    if Assigned(view) and (view.ShowModalView() = mrOk) then
+    begin
+      if view.GetDataContext() is TFinderViewModelBase<TLote> then
+      begin
+        lotefinderViewModel := TFinderViewModelBase<TLote>(view.GetDataContext());
+        EntityId := lotefinderViewModel.Entity.Id;
+        ActiveControl := ID_CONTROL_NAME;
+      end;
+    end;
+  end;
+  {$ENDREGION}
 begin
   inherited;
-
+  if ActiveControl.Equals(DOADOR_ID_CONTROL_NAME) then
+    ShowDoadorFinderView()
+  else
+    ShowLoteFinderView();
 end;
 
 function TLoteManagerViewModel.GetIsAnimalLote: Boolean;

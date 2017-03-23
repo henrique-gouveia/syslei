@@ -50,6 +50,7 @@ type
   private
     procedure ConfigureBind;
   protected
+    procedure ActiveChanged; override;
     procedure SetDataContext(const Value: TObject); override;
   public
     [Inject(PESSOA_MANAGER_VIEW_MODEL_NAME)]
@@ -67,6 +68,12 @@ uses
 
 {$REGION 'TPessoaManagerView' }
 
+procedure TPessoaManagerView.ActiveChanged;
+begin
+  inherited;
+  bindings.GetBindingForTarget(Self).UpdateSource();
+end;
+
 procedure TPessoaManagerView.FormDestroy(Sender: TObject);
 begin
   GlobalContainer.Release(DataContext);
@@ -82,7 +89,7 @@ procedure TPessoaManagerView.ConfigureBind;
 var
   binding: TBinding;
 begin
-  bindings.AddBinding(DataContext, 'ActiveControl', Self, 'ActiveControl', bmOneWay,
+  bindings.AddBinding(DataContext, 'ActiveControl', Self, 'ActiveControl', bmTwoWay,
     GlobalContainer.Resolve<IValueConverter>(CONVERSION_CONTROL_STRING_NAME, [Self]));
 
   binding := bindings.AddBinding(DataContext, 'EntityId', idEdit, 'Text', bmOneWayToSource);

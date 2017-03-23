@@ -8,6 +8,8 @@ uses
 
 type
   TPessoaManagerViewModel = class(TManagerViewModelBase<TPessoa>)
+  private const
+    ID_CONTROL_NAME = 'idEdit';
   public
     procedure Novo(Sender: TObject); override;
     procedure Buscar(Sender: TObject); override;
@@ -28,7 +30,7 @@ uses
 procedure TPessoaManagerViewModel.Novo(Sender: TObject);
 begin
   inherited;
-  ActiveControl := 'idEdit';
+  ActiveControl := ID_CONTROL_NAME;
 end;
 
 procedure TPessoaManagerViewModel.Buscar(Sender: TObject);
@@ -44,7 +46,7 @@ begin
     begin
       finderViewModel := TFinderViewModelBase<TPessoa>(view.GetDataContext());
       EntityId := finderViewModel.Entity.Id;
-      ActiveControl := 'idEdit';
+      ActiveControl := ID_CONTROL_NAME;
     end;
   end;
 end;

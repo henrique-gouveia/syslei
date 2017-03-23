@@ -21,16 +21,17 @@ type
 
     FPropertyChanged: Event<TPropertyChangedEvent>;
     FRefCount: Integer;
-
-    function GetOnPropertyChanged: IPropertyChangedEvent;
-    procedure SetActiveControl(const Value: String); virtual;
   protected
     // IInterface
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
 
-    procedure DoPropertyChanged(const APropertyName: string;
-      AUpdateTrigger: TUpdateTrigger = utPropertyChanged);
+    // INotifyPropertyChanged
+    procedure DoPropertyChanged(const propertyName: string;
+      updateTrigger: TUpdateTrigger = utPropertyChanged); virtual;
+    function GetOnPropertyChanged: IPropertyChangedEvent; virtual;
+
+    procedure SetActiveControl(const Value: String); virtual;
     function Validate: Boolean; virtual;
 
     property Dialog: IDialog read FDialog;
@@ -69,10 +70,10 @@ begin
   Dec(FRefCount);
 end;
 
-procedure TViewModelBase.DoPropertyChanged(const APropertyName: string;
-  AUpdateTrigger: TUpdateTrigger);
+procedure TViewModelBase.DoPropertyChanged(const propertyName: string;
+  updateTrigger: TUpdateTrigger);
 begin
-  FPropertyChanged.Invoke(Self, TPropertyChangedEventArgsEx.Create(APropertyName,
+  FPropertyChanged.Invoke(Self, TPropertyChangedEventArgsEx.Create(propertyName,
     utPropertyChanged) as IPropertyChangedEventArgs);
 end;
 
@@ -88,8 +89,11 @@ end;
 
 procedure TViewModelBase.SetActiveControl(const Value: String);
 begin
-  FActiveControl := Value;
-  DoPropertyChanged('ActiveControl');
+  if (FActiveControl <> Value) then
+  begin
+    FActiveControl := Value;
+    DoPropertyChanged('ActiveControl');
+  end;
 end;
 
 function TViewModelBase._AddRef: Integer;
