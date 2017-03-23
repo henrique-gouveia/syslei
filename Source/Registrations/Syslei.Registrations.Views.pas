@@ -23,6 +23,7 @@ uses
   Syslei.Views.Finders.Lote,
   Syslei.Views.Finders.Pessoa,
   Syslei.Views.Managers.Lote,
+  Syslei.Views.Managers.Lote.Venda,
   Syslei.Views.Managers.Pessoa,
 
   Syslei.ViewModels.Consts,
@@ -90,6 +91,16 @@ begin
         Application.CreateForm(TPessoaManagerView, Result);
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(PESSOA_MANAGER_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TVendaLoteManagerView>(VENDA_LOTE_MANAGER_VIEW_NAME)
+    .DelegateTo(
+      function: TVendaLoteManagerView
+      begin
+        Application.CreateForm(TVendaLoteManagerView, Result);
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(container.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME), Result);
       end);
 end;
 

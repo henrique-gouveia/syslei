@@ -41,7 +41,8 @@ end;
 
 function TControlStringConverter.ConvertBack(const Value: TValue): TValue;
 begin
-  Result := TControl(Value.AsObject).Name;
+  if (Value.AsObject <> nil) then
+    Result := TControl(Value.AsObject).Name;
 end;
 
 {$ENDREGIOn}

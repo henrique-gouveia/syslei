@@ -19,6 +19,7 @@ uses
   Spring.Persistence.Core.Repository.Simple,
 
   Syslei.Models.Entities.Lote,
+  Syslei.Models.Entities.Lote.Venda,
   Syslei.Models.Entities.Pessoa;
 
 {$REGION 'TRepositoriesRegisterType' }
@@ -31,6 +32,9 @@ begin
 
   container
     .RegisterType<IPagedRepository<TPessoa,Integer>, TSimpleRepository<TPessoa, Integer>>();
+
+  container
+    .RegisterType<IPagedRepository<TVendaLote,Integer>, TSimpleRepository<TVendaLote, Integer>>();
 end;
 
 {$ENDREGION}

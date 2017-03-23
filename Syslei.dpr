@@ -40,6 +40,7 @@ uses
   Syslei.ViewModels.Finders.Lote in 'Source\ViewModels\Syslei.ViewModels.Finders.Lote.pas',
   Syslei.ViewModels.Finders.Pessoa in 'Source\ViewModels\Syslei.ViewModels.Finders.Pessoa.pas',
   Syslei.ViewModels.Managers.Lote in 'Source\ViewModels\Syslei.ViewModels.Managers.Lote.pas',
+  Syslei.ViewModels.Managers.Lote.Venda in 'Source\ViewModels\Syslei.ViewModels.Managers.Lote.Venda.pas',
   Syslei.ViewModels.Managers.Pessoa in 'Source\ViewModels\Syslei.ViewModels.Managers.Pessoa.pas',
   Syslei.ViewModels.Main in 'Source\ViewModels\Syslei.ViewModels.Main.pas',
   Syslei.Views.Base in 'Source\Views\Syslei.Views.Base.pas' {BaseView},
@@ -51,6 +52,7 @@ uses
   Syslei.Views.Finders.Lote in 'Source\Views\Syslei.Views.Finders.Lote.pas' {LoteFinderView},
   Syslei.Views.Finders.Pessoa in 'Source\Views\Syslei.Views.Finders.Pessoa.pas' {PessoaFinderView},
   Syslei.Views.Managers.Lote in 'Source\Views\Syslei.Views.Managers.Lote.pas' {LoteManagerView},
+  Syslei.Views.Managers.Lote.Venda in 'Source\Views\Syslei.Views.Managers.Lote.Venda.pas' {VendaLoteManagerView},
   Syslei.Views.Managers.Pessoa in 'Source\Views\Syslei.Views.Managers.Pessoa.pas' {PessoaManagerView},
   Syslei.Views.Main in 'Source\Views\Syslei.Views.Main.pas' {MainView};
 

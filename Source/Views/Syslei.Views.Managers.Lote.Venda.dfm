@@ -1,14 +1,41 @@
-inherited LoteManagerView: TLoteManagerView
-  Caption = 'Gerenciar Lote'
-  ClientHeight = 221
+inherited VendaLoteManagerView: TVendaLoteManagerView
+  Caption = 'Gerenciar Venda de Lote'
+  ClientHeight = 180
+  ClientWidth = 684
   OnDestroy = FormDestroy
-  ExplicitWidth = 650
-  ExplicitHeight = 259
+  ExplicitWidth = 700
+  ExplicitHeight = 218
   PixelsPerInch = 96
   TextHeight = 16
+  inherited topPanel: TPanel
+    Width = 684
+    ExplicitWidth = 684
+    inherited sairButton: TSpeedButton
+      Left = 604
+      ExplicitLeft = 604
+    end
+    inherited buscarButton: TSpeedButton
+      Left = 524
+      ExplicitLeft = 524
+    end
+    inherited excluirButton: TSpeedButton
+      Left = 444
+      ExplicitLeft = 444
+    end
+    inherited gravarButton: TSpeedButton
+      Left = 364
+      ExplicitLeft = 364
+    end
+    inherited novoButton: TSpeedButton
+      Left = 284
+      ExplicitLeft = 284
+    end
+  end
   inherited contentPanel: TPanel
-    Height = 166
-    ExplicitHeight = 182
+    Width = 684
+    Height = 125
+    ExplicitWidth = 684
+    ExplicitHeight = 125
     object idLabel: TLabel
       Left = 8
       Top = 7
@@ -16,61 +43,25 @@ inherited LoteManagerView: TLoteManagerView
       Height = 16
       Caption = 'C'#243'digo'
     end
-    object descricaoLabel: TLabel
-      Left = 200
+    object dataLabel: TLabel
+      Left = 560
       Top = 7
-      Width = 64
-      Height = 16
-      Caption = 'Descri'#231#227'o'
-    end
-    object dtCadastroLabel: TLabel
-      Left = 508
-      Top = 7
-      Width = 95
+      Width = 31
       Height = 16
       Anchors = [akTop, akRight]
-      Caption = 'Data Cadastro'
+      Caption = 'Data'
     end
-    object numeroLoteLabel: TLabel
-      Left = 103
-      Top = 7
-      Width = 50
-      Height = 16
-      Caption = 'N'#186' Lote'
-    end
-    object statusLabel: TLabel
-      Left = 128
-      Top = 108
-      Width = 44
-      Height = 16
-      Caption = 'Status'
-    end
-    object tipoLabel: TLabel
-      Left = 279
-      Top = 108
-      Width = 28
+    object lanceArremateLabel: TLabel
+      Left = 560
+      Top = 61
+      Width = 104
       Height = 16
       Anchors = [akTop, akRight]
-      Caption = 'Tipo'
-    end
-    object idadeLabel: TLabel
-      Left = 430
-      Top = 108
-      Width = 37
-      Height = 16
-      Anchors = [akTop, akRight]
-      Caption = 'Idade'
-    end
-    object lanceInicialLabel: TLabel
-      Left = 8
-      Top = 108
-      Width = 82
-      Height = 16
-      Caption = 'Lance Inicial'
+      Caption = 'Lance Arremate'
     end
     object idEdit: TEdit
       Left = 8
-      Top = 24
+      Top = 26
       Width = 89
       Height = 22
       Hint = 'Identificador'
@@ -80,23 +71,10 @@ inherited LoteManagerView: TLoteManagerView
       ShowHint = False
       TabOrder = 0
     end
-    object descricaoEdit: TEdit
+    object dataDtp: TDateTimePicker
       Tag = 1
-      Left = 200
-      Top = 24
-      Width = 302
-      Height = 22
-      Hint = 'Nome'
-      Anchors = [akLeft, akTop, akRight]
-      CharCase = ecUpperCase
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 2
-    end
-    object dtCadastroDtp: TDateTimePicker
-      Tag = 1
-      Left = 508
-      Top = 24
+      Left = 560
+      Top = 26
       Width = 116
       Height = 22
       Hint = 'Data de Cadastro'
@@ -106,36 +84,34 @@ inherited LoteManagerView: TLoteManagerView
       Date = 0.983644016203470600
       Time = 0.983644016203470600
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
     end
-    object doadorGroup: TGroupBox
-      Left = 8
-      Top = 52
-      Width = 616
-      Height = 50
+    object compradorGroup: TGroupBox
+      Left = 103
+      Top = 5
+      Width = 451
+      Height = 52
       Anchors = [akLeft, akTop, akRight]
-      Caption = 'Doador'
-      TabOrder = 4
+      Caption = 'Comprador'
+      TabOrder = 1
       DesignSize = (
-        616
-        50)
-      object doadorIdEdit: TEdit
+        451
+        52)
+      object compradorIdEdit: TEdit
         Tag = 1
         Left = 9
-        Top = 20
+        Top = 21
         Width = 89
         Height = 22
-        Hint = 
-          'Identificador da Pessoa [ Novo-F5: Gerenciar Pessoa; Buscar-F2: ' +
-          'Localizar Pessoa ]'
+        Hint = 'Identificador da Pessoa [ Buscar-F2: Localizar Pessoa ]'
         CharCase = ecUpperCase
         NumbersOnly = True
         TabOrder = 0
       end
-      object doadorNomeEdit: TEdit
+      object compradorNomeEdit: TEdit
         Left = 104
-        Top = 20
-        Width = 504
+        Top = 21
+        Width = 339
         Height = 22
         Anchors = [akLeft, akTop, akRight]
         CharCase = ecUpperCase
@@ -143,91 +119,52 @@ inherited LoteManagerView: TLoteManagerView
         TabOrder = 1
       end
     end
-    object numeroLoteEdit: TEdit
-      Tag = 1
-      Left = 103
-      Top = 24
-      Width = 91
+    object lanceArremateEdit: TEdit
+      Left = 560
+      Top = 78
+      Width = 116
       Height = 22
-      Hint = 'Nome'
-      Anchors = [akLeft, akTop, akRight]
-      CharCase = ecUpperCase
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 1
-    end
-    object statusCombo: TComboBox
-      Left = 128
-      Top = 125
-      Width = 145
-      Height = 24
-      BevelInner = bvNone
-      BevelKind = bkFlat
-      Style = csDropDownList
-      Anchors = [akLeft, akTop, akRight]
-      Ctl3D = False
-      ParentCtl3D = False
-      TabOrder = 6
-      Items.Strings = (
-        'AGUARDANDO'
-        'AGENDADO'
-        'ARREMATADO')
-    end
-    object tipoCombo: TComboBox
-      Left = 279
-      Top = 125
-      Width = 145
-      Height = 24
-      BevelInner = bvNone
-      BevelKind = bkFlat
-      Style = csDropDownList
       Anchors = [akTop, akRight]
-      Ctl3D = False
-      ParentCtl3D = False
-      TabOrder = 7
-      Items.Strings = (
-        'ANIMAL'
-        'IM'#211'VEL')
+      TabOrder = 4
     end
-    object idadeEdit: TEdit
-      Tag = 1
-      Left = 430
-      Top = 125
-      Width = 91
-      Height = 22
-      Hint = 'Nome'
-      Alignment = taRightJustify
-      Anchors = [akTop, akRight]
-      CharCase = ecUpperCase
-      NumbersOnly = True
-      ParentShowHint = False
-      ShowHint = False
-      TabOrder = 8
-    end
-    object sexoGroup: TRadioGroup
-      Left = 528
-      Top = 108
-      Width = 96
-      Height = 41
-      Anchors = [akTop, akRight]
-      Caption = 'Sexo'
-      Columns = 2
-      Items.Strings = (
-        'M'
-        'F')
-      TabOrder = 9
-    end
-    object lanceInicialEdit: TEdit
+    object loteGroup: TGroupBox
       Left = 8
-      Top = 125
-      Width = 114
-      Height = 22
-      TabOrder = 5
+      Top = 57
+      Width = 546
+      Height = 52
+      Anchors = [akLeft, akTop, akRight]
+      Caption = 'Lote'
+      TabOrder = 3
+      DesignSize = (
+        546
+        52)
+      object loteIdEdit: TEdit
+        Tag = 1
+        Left = 9
+        Top = 21
+        Width = 89
+        Height = 22
+        Hint = 'Identificador do Lote [ Buscar-F2: Localizar Lote ]'
+        CharCase = ecUpperCase
+        NumbersOnly = True
+        TabOrder = 0
+        OnExit = LoteIdEditExit
+      end
+      object loteDescricaoEdit: TEdit
+        Left = 104
+        Top = 21
+        Width = 434
+        Height = 22
+        Anchors = [akLeft, akTop, akRight]
+        CharCase = ecUpperCase
+        Enabled = False
+        TabOrder = 1
+      end
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800EC0018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800DC0018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000

@@ -11,6 +11,7 @@ uses
   System.Variants,
   System.Classes,
   System.ImageList,
+  System.UITypes,
 
   Vcl.Graphics,
   Vcl.Controls,
@@ -27,15 +28,33 @@ type
     Actions: TActionList;
     PessoaManager: TAction;
     LoteManager: TAction;
+    VendaLoteManager: TAction;
+    Sair: TAction;
     toolBar: TToolBar;
     toolBarImages: TImageList;
     backgroundImage: TImage;
     pessoaManagerButton: TToolButton;
     loteManagerButton: TToolButton;
+    separador1: TToolButton;
+    vendaLoteManagerButton: TToolButton;
+    separador2: TToolButton;
+    sairButton: TToolButton;
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure SairExecute(Sender: TObject);
   end;
 
 implementation
 
 {$R *.dfm}
+
+procedure TMainView.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  CanClose := MessageDlg('Deseja realmente fechar o sistema ?', mtConfirmation, mbYesNo, 0) = mrYes;
+end;
+
+procedure TMainView.SairExecute(Sender: TObject);
+begin
+  Close;
+end;
 
 end.

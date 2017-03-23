@@ -11,6 +11,8 @@ const
   PESSOA_FINDER_VIEW_NAME = 'pessoaFinderView';
   PESSOA_MANAGER_VIEW_NAME = 'pessoaManagerView';
 
+  VENDA_LOTE_MANAGER_VIEW_NAME = 'vendaLoteManagerView';
+
 implementation
 
 end.

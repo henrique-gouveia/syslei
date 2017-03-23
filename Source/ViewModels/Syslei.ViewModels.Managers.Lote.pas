@@ -63,9 +63,10 @@ end;
 procedure TLoteManagerViewModel.Novo(Sender: TObject);
 begin
   inherited;
-  ActiveControl := ID_CONTROL_NAME;
   Doador := TPessoa.Create;
   DoadorId := 0;
+
+  ActiveControl := ID_CONTROL_NAME;
 end;
 
 procedure TLoteManagerViewModel.Buscar(Sender: TObject);

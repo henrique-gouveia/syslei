@@ -20,6 +20,7 @@ uses
   Syslei.ViewModels.Finders.Lote,
   Syslei.ViewModels.Finders.Pessoa,
   Syslei.ViewModels.Managers.Lote,
+  Syslei.ViewModels.Managers.Lote.Venda,
   Syslei.ViewModels.Managers.Pessoa;
 
 {$REGION 'TViewModelsRegiterType' }
@@ -45,6 +46,10 @@ begin
 
   container
     .RegisterType<TObject, TPessoaManagerViewModel>(PESSOA_MANAGER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TVendaLoteManagerViewModel>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME)
     .AsSingleton();
 end;
 

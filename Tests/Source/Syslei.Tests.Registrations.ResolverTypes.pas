@@ -26,13 +26,19 @@ type
     [Test]
     procedure TestResolvePessoaRepository;
     [Test]
+    procedure TestResolveVendaLoteRepository;
+    [Test]
     procedure TestResolveLoteManagerView;
     [Test]
     procedure TestResolvePessoaManagerView;
     [Test]
+    procedure TestResolveVendaLoteManagerView;
+    [Test]
     procedure TestResolveLoteManagerViewModel;
     [Test]
     procedure TestResolvePessoaManagerViewModel;
+    [Test]
+    procedure TestResolveVendaLoteManagerViewModel;
     [Test]
     procedure TestResolveLoteFinderView;
     [Test]
@@ -60,6 +66,7 @@ uses
 
   Syslei.Conversions.Consts,
   Syslei.Models.Entities.Lote,
+  Syslei.Models.Entities.Lote.Venda,
   Syslei.Models.Entities.Pessoa,
   Syslei.Models.Finders.Interfaces,
   Syslei.Modules.Connections.Consts,
@@ -191,6 +198,19 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveVendaLoteRepository;
+var
+  vendaLoteRepository: IPagedRepository<TVendaLote,Integer>;
+begin
+  try
+    vendaLoteRepository := GlobalContainer.Resolve<IPagedRepository<TVendaLote,Integer>>();
+    Assert.IsNotNull(vendaLoteRepository, 'Tipo IPagedRepository<TVendaLote,Integer> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolveLoteManagerView;
 var
   loteManagerView: IView;
@@ -211,6 +231,19 @@ begin
   try
     pessoaManagerView := GlobalContainer.Resolve<IView>(PESSOA_MANAGER_VIEW_NAME);
     Assert.IsNotNull(pessoaManagerView, 'Tipo TPessoaManagerView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveVendaLoteManagerView;
+var
+  vendaLoteManagerView: IView;
+begin
+  try
+    vendaLoteManagerView := GlobalContainer.Resolve<IView>(VENDA_LOTE_MANAGER_VIEW_NAME);
+    Assert.IsNotNull(vendaLoteManagerView, 'Tipo TVendaLoteManagerView não foi resolvido');
   except
     on E: Exception do
       Assert.Fail(E.Message);
@@ -245,6 +278,23 @@ begin
     Assert.IsNotNull(pessoaManagerViewModelOne, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.IsNotNull(pessoaManagerViewModelTwo, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.AreEqual(pessoaManagerViewModelOne, pessoaManagerViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveVendaLoteManagerViewModel;
+var
+  vendaLoteManagerViewModelOne, vendaLoteManagerViewModelTwo: TObject;
+begin
+  try
+    vendaLoteManagerViewModelOne := GlobalContainer.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME);
+    vendaLoteManagerViewModelTwo := GlobalContainer.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(vendaLoteManagerViewModelOne, 'Tipo TVendaLoteManagerViewModel não foi resolvido');
+    Assert.IsNotNull(vendaLoteManagerViewModelTwo, 'Tipo TVendaLoteManagerViewModel não foi resolvido');
+    Assert.AreEqual(vendaLoteManagerViewModelOne, vendaLoteManagerViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

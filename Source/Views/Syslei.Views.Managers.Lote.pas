@@ -27,8 +27,8 @@ uses
   Syslei.ViewModels.Consts,
   Syslei.Views.Base.Manager,
 
-  DSharp.Bindings.VCLControls,
   DSharp.Bindings,
+  DSharp.Bindings.VCLControls,
 
   Spring,
   Spring.Container.Common;
@@ -44,9 +44,7 @@ type
     dtCadastroLabel: TLabel;
     dtCadastroDtp: TDateTimePicker;
     doadorGroup: TGroupBox;
-    doadorIdLabel: TLabel;
     doadorIdEdit: TEdit;
-    doadorNomeLabel: TLabel;
     doadorNomeEdit: TEdit;
     lanceInicialLabel: TLabel;
     lanceInicialEdit: TEdit;
