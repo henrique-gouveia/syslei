@@ -23,6 +23,9 @@ SET GENERATOR GEN_LOTE_ID TO 0;
 CREATE GENERATOR GEN_PESSOA_ID;
 SET GENERATOR GEN_PESSOA_ID TO 0;
 
+CREATE GENERATOR GEN_VENDA_LOTE_ID;
+SET GENERATOR GEN_VENDA_LOTE_ID TO 0;
+
 /*==============================================================*/
 /*                          TABLES                              */
 /*==============================================================*/
@@ -49,6 +52,15 @@ DATA_CADASTRO        DATE,
 CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
 );
 
+CREATE TABLE VENDA_LOTE (
+ID                   INTEGER                        NOT NULL,
+COMPRADOR_ID         INTEGER                        NOT NULL,
+LOTE_ID              INTEGER                        NOT NULL,
+LANCE_ARREMATE       DECIMAL(15,5),
+DATA                 DATE,
+CONSTRAINT PK_VENDA_LOTE PRIMARY KEY (ID)
+);
+
 /*==============================================================*/
 /*                            INDICES                           */
 /*==============================================================*/
@@ -56,6 +68,7 @@ CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
 CREATE INDEX IDX_LOTE_DESCRICAO ON LOTE (DESCRICAO);
 CREATE INDEX IDX_PESSOA_CPF ON PESSOA (CPF);
 CREATE INDEX IDX_PESSOA_NOME ON PESSOA (NOME);
+CREATE INDEX IDX_VENDA_LOTE_DATA ON VENDA_LOTE (DATA);
 
 /*==============================================================*/
 /*                      FOREIGN KEYS                            */
@@ -64,3 +77,11 @@ CREATE INDEX IDX_PESSOA_NOME ON PESSOA (NOME);
 ALTER TABLE LOTE
    ADD CONSTRAINT FK_LOTE_DOADOR FOREIGN KEY (DOADOR_ID)
       REFERENCES PESSOA (ID);
+
+ALTER TABLE VENDA_LOTE
+   ADD CONSTRAINT FK_VENDA_LOTE_COMPRADOR FOREIGN KEY (COMPRADOR_ID)
+      REFERENCES PESSOA (ID);
+
+ALTER TABLE VENDA_LOTE
+   ADD CONSTRAINT FK_VENDA_LOTE_LOTE FOREIGN KEY (LOTE_ID)
+      REFERENCES LOTE (ID);

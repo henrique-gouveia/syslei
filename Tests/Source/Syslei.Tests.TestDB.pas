@@ -31,6 +31,12 @@ type
     const cpf: String = '';
     const dataCadastro: TDate = 0): Variant;
 
+  function InsertVendaLote(
+    const compradorId: Integer;
+    const loteId: Integer;
+    const lanceArremate: Double = 0;
+    const data: TDate = 0): Variant;
+
 var
   TestDB: TSQLiteDatabase = nil;
 
@@ -43,11 +49,13 @@ procedure CreateTables;
   function TablesExists: Boolean;
   begin
     Result := TestDB.TableExists(LOTE_TABLE_NAME)
-      and TestDB.TableExists(PESSOA_TABLE_NAME);
+      and TestDB.TableExists(PESSOA_TABLE_NAME)
+      and TestDB.TableExists(VENDA_LOTE_TABLE_NAME);
   end;
 begin
   TestDB.ExecSQL(LOTE_CREATE_COMMAND);
   TestDB.ExecSQL(PESSOA_CREATE_COMMAND);
+  TestDB.ExecSQL(VENDA_LOTE_CREATE_COMMAND);
 
   if not (TablesExists()) then
   begin
@@ -59,6 +67,7 @@ procedure ClearTables;
 begin
   DeleteFrom(LOTE_TABLE_NAME);
   DeleteFrom(PESSOA_TABLE_NAME);
+  DeleteFrom(VENDA_LOTE_TABLE_NAME);
 end;
 
 function DeleteFrom(const tableName: String): Integer;
@@ -91,6 +100,16 @@ function InsertPessoa(
   const dataCadastro: TDate): Variant;
 begin
   TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpf, dataCadastro]);
+  Result := TestDB.GetLastInsertRowID();
+end;
+
+function InsertVendaLote(
+  const compradorId: Integer;
+  const loteId: Integer;
+  const lanceArremate: Double;
+  const data: TDate): Variant;
+begin
+  TestDB.ExecSQL(VENDA_LOTE_INSERT_COMMAND, [compradorId, loteId, lanceArremate, data]);
   Result := TestDB.GetLastInsertRowID();
 end;
 

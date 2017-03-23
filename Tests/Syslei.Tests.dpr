@@ -18,6 +18,7 @@ uses
   Syslei.Tests.Finders.Lote in 'Source\Syslei.Tests.Finders.Lote.pas',
   Syslei.Tests.Finders.Pessoa in 'Source\Syslei.Tests.Finders.Pessoa.pas',
   Syslei.Tests.Repositories.Lote in 'Source\Syslei.Tests.Repositories.Lote.pas',
+  Syslei.Tests.Repositories.Lote.Venda in 'Source\Syslei.Tests.Repositories.Lote.Venda.pas',
   Syslei.Tests.Repositories.Pessoa in 'Source\Syslei.Tests.Repositories.Pessoa.pas',
   Syslei.Tests.TestDB in 'Source\Syslei.Tests.TestDB.pas',
   Syslei.Tests.TestDB.Consts in 'Source\Syslei.Tests.TestDB.Consts.pas',

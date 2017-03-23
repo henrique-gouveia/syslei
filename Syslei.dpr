@@ -8,6 +8,7 @@ uses
   Syslei.Conversions.Consts in 'Source\Conversions\Syslei.Conversions.Consts.pas',
   Syslei.Conversions.ControlString in 'Source\Conversions\Syslei.Conversions.ControlString.pas',
   Syslei.Models.Entities.Lote in 'Source\Models\Entities\Syslei.Models.Entities.Lote.pas',
+  Syslei.Models.Entities.Lote.Venda in 'Source\Models\Entities\Syslei.Models.Entities.Lote.Venda.pas',
   Syslei.Models.Entities.Pessoa in 'Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas',
   Syslei.Models.Finders.Interfaces in 'Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas',
   Syslei.Models.Finders.Simple in 'Source\Models\Finders\Syslei.Models.Finders.Simple.pas',
