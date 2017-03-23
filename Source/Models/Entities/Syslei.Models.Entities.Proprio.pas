@@ -1,4 +1,4 @@
-unit Syslei.Models.Entities.Pessoa;
+unit Syslei.Models.Entities.Proprio;
 
 interface
 
@@ -7,11 +7,11 @@ uses
 
 type
   [Entity]
-  [Table('PESSOA')]
+  [Table('PROPRIO')]
   {$IFDEF FIREBIRD_DB}
-  [Sequence('GEN_PESSOA_ID', 0, 1)]
+  [Sequence('GEN_PROPRIO_ID', 0, 1)]
   {$ENDIF}
-  TPessoa = class(TObject)
+  TProprio = class(TObject)
   private
     [Column('ID', [cpPrimaryKey])]
     {$IFDEF SQLITE_DB}
@@ -44,7 +44,7 @@ uses
 
 {$REGION 'TPessoa' }
 
-constructor TPessoa.Create;
+constructor TProprio.Create;
 begin
   inherited Create;
   FDataCadastro := Date();

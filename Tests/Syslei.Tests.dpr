@@ -20,6 +20,7 @@ uses
   Syslei.Tests.Repositories.Lote in 'Source\Syslei.Tests.Repositories.Lote.pas',
   Syslei.Tests.Repositories.Lote.Venda in 'Source\Syslei.Tests.Repositories.Lote.Venda.pas',
   Syslei.Tests.Repositories.Pessoa in 'Source\Syslei.Tests.Repositories.Pessoa.pas',
+  Syslei.Tests.Repositories.Proprio in 'Source\Syslei.Tests.Repositories.Proprio.pas',
   Syslei.Tests.TestDB in 'Source\Syslei.Tests.TestDB.pas',
   Syslei.Tests.TestDB.Consts in 'Source\Syslei.Tests.TestDB.Consts.pas',
   Syslei.Tests.TestSession in 'Source\Syslei.Tests.TestSession.pas',

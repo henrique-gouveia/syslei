@@ -87,10 +87,34 @@ begin
     .RegisterType<TPessoaManagerView>(PESSOA_MANAGER_VIEW_NAME)
     .DelegateTo(
       function: TPessoaManagerView
+      var
+        dataContext: TObject;
       begin
+        dataContext := container.Resolve<TObject>(PESSOA_MANAGER_VIEW_MODEL_NAME);
         Application.CreateForm(TPessoaManagerView, Result);
+
+        Result.DataContext := dataContext;
+        Result.Caption := 'Gerenciar Pessoa';
+
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(PESSOA_MANAGER_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TPessoaManagerView>(PROPRIO_MANAGER_VIEW_NAME)
+    .DelegateTo(
+      function: TPessoaManagerView
+      var
+        dataContext: TObject;
+      begin
+        dataContext := container.Resolve<TObject>(PROPRIO_MANAGER_VIEW_MODEL_NAME);
+        Application.CreateForm(TPessoaManagerView, Result);
+
+        Result.DataContext := dataContext;
+        Result.Caption := 'Gerenciar Próprio';
+
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(dataContext, Result);
       end);
 
   container

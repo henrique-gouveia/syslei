@@ -20,7 +20,8 @@ uses
 
   Syslei.Models.Entities.Lote,
   Syslei.Models.Entities.Lote.Venda,
-  Syslei.Models.Entities.Pessoa;
+  Syslei.Models.Entities.Pessoa,
+  Syslei.Models.Entities.Proprio;
 
 {$REGION 'TRepositoriesRegisterType' }
 
@@ -28,13 +29,16 @@ procedure TRepositoriesRegisterType.RegistryType(const container: TContainer);
 begin
   inherited;
   container
-    .RegisterType<IPagedRepository<TLote,Integer>, TSimpleRepository<TLote, Integer>>();
+    .RegisterType<IPagedRepository<TLote,Integer>, TSimpleRepository<TLote,Integer>>();
 
   container
-    .RegisterType<IPagedRepository<TPessoa,Integer>, TSimpleRepository<TPessoa, Integer>>();
+    .RegisterType<IPagedRepository<TPessoa,Integer>, TSimpleRepository<TPessoa,Integer>>();
 
   container
-    .RegisterType<IPagedRepository<TVendaLote,Integer>, TSimpleRepository<TVendaLote, Integer>>();
+    .RegisterType<IPagedRepository<TProprio,Integer>, TSimpleRepository<TProprio,Integer>>();
+
+  container
+    .RegisterType<IPagedRepository<TVendaLote,Integer>, TSimpleRepository<TVendaLote,Integer>>();
 end;
 
 {$ENDREGION}

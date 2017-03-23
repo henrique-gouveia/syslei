@@ -26,17 +26,23 @@ type
     [Test]
     procedure TestResolvePessoaRepository;
     [Test]
+    procedure TestResolveProprioRepository;
+    [Test]
     procedure TestResolveVendaLoteRepository;
     [Test]
     procedure TestResolveLoteManagerView;
     [Test]
     procedure TestResolvePessoaManagerView;
     [Test]
+    procedure TestResolveProprioManagerView;
+    [Test]
     procedure TestResolveVendaLoteManagerView;
     [Test]
     procedure TestResolveLoteManagerViewModel;
     [Test]
     procedure TestResolvePessoaManagerViewModel;
+    [Test]
+    procedure TestResolveProprioManagerViewModel;
     [Test]
     procedure TestResolveVendaLoteManagerViewModel;
     [Test]
@@ -68,6 +74,7 @@ uses
   Syslei.Models.Entities.Lote,
   Syslei.Models.Entities.Lote.Venda,
   Syslei.Models.Entities.Pessoa,
+  Syslei.Models.Entities.Proprio,
   Syslei.Models.Finders.Interfaces,
   Syslei.Modules.Connections.Consts,
   Syslei.Modules.Connections.Firebird,
@@ -198,6 +205,19 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveProprioRepository;
+var
+  proprioRepository: IPagedRepository<TProprio,Integer>;
+begin
+  try
+    proprioRepository := GlobalContainer.Resolve<IPagedRepository<TProprio,Integer>>();
+    Assert.IsNotNull(proprioRepository, 'Tipo IPagedRepository<TProprio,Integer> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolveVendaLoteRepository;
 var
   vendaLoteRepository: IPagedRepository<TVendaLote,Integer>;
@@ -231,6 +251,19 @@ begin
   try
     pessoaManagerView := GlobalContainer.Resolve<IView>(PESSOA_MANAGER_VIEW_NAME);
     Assert.IsNotNull(pessoaManagerView, 'Tipo TPessoaManagerView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveProprioManagerView;
+var
+  proprioManagerView: IView;
+begin
+  try
+    proprioManagerView := GlobalContainer.Resolve<IView>(PROPRIO_MANAGER_VIEW_NAME);
+    Assert.IsNotNull(proprioManagerView, 'Tipo TProprioManagerView não foi resolvido');
   except
     on E: Exception do
       Assert.Fail(E.Message);
@@ -278,6 +311,23 @@ begin
     Assert.IsNotNull(pessoaManagerViewModelOne, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.IsNotNull(pessoaManagerViewModelTwo, 'Tipo TPessoaManagerViewModel não foi resolvido');
     Assert.AreEqual(pessoaManagerViewModelOne, pessoaManagerViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveProprioManagerViewModel;
+var
+  proprioManagerViewModelOne, proprioManagerViewModelTwo: TObject;
+begin
+  try
+    proprioManagerViewModelOne := GlobalContainer.Resolve<TObject>(PROPRIO_MANAGER_VIEW_MODEL_NAME);
+    proprioManagerViewModelTwo := GlobalContainer.Resolve<TObject>(PROPRIO_MANAGER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(proprioManagerViewModelOne, 'Tipo TProprioManagerViewModel não foi resolvido');
+    Assert.IsNotNull(proprioManagerViewModelTwo, 'Tipo TProprioManagerViewModel não foi resolvido');
+    Assert.AreEqual(proprioManagerViewModelOne, proprioManagerViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

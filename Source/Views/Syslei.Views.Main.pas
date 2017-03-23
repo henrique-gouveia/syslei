@@ -26,6 +26,7 @@ uses
 type
   TMainView = class(TForm)
     Actions: TActionList;
+    ProprioManager: TAction;
     PessoaManager: TAction;
     LoteManager: TAction;
     VendaLoteManager: TAction;
@@ -33,6 +34,7 @@ type
     toolBar: TToolBar;
     toolBarImages: TImageList;
     backgroundImage: TImage;
+    proprioManagerButton: TToolButton;
     pessoaManagerButton: TToolButton;
     loteManagerButton: TToolButton;
     separador1: TToolButton;

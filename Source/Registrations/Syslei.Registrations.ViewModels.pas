@@ -21,7 +21,8 @@ uses
   Syslei.ViewModels.Finders.Pessoa,
   Syslei.ViewModels.Managers.Lote,
   Syslei.ViewModels.Managers.Lote.Venda,
-  Syslei.ViewModels.Managers.Pessoa;
+  Syslei.ViewModels.Managers.Pessoa,
+  Syslei.ViewModels.Managers.Proprio;
 
 {$REGION 'TViewModelsRegiterType' }
 
@@ -46,6 +47,10 @@ begin
 
   container
     .RegisterType<TObject, TPessoaManagerViewModel>(PESSOA_MANAGER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TProprioManagerViewModel>(PROPRIO_MANAGER_VIEW_MODEL_NAME)
     .AsSingleton();
 
   container

@@ -10,6 +10,7 @@ uses
   Syslei.Models.Entities.Lote in 'Source\Models\Entities\Syslei.Models.Entities.Lote.pas',
   Syslei.Models.Entities.Lote.Venda in 'Source\Models\Entities\Syslei.Models.Entities.Lote.Venda.pas',
   Syslei.Models.Entities.Pessoa in 'Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas',
+  Syslei.Models.Entities.Proprio in 'Source\Models\Entities\Syslei.Models.Entities.Proprio.pas',
   Syslei.Models.Finders.Interfaces in 'Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas',
   Syslei.Models.Finders.Simple in 'Source\Models\Finders\Syslei.Models.Finders.Simple.pas',
   Syslei.Modules.Connections.Consts in 'Source\Modules\Syslei.Modules.Connections.Consts.pas',
@@ -42,6 +43,7 @@ uses
   Syslei.ViewModels.Managers.Lote in 'Source\ViewModels\Syslei.ViewModels.Managers.Lote.pas',
   Syslei.ViewModels.Managers.Lote.Venda in 'Source\ViewModels\Syslei.ViewModels.Managers.Lote.Venda.pas',
   Syslei.ViewModels.Managers.Pessoa in 'Source\ViewModels\Syslei.ViewModels.Managers.Pessoa.pas',
+  Syslei.ViewModels.Managers.Proprio in 'Source\ViewModels\Syslei.ViewModels.Managers.Proprio.pas',
   Syslei.ViewModels.Main in 'Source\ViewModels\Syslei.ViewModels.Main.pas',
   Syslei.Views.Base in 'Source\Views\Syslei.Views.Base.pas' {BaseView},
   Syslei.Views.Base.Finder in 'Source\Views\Syslei.Views.Base.Finder.pas' {FinderBaseView},
@@ -54,7 +56,8 @@ uses
   Syslei.Views.Managers.Lote in 'Source\Views\Syslei.Views.Managers.Lote.pas' {LoteManagerView},
   Syslei.Views.Managers.Lote.Venda in 'Source\Views\Syslei.Views.Managers.Lote.Venda.pas' {VendaLoteManagerView},
   Syslei.Views.Managers.Pessoa in 'Source\Views\Syslei.Views.Managers.Pessoa.pas' {PessoaManagerView},
-  Syslei.Views.Main in 'Source\Views\Syslei.Views.Main.pas' {MainView};
+  Syslei.Views.Main in 'Source\Views\Syslei.Views.Main.pas' {MainView},
+  Syslei.Views.Reports.Venda.Promissoria in 'Source\Views\Syslei.Views.Reports.Venda.Promissoria.pas' {PromissoriaVendaReportView};
 
 {$R *.res}
 

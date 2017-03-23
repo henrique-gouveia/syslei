@@ -30,10 +30,7 @@ uses
   Syslei.Views.Base.Manager,
 
   DSharp.Bindings,
-  DSharp.Bindings.VCLControls,
-
-  Spring,
-  Spring.Container.Common;
+  DSharp.Bindings.VCLControls;
 
 type
   TPessoaManagerView = class(TManagerBaseView)
@@ -43,6 +40,8 @@ type
     nomeEdit: TEdit;
     cpfLabel: TLabel;
     cpfMask: TMaskEdit;
+    telefoneMask: TMaskEdit;
+    telefoneLabel: TLabel;
     dtCadastroLabel: TLabel;
     dtCadastroDtp: TDateTimePicker;
     bindings: TBindingGroup;
@@ -53,7 +52,6 @@ type
     procedure ActiveChanged; override;
     procedure SetDataContext(const Value: TObject); override;
   public
-    [Inject(PESSOA_MANAGER_VIEW_MODEL_NAME)]
     property DataContext: TObject read GetDataContext write SetDataContext;
   end;
 
@@ -98,6 +96,7 @@ begin
   bindings.AddBinding(DataContext, 'Entity.Id', idEdit, 'Text');
   bindings.AddBinding(DataContext, 'Entity.Nome', nomeEdit, 'Text');
   bindings.AddBinding(DataContext, 'Entity.CPF', cpfMask, 'Text');
+  bindings.AddBinding(DataContext, 'Entity.Telefone', telefoneMask, 'Text');
   bindings.AddBinding(DataContext, 'Entity.DataCadastro', dtCadastroDtp, 'Date', bmOneWay);
 end;
 

@@ -1,13 +1,14 @@
 inherited PessoaManagerView: TPessoaManagerView
   Caption = 'Gerenciar Pessoa'
-  ClientHeight = 117
+  ClientHeight = 165
   ExplicitWidth = 650
-  ExplicitHeight = 155
+  ExplicitHeight = 203
   PixelsPerInch = 96
   TextHeight = 16
   inherited contentPanel: TPanel
-    Height = 62
-    ExplicitHeight = 70
+    Height = 110
+    ExplicitTop = 61
+    ExplicitHeight = 119
     object idLabel: TLabel
       Left = 8
       Top = 7
@@ -23,8 +24,8 @@ inherited PessoaManagerView: TPessoaManagerView
       Caption = 'Nome'
     end
     object cpfLabel: TLabel
-      Left = 392
-      Top = 7
+      Left = 8
+      Top = 54
       Width = 25
       Height = 16
       Anchors = [akTop, akRight]
@@ -37,6 +38,13 @@ inherited PessoaManagerView: TPessoaManagerView
       Height = 16
       Anchors = [akTop, akRight]
       Caption = 'Data Cadastro'
+    end
+    object telefoneLabel: TLabel
+      Left = 124
+      Top = 52
+      Width = 57
+      Height = 16
+      Caption = 'Telefone'
     end
     object idEdit: TEdit
       Left = 8
@@ -54,7 +62,7 @@ inherited PessoaManagerView: TPessoaManagerView
       Tag = 1
       Left = 103
       Top = 24
-      Width = 283
+      Width = 399
       Height = 22
       Hint = 'Nome'
       Anchors = [akLeft, akTop, akRight]
@@ -64,8 +72,8 @@ inherited PessoaManagerView: TPessoaManagerView
       TabOrder = 1
     end
     object cpfMask: TMaskEdit
-      Left = 392
-      Top = 24
+      Left = 8
+      Top = 71
       Width = 110
       Height = 22
       Hint = 'CPF - Cadastro Pessoa F'#237'sica'
@@ -73,7 +81,7 @@ inherited PessoaManagerView: TPessoaManagerView
       CharCase = ecUpperCase
       EditMask = '###.##0.000-00;0;_'
       MaxLength = 14
-      TabOrder = 2
+      TabOrder = 3
       Text = ''
     end
     object dtCadastroDtp: TDateTimePicker
@@ -89,12 +97,23 @@ inherited PessoaManagerView: TPessoaManagerView
       Date = 0.983644016203470600
       Time = 0.983644016203470600
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
+    end
+    object telefoneMask: TMaskEdit
+      Left = 124
+      Top = 71
+      Width = 118
+      Height = 22
+      Hint = 'Telefone Fixo'
+      EditMask = '!(99)#9999-9999;0;_'
+      MaxLength = 14
+      TabOrder = 4
+      Text = ''
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800DC0018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800F00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000

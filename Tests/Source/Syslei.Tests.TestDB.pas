@@ -29,6 +29,13 @@ type
   function InsertPessoa(
     const nome: String = 'PESSOA';
     const cpf: String = '';
+    const telefone: String = '';
+    const dataCadastro: TDate = 0): Variant;
+
+  function InsertProprio(
+    const nome: String = 'PROPRIO';
+    const cpf: String = '';
+    const telefone: String = '';
     const dataCadastro: TDate = 0): Variant;
 
   function InsertVendaLote(
@@ -50,11 +57,13 @@ procedure CreateTables;
   begin
     Result := TestDB.TableExists(LOTE_TABLE_NAME)
       and TestDB.TableExists(PESSOA_TABLE_NAME)
+      and TestDB.TableExists(PROPRIO_TABLE_NAME)
       and TestDB.TableExists(VENDA_LOTE_TABLE_NAME);
   end;
 begin
   TestDB.ExecSQL(LOTE_CREATE_COMMAND);
   TestDB.ExecSQL(PESSOA_CREATE_COMMAND);
+  TestDB.ExecSQL(PROPRIO_CREATE_COMMAND);
   TestDB.ExecSQL(VENDA_LOTE_CREATE_COMMAND);
 
   if not (TablesExists()) then
@@ -67,6 +76,7 @@ procedure ClearTables;
 begin
   DeleteFrom(LOTE_TABLE_NAME);
   DeleteFrom(PESSOA_TABLE_NAME);
+  DeleteFrom(PROPRIO_TABLE_NAME);
   DeleteFrom(VENDA_LOTE_TABLE_NAME);
 end;
 
@@ -97,9 +107,20 @@ end;
 function InsertPessoa(
   const nome: String;
   const cpf: String;
+  const telefone: String;
   const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpf, dataCadastro]);
+  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpf, telefone, dataCadastro]);
+  Result := TestDB.GetLastInsertRowID();
+end;
+
+function InsertProprio(
+  const nome: String;
+  const cpf: String;
+  const telefone: String;
+  const dataCadastro: TDate): Variant;
+begin
+  TestDB.ExecSQL(PROPRIO_INSERT_COMMAND, [nome, cpf, telefone, dataCadastro]);
   Result := TestDB.GetLastInsertRowID();
 end;
 

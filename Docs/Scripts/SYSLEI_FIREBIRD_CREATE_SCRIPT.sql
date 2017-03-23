@@ -23,6 +23,9 @@ SET GENERATOR GEN_LOTE_ID TO 0;
 CREATE GENERATOR GEN_PESSOA_ID;
 SET GENERATOR GEN_PESSOA_ID TO 0;
 
+CREATE GENERATOR GEN_PROPRIO_ID;
+SET GENERATOR GEN_PROPRIO_ID TO 0;
+
 CREATE GENERATOR GEN_VENDA_LOTE_ID;
 SET GENERATOR GEN_VENDA_LOTE_ID TO 0;
 
@@ -48,8 +51,18 @@ CREATE TABLE PESSOA (
 ID                   INTEGER                        NOT NULL,
 NOME                 VARCHAR(60)                    NOT NULL      COLLATE PT_BR,
 CPF                  VARCHAR(12)                                  COLLATE PT_BR,
+FONE1                VARCHAR(15)                                  COLLATE PT_BR,
 DATA_CADASTRO        DATE,
 CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
+);
+
+CREATE TABLE PROPRIO (
+ID                   INTEGER                        NOT NULL,
+NOME                 VARCHAR(60)                    NOT NULL      COLLATE PT_BR,
+CPF                  VARCHAR(12)                                  COLLATE PT_BR,
+FONE1                VARCHAR(15)                                  COLLATE PT_BR,
+DATA_CADASTRO        DATE,
+CONSTRAINT PK_PROPRIO PRIMARY KEY (ID)
 );
 
 CREATE TABLE VENDA_LOTE (
