@@ -26,10 +26,12 @@ type
   TMainView = class(TForm)
     Actions: TActionList;
     PessoaManager: TAction;
+    LoteManager: TAction;
     toolBar: TToolBar;
     toolBarImages: TImageList;
     backgroundImage: TImage;
     pessoaManagerButton: TToolButton;
+    loteManagerButton: TToolButton;
   end;
 
 implementation

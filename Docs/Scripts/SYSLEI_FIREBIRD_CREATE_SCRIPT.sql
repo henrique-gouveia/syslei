@@ -35,6 +35,8 @@ NUMERO               VARCHAR(20)                                  COLLATE PT_BR,
 LANCE_INICIAL        DECIMAL(15,5),
 STATUS               INTEGER,
 TIPO                 INTEGER,
+IDADE                INTEGER,
+SEXO                 INTEGER,
 DATA_CADASTRO        DATE,
 CONSTRAINT PK_LOTE PRIMARY KEY (ID)
 );

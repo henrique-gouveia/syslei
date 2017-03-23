@@ -18,6 +18,7 @@ uses
   Syslei.ViewModels.Consts,
   Syslei.ViewModels.Main,
   Syslei.ViewModels.Finders.Pessoa,
+  Syslei.ViewModels.Managers.Lote,
   Syslei.ViewModels.Managers.Pessoa;
 
 {$REGION 'TViewModelsRegiterType' }
@@ -27,6 +28,10 @@ begin
   inherited;
   container
     .RegisterType<TObject, TMainViewModel>(MAIN_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TLoteManagerViewModel>(LOTE_MANAGER_VIEW_MODEL_NAME)
     .AsSingleton();
 
   container

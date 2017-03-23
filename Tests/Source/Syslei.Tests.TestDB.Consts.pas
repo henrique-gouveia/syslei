@@ -16,6 +16,8 @@ const
   + '[LANCE_INICIAL] DECIMAL(15,5), '
   + '[STATUS] INTEGER, '
   + '[TIPO] INTEGER, '
+  + '[IDADE] INTEGER, '
+  + '[SEXO] INTEGER, '
   + '[DATA_CADASTRO]);';
 
   PESSOA_CREATE_COMMAND =
@@ -30,7 +32,7 @@ const
     'INSERT INTO '
   + '[' + LOTE_TABLE_NAME + '] ( '
   + '[DOADOR_ID], [DESCRICAO], [NUMERO], [LANCE_INICIAL], '
-  + '[STATUS], [TIPO], [DATA_CADASTRO]) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  + '[STATUS], [TIPO], [IDADE], [SEXO], [DATA_CADASTRO]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
   PESSOA_INSERT_COMMAND =
     'INSERT INTO '

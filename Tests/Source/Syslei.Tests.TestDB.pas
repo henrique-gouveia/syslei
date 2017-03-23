@@ -22,6 +22,8 @@ type
     const lanceInicial: Double = 0;
     const status: Integer = 0;
     const tipo: Integer = 0;
+    const idade: Integer = 0;
+    const sexo: Integer = 0;
     const dataCadastro: TDate = 0): Variant;
 
   function InsertPessoa(
@@ -74,10 +76,12 @@ function InsertLote(
   const lanceInicial: Double;
   const status: Integer;
   const tipo: Integer;
+  const idade: Integer;
+  const sexo: Integer;
   const dataCadastro: TDate): Variant;
 begin
   TestDB.ExecSQL(LOTE_INSERT_COMMAND, [
-    doadorId, descricao, numero, lanceInicial, status, tipo, dataCadastro]);
+    doadorId, descricao, numero, lanceInicial, status, tipo, idade, sexo, dataCadastro]);
   Result := TestDB.GetLastInsertRowID();;
 end;
 

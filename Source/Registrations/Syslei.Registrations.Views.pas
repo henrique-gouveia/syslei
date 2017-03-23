@@ -21,6 +21,7 @@ uses
   Syslei.Views.Consts,
   Syslei.Views.Main,
   Syslei.Views.Finders.Pessoa,
+  Syslei.Views.Managers.Lote,
   Syslei.Views.Managers.Pessoa,
 
   Syslei.ViewModels.Consts,
@@ -48,6 +49,16 @@ begin
         Application.CreateForm(TMainView, Result);
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(MAIN_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TLoteManagerView>(LOTE_MANAGER_VIEW_NAME)
+    .DelegateTo(
+      function: TLoteManagerView
+      begin
+        Application.CreateForm(TLoteManagerView, Result);
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(container.Resolve<TObject>(LOTE_MANAGER_VIEW_MODEL_NAME), Result);
       end);
 
   container

@@ -7,8 +7,9 @@ uses
   Spring.Persistence.Mapping.Attributes;
 
 type
+  TSexo = (Masculino, Feminino);
   TStatusLote = (Aguardando, Agendado, Arrematado);
-  TTipoLote = (Imovel, Animal);
+  TTipoLote = (Animal, Imovel);
 
   [Entity]
   [Table('LOTE')]
@@ -40,9 +41,16 @@ type
     FTipo: TTipoLote;
     [Column('DATA_CADASTRO')]
     FDataCadastro: TDate;
+    [Column('IDADE')]
+    FIdade: Integer;
+    [Column('SEXO')]
+    FSexo: TSexo;
   public
     constructor Create; virtual;
     destructor Destroy; override;
+
+    function IsAnimal: Boolean;
+    function IsImovel: Boolean;
 
     property Id: Integer read FId write FId;
     property DoadorId: Integer read FDoadorId write FDoadorId;
@@ -52,6 +60,8 @@ type
     property LanceInicial: Double read FLanceInicial write FLanceInicial;
     property Status: TStatusLote read FStatus write FStatus default Aguardando;
     property Tipo: TTipoLote read FTipo write FTipo default Imovel;
+    property Idade: Integer read FIdade write FIdade;
+    property Sexo: TSexo read FSexo write FSexo;
     property DataCadastro: TDate read FDataCadastro write FDataCadastro;
   end;
 
@@ -66,6 +76,8 @@ constructor TLote.Create;
 begin
   inherited Create;
   FDoador := TPessoa.Create;
+  FStatus := TStatusLote.Aguardando;
+  FTipo := TTipoLote.Imovel;
   FDataCadastro := Date();
 end;
 
@@ -73,6 +85,16 @@ destructor TLote.Destroy;
 begin
   FDoador.Free;
   inherited;
+end;
+
+function TLote.IsAnimal: Boolean;
+begin
+  Result := FTipo = TTipoLote.Animal;
+end;
+
+function TLote.IsImovel: Boolean;
+begin
+  Result := FTipo = TTipoLote.Imovel;
 end;
 
 {$ENDREGION}

@@ -17,11 +17,11 @@ type
     FEntityId: Integer;
     [Inject]
     FEntityRepository: IPagedRepository<TEntity, Integer>;
-
-    function GetEntity: TEntity;
-    procedure SetEntity(const Value: TEntity);
-    procedure SetEntityId(const Value: Integer);
   protected
+    function GetEntity: TEntity; virtual;
+    procedure SetEntity(const Value: TEntity); virtual;
+    procedure SetEntityId(const Value: Integer); virtual;
+
     property EntityRepository: IPagedRepository<TEntity, Integer> read FEntityRepository;
   public
     destructor Destroy; override;

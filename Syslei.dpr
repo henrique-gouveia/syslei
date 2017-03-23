@@ -37,6 +37,7 @@ uses
   Syslei.ViewModels.Base.Report in 'Source\ViewModels\Syslei.ViewModels.Base.Report.pas',
   Syslei.ViewModels.Consts in 'Source\ViewModels\Syslei.ViewModels.Consts.pas',
   Syslei.ViewModels.Finders.Pessoa in 'Source\ViewModels\Syslei.ViewModels.Finders.Pessoa.pas',
+  Syslei.ViewModels.Managers.Lote in 'Source\ViewModels\Syslei.ViewModels.Managers.Lote.pas',
   Syslei.ViewModels.Managers.Pessoa in 'Source\ViewModels\Syslei.ViewModels.Managers.Pessoa.pas',
   Syslei.ViewModels.Main in 'Source\ViewModels\Syslei.ViewModels.Main.pas',
   Syslei.Views.Base in 'Source\Views\Syslei.Views.Base.pas' {BaseView},
@@ -46,6 +47,7 @@ uses
   Syslei.Views.Base.Report in 'Source\Views\Syslei.Views.Base.Report.pas' {ReportBaseView},
   Syslei.Views.Consts in 'Source\Views\Syslei.Views.Consts.pas',
   Syslei.Views.Finders.Pessoa in 'Source\Views\Syslei.Views.Finders.Pessoa.pas' {PessoaFinderView},
+  Syslei.Views.Managers.Lote in 'Source\Views\Syslei.Views.Managers.Lote.pas' {LoteManagerView},
   Syslei.Views.Managers.Pessoa in 'Source\Views\Syslei.Views.Managers.Pessoa.pas' {PessoaManagerView},
   Syslei.Views.Main in 'Source\Views\Syslei.Views.Main.pas' {MainView};
 

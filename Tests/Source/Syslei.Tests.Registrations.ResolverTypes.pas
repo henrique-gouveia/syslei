@@ -26,7 +26,11 @@ type
     [Test]
     procedure TestResolvePessoaRepository;
     [Test]
+    procedure TestResolveLoteManagerView;
+    [Test]
     procedure TestResolvePessoaManagerView;
+    [Test]
+    procedure TestResolveLoteManagerViewModel;
     [Test]
     procedure TestResolvePessoaManagerViewModel;
     [Test]
@@ -183,6 +187,19 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveLoteManagerView;
+var
+  loteManagerView: IView;
+begin
+  try
+    loteManagerView := GlobalContainer.Resolve<IView>(LOTE_MANAGER_VIEW_NAME);
+    Assert.IsNotNull(loteManagerView, 'Tipo TLoteManagerView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolvePessoaManagerView;
 var
   pessoaManagerView: IView;
@@ -190,6 +207,23 @@ begin
   try
     pessoaManagerView := GlobalContainer.Resolve<IView>(PESSOA_MANAGER_VIEW_NAME);
     Assert.IsNotNull(pessoaManagerView, 'Tipo TPessoaManagerView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveLoteManagerViewModel;
+var
+  loteManagerViewModelOne, loteManagerViewModelTwo: TObject;
+begin
+  try
+    loteManagerViewModelOne := GlobalContainer.Resolve<TObject>(LOTE_MANAGER_VIEW_MODEL_NAME);
+    loteManagerViewModelTwo := GlobalContainer.Resolve<TObject>(LOTE_MANAGER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(loteManagerViewModelOne, 'Tipo TLoteManagerViewModel não foi resolvido');
+    Assert.IsNotNull(loteManagerViewModelTwo, 'Tipo TLoteManagerViewModel não foi resolvido');
+    Assert.AreEqual(loteManagerViewModelOne, loteManagerViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);

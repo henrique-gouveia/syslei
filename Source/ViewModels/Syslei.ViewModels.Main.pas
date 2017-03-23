@@ -7,6 +7,7 @@ type
   private
     procedure InternalShowModalView(const serviceName: String);
   public
+    procedure LoteManager(Sender: TObject);
     procedure PessoaManager(Sender: TObject);
   end;
 
@@ -20,6 +21,11 @@ uses
 
 
 {$REGION 'TMainViewModel' }
+
+procedure TMainViewModel.LoteManager(Sender: TObject);
+begin
+  InternalShowModalView(LOTE_MANAGER_VIEW_NAME);
+end;
 
 procedure TMainViewModel.PessoaManager(Sender: TObject);
 begin

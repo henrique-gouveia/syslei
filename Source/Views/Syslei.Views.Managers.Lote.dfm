@@ -1,13 +1,14 @@
-inherited PessoaManagerView: TPessoaManagerView
-  Caption = 'Gerenciar Pessoa'
-  ClientHeight = 117
+inherited LoteManagerView: TLoteManagerView
+  Caption = 'Gerenciar Lote'
+  ClientHeight = 237
+  OnDestroy = FormDestroy
   ExplicitWidth = 650
-  ExplicitHeight = 155
+  ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 16
   inherited contentPanel: TPanel
-    Height = 62
-    ExplicitHeight = 70
+    Height = 182
+    ExplicitHeight = 182
     object idLabel: TLabel
       Left = 8
       Top = 7
@@ -15,20 +16,12 @@ inherited PessoaManagerView: TPessoaManagerView
       Height = 16
       Caption = 'C'#243'digo'
     end
-    object nomeLabel: TLabel
-      Left = 103
+    object descricaoLabel: TLabel
+      Left = 200
       Top = 7
-      Width = 36
+      Width = 64
       Height = 16
-      Caption = 'Nome'
-    end
-    object cpfLabel: TLabel
-      Left = 392
-      Top = 7
-      Width = 25
-      Height = 16
-      Anchors = [akTop, akRight]
-      Caption = 'CPF'
+      Caption = 'Descri'#231#227'o'
     end
     object dtCadastroLabel: TLabel
       Left = 508
@@ -37,6 +30,43 @@ inherited PessoaManagerView: TPessoaManagerView
       Height = 16
       Anchors = [akTop, akRight]
       Caption = 'Data Cadastro'
+    end
+    object numeroLoteLabel: TLabel
+      Left = 103
+      Top = 7
+      Width = 50
+      Height = 16
+      Caption = 'N'#186' Lote'
+    end
+    object statusLabel: TLabel
+      Left = 128
+      Top = 125
+      Width = 44
+      Height = 16
+      Caption = 'Status'
+    end
+    object tipoLabel: TLabel
+      Left = 279
+      Top = 125
+      Width = 28
+      Height = 16
+      Anchors = [akTop, akRight]
+      Caption = 'Tipo'
+    end
+    object idadeLabel: TLabel
+      Left = 430
+      Top = 125
+      Width = 37
+      Height = 16
+      Anchors = [akTop, akRight]
+      Caption = 'Idade'
+    end
+    object lanceInicialLabel: TLabel
+      Left = 8
+      Top = 125
+      Width = 82
+      Height = 16
+      Caption = 'Lance Inicial'
     end
     object idEdit: TEdit
       Left = 8
@@ -50,31 +80,18 @@ inherited PessoaManagerView: TPessoaManagerView
       ShowHint = False
       TabOrder = 0
     end
-    object nomeEdit: TEdit
+    object descricaoEdit: TEdit
       Tag = 1
-      Left = 103
+      Left = 200
       Top = 24
-      Width = 283
+      Width = 302
       Height = 22
       Hint = 'Nome'
       Anchors = [akLeft, akTop, akRight]
       CharCase = ecUpperCase
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 1
-    end
-    object cpfMask: TMaskEdit
-      Left = 392
-      Top = 24
-      Width = 110
-      Height = 22
-      Hint = 'CPF - Cadastro Pessoa F'#237'sica'
-      Anchors = [akTop, akRight]
-      CharCase = ecUpperCase
-      EditMask = '###.##0.000-00;0;_'
-      MaxLength = 14
       TabOrder = 2
-      Text = ''
     end
     object dtCadastroDtp: TDateTimePicker
       Tag = 1
@@ -90,6 +107,136 @@ inherited PessoaManagerView: TPessoaManagerView
       Time = 0.983644016203470600
       Enabled = False
       TabOrder = 3
+    end
+    object doadorGroup: TGroupBox
+      Left = 8
+      Top = 52
+      Width = 616
+      Height = 67
+      Anchors = [akLeft, akTop, akRight]
+      Caption = 'Doador'
+      TabOrder = 4
+      DesignSize = (
+        616
+        67)
+      object doadorIdLabel: TLabel
+        Left = 9
+        Top = 18
+        Width = 44
+        Height = 16
+        Caption = 'C'#243'digo'
+      end
+      object doadorNomeLabel: TLabel
+        Left = 104
+        Top = 18
+        Width = 64
+        Height = 16
+        Caption = 'Descri'#231#227'o'
+      end
+      object doadorIdEdit: TEdit
+        Tag = 1
+        Left = 9
+        Top = 36
+        Width = 89
+        Height = 22
+        Hint = 
+          'Identificador da Pessoa [ Novo-F5: Gerenciar Pessoa; Buscar-F2: ' +
+          'Localizar Pessoa ]'
+        CharCase = ecUpperCase
+        NumbersOnly = True
+        TabOrder = 0
+      end
+      object doadorNomeEdit: TEdit
+        Left = 104
+        Top = 36
+        Width = 504
+        Height = 22
+        Anchors = [akLeft, akTop, akRight]
+        CharCase = ecUpperCase
+        Enabled = False
+        TabOrder = 1
+      end
+    end
+    object numeroLoteEdit: TEdit
+      Tag = 1
+      Left = 103
+      Top = 24
+      Width = 91
+      Height = 22
+      Hint = 'Nome'
+      Anchors = [akLeft, akTop, akRight]
+      CharCase = ecUpperCase
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+    end
+    object statusCombo: TComboBox
+      Left = 128
+      Top = 142
+      Width = 145
+      Height = 24
+      BevelInner = bvNone
+      BevelKind = bkFlat
+      Style = csDropDownList
+      Anchors = [akLeft, akTop, akRight]
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 6
+      Items.Strings = (
+        'AGUARDANDO'
+        'AGENDADO'
+        'ARREMATADO')
+    end
+    object tipoCombo: TComboBox
+      Left = 279
+      Top = 142
+      Width = 145
+      Height = 24
+      BevelInner = bvNone
+      BevelKind = bkFlat
+      Style = csDropDownList
+      Anchors = [akTop, akRight]
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 7
+      Items.Strings = (
+        'ANIMAL'
+        'IM'#211'VEL')
+    end
+    object idadeEdit: TEdit
+      Tag = 1
+      Left = 430
+      Top = 142
+      Width = 91
+      Height = 22
+      Hint = 'Nome'
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      CharCase = ecUpperCase
+      NumbersOnly = True
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 8
+    end
+    object sexoGroup: TRadioGroup
+      Left = 528
+      Top = 125
+      Width = 96
+      Height = 41
+      Anchors = [akTop, akRight]
+      Caption = 'Sexo'
+      Columns = 2
+      Items.Strings = (
+        'M'
+        'F')
+      TabOrder = 9
+    end
+    object lanceInicialEdit: TEdit
+      Left = 8
+      Top = 142
+      Width = 114
+      Height = 22
+      TabOrder = 5
     end
   end
   inherited images: TImageList
