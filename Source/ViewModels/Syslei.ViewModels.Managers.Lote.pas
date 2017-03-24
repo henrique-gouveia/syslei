@@ -15,6 +15,8 @@ type
   private const
     ID_CONTROL_NAME = 'idEdit';
     DOADOR_ID_CONTROL_NAME = 'doadorIdEdit';
+    DESCRICAO_CONTROL_NAME = 'descricaoEdit';
+    NUMERO_CONTROL_NAME = 'numeroLoteEdit';
   private
     FDoador: TPessoa;
     FDoadorId: Integer;
@@ -27,6 +29,7 @@ type
     procedure SetTipoLote(const Value: TTipoLote);
   protected
     procedure SetEntityId(const Value: Integer); override;
+    function Validate: Boolean; override;
   public
     destructor Destroy; override;
 
@@ -48,6 +51,7 @@ uses
   Syslei.ViewModels.Base.Finder,
   Syslei.Views.Consts,
   Syslei.PresentationModel.Dialog,
+  Syslei.PresentationModel.ResourceStrings,
   Syslei.PresentationModel.View.Interfaces,
 
   Spring.Container;
@@ -120,11 +124,13 @@ end;
 
 procedure TLoteManagerViewModel.SetDoador(const Value: TPessoa);
 begin
-  if Assigned(FDoador) then
-    FreeAndNil(FDoador);
+  if Assigned(Value) then
+  begin
+    if Assigned(FDoador) then
+      FreeAndNil(FDoador);
 
-  FDoador := Value;
-
+    FDoador := Value;
+  end;
   if Assigned(FDoador) then
     DoPropertyChanged('Doador');
 end;
@@ -148,6 +154,32 @@ end;
 procedure TLoteManagerViewModel.SetTipoLote(const Value: TTipoLote);
 begin
   DoPropertyChanged('IsAnimalLote');
+end;
+
+function TLoteManagerViewModel.Validate: Boolean;
+begin
+  Result := True;
+
+  if (Entity.Numero.IsEmpty()) then
+  begin
+    Dialog.ShowWarningMessage(Format(SCampoObrigatorio, ['Número do Lote']));
+    ActiveControl := NUMERO_CONTROL_NAME;
+    Exit(False);
+  end;
+
+  if (Entity.Descricao.IsEmpty()) then
+  begin
+    Dialog.ShowWarningMessage(Format(SCampoObrigatorio, ['Descrição']));
+    ActiveControl := DESCRICAO_CONTROL_NAME;
+    Exit(False);
+  end;
+
+  if (Entity.DoadorId = 0) then
+  begin
+    Dialog.ShowWarningMessage(Format(SCampoObrigatorio, ['Doador']));
+    ActiveControl := DOADOR_ID_CONTROL_NAME;
+    Exit(False);
+  end;
 end;
 
 {$ENDREGION}

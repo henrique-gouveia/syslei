@@ -21,7 +21,6 @@ uses
 
   Spring.Container;
 
-
 {$REGION 'TMainViewModel' }
 
 procedure TMainViewModel.LoteManager(Sender: TObject);

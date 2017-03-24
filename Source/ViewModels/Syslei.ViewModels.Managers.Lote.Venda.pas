@@ -27,12 +27,14 @@ type
     FCompradorRepository: IPagedRepository<TPessoa, Integer>;
     [Inject]
     FLoteRepository: IPagedRepository<TLote, Integer>;
+
     procedure SetComprador(const Value: TPessoa);
     procedure SetCompradorId(const Value: Integer);
     procedure SetLote(const Value: TLote);
     procedure SetLoteId(const Value: Integer);
   protected
     procedure SetEntityId(const Value: Integer); override;
+    function Validate: Boolean; override;
   public
     destructor Destroy; override;
 
@@ -53,6 +55,7 @@ uses
   Syslei.ViewModels.Base.Finder,
   Syslei.Views.Consts,
   Syslei.PresentationModel.Dialog,
+  Syslei.PresentationModel.ResourceStrings,
   Syslei.PresentationModel.View.Interfaces,
 
   Spring.Container;
@@ -123,11 +126,13 @@ end;
 
 procedure TVendaLoteManagerViewModel.SetComprador(const Value: TPessoa);
 begin
-  if Assigned(FComprador) then
-    FreeAndNil(FComprador);
+  if Assigned(Value) then
+  begin
+    if Assigned(FComprador) then
+      FreeAndNil(FComprador);
 
-  FComprador := Value;
-
+    FComprador := Value;
+  end;
   if Assigned(FComprador) then
     DoPropertyChanged('Comprador');
 end;
@@ -143,10 +148,13 @@ end;
 
 procedure TVendaLoteManagerViewModel.SetLote(const Value: TLote);
 begin
-  if Assigned(FLote) then
-    FreeAndNil(FLote);
+  if Assigned(Value) then
+  begin
+    if Assigned(FLote) then
+      FreeAndNil(FLote);
 
-  FLote := Value;
+    FLote := Value;
+  end;
 
   if Assigned(FLote) then
     DoPropertyChanged('Lote');
@@ -169,6 +177,25 @@ begin
 
   if (LoteId <> Entity.LoteId) then
     LoteId := Entity.LoteId;
+end;
+
+function TVendaLoteManagerViewModel.Validate: Boolean;
+begin
+  Result := True;
+
+  if (Entity.CompradorId = 0) then
+  begin
+    Dialog.ShowWarningMessage(Format(SCampoObrigatorio, ['Comprador']));
+    ActiveControl := COMPRADOR_ID_CONTROL_NAME;
+    Exit(False);
+  end;
+
+  if (Entity.LoteId = 0) then
+  begin
+    Dialog.ShowWarningMessage(Format(SCampoObrigatorio, ['Lote']));
+    ActiveControl := LOTE_ID_CONTROL_NAME;
+    Exit(False);
+  end;
 end;
 
 {$ENDREGION}

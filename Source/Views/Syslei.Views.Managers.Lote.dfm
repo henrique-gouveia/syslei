@@ -8,7 +8,7 @@ inherited LoteManagerView: TLoteManagerView
   TextHeight = 16
   inherited contentPanel: TPanel
     Height = 166
-    ExplicitHeight = 182
+    ExplicitHeight = 166
     object idLabel: TLabel
       Left = 8
       Top = 7
@@ -222,12 +222,13 @@ inherited LoteManagerView: TLoteManagerView
       Top = 125
       Width = 114
       Height = 22
+      Alignment = taRightJustify
       TabOrder = 5
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800EC0018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800F00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000
