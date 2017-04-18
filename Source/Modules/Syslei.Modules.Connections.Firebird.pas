@@ -46,9 +46,7 @@ implementation
 
 procedure TFirebirdConnectionModule.DataModuleCreate(Sender: TObject);
 begin
-  {$IFDEF FIREBIRD_DB}
   SysleiConnection.Connected := True;
-  {$ENDIF}
 end;
 
 function TFirebirdConnectionModule.GetConnection: TFDConnection;

@@ -50,7 +50,7 @@ CONSTRAINT PK_LOTE PRIMARY KEY (ID)
 CREATE TABLE PESSOA (
 ID                   INTEGER                        NOT NULL,
 NOME                 VARCHAR(60)                    NOT NULL      COLLATE PT_BR,
-CPF                  VARCHAR(12)                                  COLLATE PT_BR,
+CPF_CNPJ             VARCHAR(20)                                  COLLATE PT_BR,
 FONE1                VARCHAR(15)                                  COLLATE PT_BR,
 DATA_CADASTRO        DATE,
 CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
@@ -59,7 +59,7 @@ CONSTRAINT PK_PESSOA PRIMARY KEY (ID)
 CREATE TABLE PROPRIO (
 ID                   INTEGER                        NOT NULL,
 NOME                 VARCHAR(60)                    NOT NULL      COLLATE PT_BR,
-CPF                  VARCHAR(12)                                  COLLATE PT_BR,
+CPF_CNPJ             VARCHAR(20)                                  COLLATE PT_BR,
 FONE1                VARCHAR(15)                                  COLLATE PT_BR,
 DATA_CADASTRO        DATE,
 CONSTRAINT PK_PROPRIO PRIMARY KEY (ID)
@@ -79,8 +79,10 @@ CONSTRAINT PK_VENDA_LOTE PRIMARY KEY (ID)
 /*==============================================================*/
 
 CREATE INDEX IDX_LOTE_DESCRICAO ON LOTE (DESCRICAO);
-CREATE INDEX IDX_PESSOA_CPF ON PESSOA (CPF);
+CREATE INDEX IDX_PESSOA_CPF_CNPJ ON PESSOA (CPF_CNPJ);
 CREATE INDEX IDX_PESSOA_NOME ON PESSOA (NOME);
+CREATE INDEX IDX_PROPRIO_CPF_CNPJ ON PROPRIO (CPF_CNPJ);
+CREATE INDEX IDX_PROPRIO_NOME ON PROPRIO (NOME);
 CREATE INDEX IDX_VENDA_LOTE_DATA ON VENDA_LOTE (DATA);
 
 /*==============================================================*/

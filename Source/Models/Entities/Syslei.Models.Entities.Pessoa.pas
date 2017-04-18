@@ -21,8 +21,8 @@ type
 
     [Column('NOME')]
     FNome: String;
-    [Column('CPF')]
-    FCpf: String;
+    [Column('CPF_CNPJ')]
+    FCpfCnpj: String;
     [Column('FONE1')]
     FTelefone: String;
     [Column('DATA_CADASTRO')]
@@ -32,7 +32,7 @@ type
 
     property Id: Integer read FId write FId;
     property Nome: String read FNome write FNome;
-    property Cpf: String read FCpf write FCpf;
+    property CpfCnpj: String read FCpfCnpj write FCpfCnpj;
     property Telefone: String read FTelefone write FTelefone;
     property DataCadastro: TDate read FDataCadastro write FDataCadastro;
   end;
