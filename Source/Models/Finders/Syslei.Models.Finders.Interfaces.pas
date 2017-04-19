@@ -14,6 +14,11 @@ type
     function FindLikeStart(const propertyName: String; const propertyValue: TValue): IList<TEntity>;
   end;
 
+  IEntityFinder<TEntity, TFilter: class, constructor> = interface
+    ['{17ED05BB-51C4-4859-BD4F-96A9773BB538}']
+    function Find(const filter: TFilter): IList<TEntity>;
+  end;
+
 implementation
 
 end.

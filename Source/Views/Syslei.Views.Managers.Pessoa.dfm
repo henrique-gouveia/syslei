@@ -1,14 +1,14 @@
 inherited PessoaManagerView: TPessoaManagerView
   Caption = 'Gerenciar Pessoa'
   ClientHeight = 165
+  OnDestroy = FormDestroy
   ExplicitWidth = 650
   ExplicitHeight = 203
   PixelsPerInch = 96
   TextHeight = 16
   inherited contentPanel: TPanel
     Height = 110
-    ExplicitTop = 61
-    ExplicitHeight = 119
+    ExplicitHeight = 110
     object idLabel: TLabel
       Left = 8
       Top = 7
@@ -25,11 +25,11 @@ inherited PessoaManagerView: TPessoaManagerView
     end
     object cpfLabel: TLabel
       Left = 8
-      Top = 54
-      Width = 25
+      Top = 52
+      Width = 63
       Height = 16
       Anchors = [akTop, akRight]
-      Caption = 'CPF'
+      Caption = 'CPF/CNPJ'
     end
     object dtCadastroLabel: TLabel
       Left = 508
@@ -40,7 +40,7 @@ inherited PessoaManagerView: TPessoaManagerView
       Caption = 'Data Cadastro'
     end
     object telefoneLabel: TLabel
-      Left = 124
+      Left = 172
       Top = 52
       Width = 57
       Height = 16
@@ -71,16 +71,13 @@ inherited PessoaManagerView: TPessoaManagerView
       ShowHint = False
       TabOrder = 1
     end
-    object cpfMask: TMaskEdit
+    object cpfCnpjMask: TMaskEdit
       Left = 8
       Top = 71
-      Width = 110
+      Width = 158
       Height = 22
-      Hint = 'CPF - Cadastro Pessoa F'#237'sica'
       Anchors = [akTop, akRight]
       CharCase = ecUpperCase
-      EditMask = '###.##0.000-00;0;_'
-      MaxLength = 14
       TabOrder = 3
       Text = ''
     end
@@ -100,20 +97,20 @@ inherited PessoaManagerView: TPessoaManagerView
       TabOrder = 2
     end
     object telefoneMask: TMaskEdit
-      Left = 124
+      Left = 172
       Top = 71
-      Width = 118
+      Width = 114
       Height = 22
       Hint = 'Telefone Fixo'
-      EditMask = '!(99)#9999-9999;0;_'
+      EditMask = '!(99)#9999-9999;1;_'
       MaxLength = 14
       TabOrder = 4
-      Text = ''
+      Text = '(  )     -    '
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800F00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800FC0018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000

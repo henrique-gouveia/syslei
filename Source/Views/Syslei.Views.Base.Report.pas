@@ -27,8 +27,6 @@ type
     reportHeaderTitleLabel: TRLLabel;
     reportHeaderPageSystemInfo: TRLSystemInfo;
     reportHeaderPageLabel: TRLLabel;
-    reportFooterBand: TRLBand;
-    reportFooterInfoLabel: TRLLabel;
     procedure reportBeforePrint(Sender: TObject; var PrintIt: Boolean);
   protected
     function Preview: Boolean;

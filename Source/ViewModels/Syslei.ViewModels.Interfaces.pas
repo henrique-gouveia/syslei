@@ -6,6 +6,7 @@ type
   IFilterViewModel = interface
     ['{0A18DE3D-84CE-4627-AD3E-54A26F299152}']
     procedure Novo(Sender: TObject);
+    procedure Executar(Sender: TObject);
     procedure Ok(Sender: TObject);
   end;
 

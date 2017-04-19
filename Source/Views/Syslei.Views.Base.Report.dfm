@@ -67,31 +67,5 @@ object ReportBaseView: TReportBaseView
         Caption = 'P'#225'gina.: '
       end
     end
-    object reportFooterBand: TRLBand
-      Left = 38
-      Top = 113
-      Width = 718
-      Height = 16
-      BandType = btFooter
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = True
-      Borders.DrawRight = False
-      Borders.DrawBottom = False
-      object reportFooterInfoLabel: TRLLabel
-        Left = 331
-        Top = 1
-        Width = 55
-        Height = 14
-        Align = faCenterTop
-        Caption = 'Footer Info'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-    end
   end
 end

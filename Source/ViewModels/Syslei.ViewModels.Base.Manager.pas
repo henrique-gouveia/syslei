@@ -3,6 +3,7 @@ unit Syslei.ViewModels.Base.Manager;
 interface
 
 uses
+  System.Classes,
   Syslei.ViewModels.Base,
   Syslei.ViewModels.Interfaces,
 
@@ -11,18 +12,27 @@ uses
   Spring.Persistence.Criteria.Interfaces;
 
 type
+  TAfterSaveAction = reference to procedure;
+  TAfterDeleteAction = reference to procedure;
+
   TManagerViewModelBase<TEntity: class, constructor> = class(TViewModelBase, IManagerViewModel<TEntity>)
   private
     FEntity: TEntity;
     FEntityId: Integer;
     [Inject]
     FEntityRepository: IPagedRepository<TEntity, Integer>;
+
+    FAfterSaveAction: TAfterSaveAction;
+    FAfterDeleteAction: TAfterDeleteAction;
   protected
     function GetEntity: TEntity; virtual;
     procedure SetEntity(const Value: TEntity); virtual;
     procedure SetEntityId(const Value: Integer); virtual;
 
     property EntityRepository: IPagedRepository<TEntity, Integer> read FEntityRepository;
+
+    property AfterSaveAction: TAfterSaveAction read FAfterSaveAction write FAfterSaveAction;
+    property AfterDeleteAction: TAfterDeleteAction read FAfterDeleteAction write FAfterDeleteAction;
   public
     destructor Destroy; override;
     procedure AfterConstruction; override;
@@ -33,7 +43,7 @@ type
     procedure Buscar(Sender: TObject); virtual; abstract;
 
     property Entity: TEntity read GetEntity write SetEntity;
-    property EntityId: Integer write SetEntityId;
+    property EntityId: Integer read FEntityId write SetEntityId;
   end;
 
 implementation
@@ -53,12 +63,24 @@ end;
 procedure TManagerViewModelBase<TEntity>.AfterConstruction;
 begin
   inherited;
+  AfterSaveAction :=
+    procedure
+    begin
+      Dialog.ShowInformationMessage('Registro gravado com sucesso.');
+    end;
+
+  AfterDeleteAction :=
+    procedure
+    begin
+      Dialog.ShowInformationMessage('Registro excluído com sucesso.');
+    end;
+
   Novo(Self);
 end;
 
 procedure TManagerViewModelBase<TEntity>.Novo(Sender: TObject);
 begin
-  Entity := TEntity.Create;
+  Entity := nil;
   EntityId := 0;
 end;
 
@@ -73,8 +95,8 @@ begin
       if (result = mrYes) then
       try
         FEntityRepository.Save(FEntity);
-
-        Dialog.ShowInformationMessage('Registro gravado com sucesso.');
+        if Assigned(AfterSaveAction) then
+          AfterSaveAction();
         Novo(Sender);
       except
         Dialog.ShowErrorMessage('Erro ao tentar gravar o registro!');
@@ -90,8 +112,8 @@ begin
       if (result = mrYes) then
       try
         FEntityRepository.Delete(FEntity);
-
-        Dialog.ShowInformationMessage('Registro excluído com sucesso.');
+        if Assigned(AfterDeleteAction) then
+          AfterDeleteAction();
         Novo(Sender);
       except
         Dialog.ShowErrorMessage('Erro ao tentar excluir o registro.');
@@ -109,21 +131,20 @@ begin
   if Assigned(FEntity) then
     FreeAndNil(FEntity);
 
-  FEntity := Value;
+  if Assigned(Value) then
+    FEntity := Value
+  else
+    FEntity := TEntity.Create;
 
-  if Assigned(FEntity) then
-    DoPropertyChanged('Entity');
+  DoPropertyChanged('Entity');
 end;
 
 procedure TManagerViewModelBase<TEntity>.SetEntityId(const Value: Integer);
 begin
-  if FEntityId <> Value then
+  if (FEntityId <> Value) then
   begin
     FEntityId := Value;
     Entity := FEntityRepository.FindOne(FEntityId);
-
-    if not Assigned(Entity) then
-      Entity := TEntity.Create;
   end;
 end;
 

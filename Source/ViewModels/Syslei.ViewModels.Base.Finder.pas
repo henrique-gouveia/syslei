@@ -8,11 +8,8 @@ uses
   Syslei.ViewModels.Base.Domain,
   Syslei.ViewModels.Interfaces,
 
-  Spring,
   Spring.Collections,
-  Spring.Container.Common,
-  Spring.Persistence.Core.Interfaces,
-  Spring.Persistence.Criteria.Interfaces;
+  Spring.Container.Common;
 
 type
   TFinderViewModelBase<TEntity: class, constructor> = class(TViewModelBase, IFinderViewModel<TEntity>)
@@ -26,9 +23,11 @@ type
     FSearchProperties: IObjectList;
 
     function GetEntity: TEntity;
-    procedure SetEntity(const value: TEntity);
+    procedure SetEntity(const Value: TEntity);
+
     function GetEntities: IObjectList;
     procedure SetEntities(const Value: IObjectList);
+
     procedure SetSearchProperty(const Value: TPropertyData); virtual;
   protected
     property EntityFinder: IEntityFinder<TEntity> read FEntityFinder;
@@ -66,12 +65,13 @@ begin
   inherited;
   FSearchProperty := TPropertyData.Create;
   FSearchProperties := TCollections.CreateObjectList<TPropertyData>() as IObjectList;
+  Novo(Self);
 end;
 
 procedure TFinderViewModelBase<TEntity>.Novo(Sender: TObject);
 begin
-  Entity := TEntity.Create;
-  Entities := TCollections.CreateObjectList<TEntity>() as IObjectList;
+  Entity := nil;
+  Entities := nil;
 end;
 
 procedure TFinderViewModelBase<TEntity>.Avulsa(Sender: TObject);
@@ -94,22 +94,28 @@ begin
   Result := FEntity;
 end;
 
-procedure TFinderViewModelBase<TEntity>.SetEntity(const value: TEntity);
+procedure TFinderViewModelBase<TEntity>.SetEntity(const Value: TEntity);
 begin
-  FEntity := Value;
+  if Assigned(Value) then
+    FEntity := Value
+  else
+    FEntity := TEntity.Create;
+
+  DoPropertyChanged('Entities');
 end;
 
 function TFinderViewModelBase<TEntity>.GetEntities: IObjectList;
 begin
-  if not Assigned(FEntities) then
-    FEntities := TCollections.CreateObjectList<TEntity>() as IObjectList;
-
   Result := FEntities;
 end;
 
 procedure TFinderViewModelBase<TEntity>.SetEntities(const Value: IObjectList);
 begin
-  FEntities := Value;
+  if Assigned(Value) then
+    FEntities := Value
+  else
+    FEntities := TCollections.CreateObjectList<TEntity>() as IObjectList;
+
   DoPropertyChanged('Entities');
 end;
 

@@ -39,7 +39,7 @@ type
     nomeLabel: TLabel;
     nomeEdit: TEdit;
     cpfLabel: TLabel;
-    cpfMask: TMaskEdit;
+    cpfCnpjMask: TMaskEdit;
     telefoneMask: TMaskEdit;
     telefoneLabel: TLabel;
     dtCadastroLabel: TLabel;
@@ -95,7 +95,7 @@ begin
 
   bindings.AddBinding(DataContext, 'Entity.Id', idEdit, 'Text');
   bindings.AddBinding(DataContext, 'Entity.Nome', nomeEdit, 'Text');
-  bindings.AddBinding(DataContext, 'Entity.CPF', cpfMask, 'Text');
+  bindings.AddBinding(DataContext, 'Entity.CpfCnpj', cpfCnpjMask, 'Text');
   bindings.AddBinding(DataContext, 'Entity.Telefone', telefoneMask, 'Text');
   bindings.AddBinding(DataContext, 'Entity.DataCadastro', dtCadastroDtp, 'Date', bmOneWay);
 end;

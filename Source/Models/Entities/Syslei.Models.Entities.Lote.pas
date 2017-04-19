@@ -9,12 +9,12 @@ uses
 type
   TSexo = (Masculino, Feminino);
   TStatusLote = (Aguardando, Agendado, Arrematado);
-  TTipoLote = (Animal, Imovel);
+  TTipoLote = (Animal, Imovel, Prenda);
 
   [Entity]
   [Table('LOTE')]
   {$IFDEF FIREBIRD_DB}
-  [Sequence('GEN_LOTE_ID', 0, 1)]
+  [Sequence('GEN_LOTE_ID', 1, 1)]
   {$ENDIF}  TLote = class
   private
     [Column('ID', [cpPrimaryKey])]
@@ -51,6 +51,7 @@ type
 
     function IsAnimal: Boolean;
     function IsImovel: Boolean;
+    function IsPrenda: Boolean;
 
     property Id: Integer read FId write FId;
     property DoadorId: Integer read FDoadorId write FDoadorId;
@@ -95,6 +96,11 @@ end;
 function TLote.IsImovel: Boolean;
 begin
   Result := FTipo = TTipoLote.Imovel;
+end;
+
+function TLote.IsPrenda: Boolean;
+begin
+  Result := FTipo = TTipoLote.Prenda;
 end;
 
 {$ENDREGION}

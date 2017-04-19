@@ -11,7 +11,7 @@ type
   [Entity]
   [Table('VENDA_LOTE')]
   {$IFDEF FIREBIRD_DB}
-  [Sequence('GEN_VENDA_LOTE_ID', 0, 1)]
+  [Sequence('GEN_VENDA_LOTE_ID', 1, 1)]
   {$ENDIF}
   TVendaLote = class
   private

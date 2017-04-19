@@ -60,7 +60,6 @@ type
   private
     procedure ConfigureBind;
   protected
-    procedure ActiveChanged; override;
     procedure SetDataContext(const Value: TObject); override;
   public
     [Inject(LOTE_MANAGER_VIEW_MODEL_NAME)]
@@ -77,12 +76,6 @@ uses
   Syslei.Conversions.Consts;
 
 {$REGION 'TLoteManagerView' }
-
-procedure TLoteManagerView.ActiveChanged;
-begin
-  inherited;
-  bindings.GetBindingForTarget(Self).UpdateSource();
-end;
 
 procedure TLoteManagerView.FormDestroy(Sender: TObject);
 begin

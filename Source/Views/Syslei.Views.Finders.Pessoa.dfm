@@ -24,8 +24,9 @@ inherited PessoaFinderView: TPessoaFinderView
         end
         item
           Expanded = False
-          FieldName = 'CPF'
+          FieldName = 'cpfCnpj'
           Title.Alignment = taCenter
+          Title.Caption = 'CPF/CNPJ'
           Width = 150
           Visible = True
         end
@@ -38,14 +39,9 @@ inherited PessoaFinderView: TPessoaFinderView
         end>
     end
   end
-  inherited actions: TActionList
-    inherited Ok: TAction
-      OnExecute = OkExecute
-    end
-  end
   inherited images: TImageList
     Bitmap = {
-      494C010106003000540018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010106003000600018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -664,9 +660,8 @@ inherited PessoaFinderView: TPessoaFinderView
       FieldName = 'Nome'
       Size = 60
     end
-    object dataSetCPF: TWideStringField
-      FieldName = 'CPF'
-      Size = 12
+    object dataSetCpfCnpj: TWideStringField
+      FieldName = 'cpfCnpj'
     end
     object dataSetDataCadastro: TDateField
       FieldName = 'DataCadastro'

@@ -33,8 +33,6 @@ uses
   DSharp.Bindings,
   DSharp.Bindings.VCLControls,
 
-  Spring,
-  Spring.Collections,
   Spring.Container.Common,
   Spring.Data.VirtualDataSet,
   Spring.Data.ObjectDataSet;
@@ -45,7 +43,7 @@ type
     dataSet: TObjectDataSet;
     dataSetId: TIntegerField;
     dataSetNome: TWideStringField;
-    dataSetCPF: TWideStringField;
+    dataSetCpfCnpj: TWideStringField;
     dataSetDataCadastro: TDateField;
     procedure FormDestroy(Sender: TObject);
     procedure OkExecute(Sender: TObject);

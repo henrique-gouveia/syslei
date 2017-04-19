@@ -8,6 +8,7 @@ inherited LoteManagerView: TLoteManagerView
   TextHeight = 16
   inherited contentPanel: TPanel
     Height = 166
+    ExplicitTop = 61
     ExplicitHeight = 166
     object idLabel: TLabel
       Left = 8
@@ -187,7 +188,8 @@ inherited LoteManagerView: TLoteManagerView
       TabOrder = 7
       Items.Strings = (
         'ANIMAL'
-        'IM'#211'VEL')
+        'IM'#211'VEL'
+        'PRENDA')
     end
     object idadeEdit: TEdit
       Tag = 1
@@ -218,17 +220,24 @@ inherited LoteManagerView: TLoteManagerView
       TabOrder = 9
     end
     object lanceInicialEdit: TEdit
+      Tag = 1
       Left = 8
       Top = 125
       Width = 114
       Height = 22
+      Hint = 'Nome'
       Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      CharCase = ecUpperCase
+      NumbersOnly = True
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 5
     end
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800F00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800040118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000

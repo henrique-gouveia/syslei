@@ -9,7 +9,7 @@ type
   [Entity]
   [Table('PROPRIO')]
   {$IFDEF FIREBIRD_DB}
-  [Sequence('GEN_PROPRIO_ID', 0, 1)]
+  [Sequence('GEN_PROPRIO_ID', 1, 1)]
   {$ENDIF}
   TProprio = class(TObject)
   private

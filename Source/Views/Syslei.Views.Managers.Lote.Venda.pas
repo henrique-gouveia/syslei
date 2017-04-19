@@ -46,8 +46,10 @@ type
     loteIdEdit: TEdit;
     loteDescricaoEdit: TEdit;
     lanceArremateLabel: TLabel;
-    lanceArremateEdit: TEdit;
+    Promissoria: TAction;
+    promissoriaButton: TSpeedButton;
     bindings: TBindingGroup;
+    lanceArremateEdit: TEdit;
     procedure FormDestroy(Sender: TObject);
     procedure LoteIdEditExit(Sender: TObject);
   private
