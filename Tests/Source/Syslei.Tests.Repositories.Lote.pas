@@ -78,17 +78,17 @@ end;
 procedure TLoteRepositoryTest.TestFindAll;
 var
   I, count, doadorId: Integer;
-  bens: IList<TLote>;
+  lotes: IList<TLote>;
 begin
   doadorId := InsertPessoa();
   for I := 1 to 10 do
     InsertLote(doadorId);
 
   count := TestDB.GetUniTableIntf('SELECT COUNT(*) FROM [' + LOTE_TABLE_NAME + ']').Fields[0].Value;
-  bens := FLoteRepository.FindAll();
+  lotes := FLoteRepository.FindAll();
 
-  Assert.IsNotNull(bens, 'Nenhum Lote localizado');
-  Assert.AreEqual(count, bens.Count, 'Total de registros diferem');
+  Assert.IsNotNull(lotes, 'Nenhum Lote localizado');
+  Assert.AreEqual(count, lotes.Count, 'Total de registros diferem');
 end;
 
 procedure TLoteRepositoryTest.TestInsert;

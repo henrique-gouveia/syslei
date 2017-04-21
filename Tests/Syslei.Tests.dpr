@@ -15,6 +15,10 @@ uses
   {$ENDIF }
   DUnitX.Loggers.GUI.VCL,
   DUnitX.TestFramework,
+  Syslei.Tests.Conversions.ControlString in 'Source\Syslei.Tests.Conversions.ControlString.pas',
+  Syslei.Tests.Conversions.Lote.ObjectListDataSet.FireDAC in 'Source\Syslei.Tests.Conversions.Lote.ObjectListDataSet.FireDAC.pas',
+  Syslei.Tests.Conversions.Lote.Venda.ObjectListDataSet.FireDAC in 'Source\Syslei.Tests.Conversions.Lote.Venda.ObjectListDataSet.FireDAC.pas',
+  Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC in 'Source\Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC.pas',
   Syslei.Tests.Finders.Lote in 'Source\Syslei.Tests.Finders.Lote.pas',
   Syslei.Tests.Finders.Pessoa in 'Source\Syslei.Tests.Finders.Pessoa.pas',
   Syslei.Tests.Repositories.Lote in 'Source\Syslei.Tests.Repositories.Lote.pas',

@@ -65,8 +65,8 @@ begin
 
   proprio := FProprioRepository.FindOne(id);
   try
-    Assert.IsNotNull(proprio, Format('Nenhuma Proprio localizada para o id %d', [id]));
-    Assert.AreEqual(id, proprio.Id, Format('Id da proprio %d difere do id esperado %d', [proprio.Id, id]));
+    Assert.IsNotNull(proprio, Format('Nenhum Proprio localizado para o id %d', [id]));
+    Assert.AreEqual(id, proprio.Id, Format('Id do proprio %d difere do id esperado %d', [proprio.Id, id]));
   finally
     proprio.Free;
   end;
@@ -83,7 +83,7 @@ begin
   count := TestDB.GetUniTableIntf('SELECT COUNT(*) FROM [' + PROPRIO_TABLE_NAME + ']').Fields[0].Value;
   proprios := FProprioRepository.FindAll();
 
-  Assert.IsNotNull(proprios, 'Nenhuma Proprio localizada');
+  Assert.IsNotNull(proprios, 'Nenhum Proprio localizado');
   Assert.AreEqual(count, proprios.Count, 'Total de registros diferem');
 end;
 
@@ -95,7 +95,7 @@ begin
   proprio := TProprio.Create();
   try
     proprio.Nome := 'PROPRIO INSERTED';
-    proprio.Cpf := '165.223.333-41';
+    proprio.CpfCnpj := '165.223.333-41';
     proprio.Telefone := '(88)4321-1234';
     proprio.DataCadastro := Date();
 
@@ -103,7 +103,7 @@ begin
     table := TestDB.GetUniTableIntf('SELECT * FROM [' + PROPRIO_TABLE_NAME + '] WHERE ID = ?', [proprio.Id]);
 
     Assert.AreEqual(proprio.Nome, table.FieldByName['NOME'].AsString);
-    Assert.AreEqual(proprio.Cpf, table.FieldByName['CPF'].AsString);
+    Assert.AreEqual(proprio.CpfCnpj, table.FieldByName['CPF_CNPJ'].AsString);
     Assert.AreEqual(proprio.Telefone, table.FieldByName['FONE1'].AsString);
     Assert.AreEqual(proprio.DataCadastro, table.FieldByName['DATA_CADASTRO'].AsDateTime);
   finally
@@ -122,14 +122,14 @@ begin
   proprio := FProprioRepository.FindOne(id);
   try
     proprio.Nome := 'PROPRIO UPDATED';
-    proprio.Cpf := '355.734.728-10';
+    proprio.CpfCnpj := '355.734.728-10';
     proprio.Telefone := '(88)94321-1234';
 
     FProprioRepository.Save(proprio);
     table := TestDB.GetUniTableIntf('SELECT * FROM [' + PROPRIO_TABLE_NAME + '] WHERE ID = ?', [proprio.Id]);
 
     Assert.AreEqual(proprio.Nome, table.FieldByName['NOME'].AsString);
-    Assert.AreEqual(proprio.Cpf, table.FieldByName['CPF'].AsString);
+    Assert.AreEqual(proprio.CpfCnpj, table.FieldByName['CPF_CNPJ'].AsString);
     Assert.AreEqual(proprio.Telefone, table.FieldByName['FONE1'].AsString);
     Assert.AreEqual(proprio.DataCadastro, table.FieldByName['DATA_CADASTRO'].AsDateTime);
   finally
@@ -148,7 +148,7 @@ begin
     FProprioRepository.Delete(proprioInserted);
     proprioRemoved := FProprioRepository.FindOne(id);
 
-    Assert.IsNull(proprioRemoved, 'Proprio não foi removida');
+    Assert.IsNull(proprioRemoved, 'Proprio não foi removido');
   finally
     proprioInserted.Free;
   end;

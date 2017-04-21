@@ -95,7 +95,7 @@ begin
   pessoa := TPessoa.Create();
   try
     pessoa.Nome := 'PESSOA INSERTED';
-    pessoa.Cpf := '165.223.333-41';
+    pessoa.CpfCnpj := '165.223.333-41';
     pessoa.Telefone := '(88)4321-1234';
     pessoa.DataCadastro := Date();
 
@@ -103,7 +103,7 @@ begin
     table := TestDB.GetUniTableIntf('SELECT * FROM [' + PESSOA_TABLE_NAME + '] WHERE ID = ?', [pessoa.Id]);
 
     Assert.AreEqual(pessoa.Nome, table.FieldByName['NOME'].AsString);
-    Assert.AreEqual(pessoa.Cpf, table.FieldByName['CPF'].AsString);
+    Assert.AreEqual(pessoa.CpfCnpj, table.FieldByName['CPF_CNPJ'].AsString);
     Assert.AreEqual(pessoa.Telefone, table.FieldByName['FONE1'].AsString);
     Assert.AreEqual(pessoa.DataCadastro, table.FieldByName['DATA_CADASTRO'].AsDateTime);
   finally
@@ -122,14 +122,14 @@ begin
   pessoa := FPessoaRepository.FindOne(id);
   try
     pessoa.Nome := 'PESSOA UPDATED';
-    pessoa.Cpf := '355.734.728-10';
+    pessoa.CpfCnpj := '355.734.728-10';
     pessoa.Telefone := '(88)94321-1234';
 
     FPessoaRepository.Save(pessoa);
     table := TestDB.GetUniTableIntf('SELECT * FROM [' + PESSOA_TABLE_NAME + '] WHERE ID = ?', [pessoa.Id]);
 
     Assert.AreEqual(pessoa.Nome, table.FieldByName['NOME'].AsString);
-    Assert.AreEqual(pessoa.Cpf, table.FieldByName['CPF'].AsString);
+    Assert.AreEqual(pessoa.CpfCnpj, table.FieldByName['CPF_CNPJ'].AsString);
     Assert.AreEqual(pessoa.Telefone, table.FieldByName['FONE1'].AsString);
     Assert.AreEqual(pessoa.DataCadastro, table.FieldByName['DATA_CADASTRO'].AsDateTime);
   finally

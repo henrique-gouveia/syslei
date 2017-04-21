@@ -50,7 +50,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_Define>SQLITE_DB;TESTINSIGHT;$(DCC_Define)</DCC_Define>
+        <DCC_Define>SQLITE_DB;$(DCC_Define)</DCC_Define>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
@@ -104,6 +104,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="Source\Syslei.Tests.Conversions.ControlString.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Conversions.Lote.ObjectListDataSet.FireDAC.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Conversions.Lote.Venda.ObjectListDataSet.FireDAC.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Finders.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Finders.Pessoa.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.pas"/>

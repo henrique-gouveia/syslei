@@ -28,13 +28,13 @@ type
 
   function InsertPessoa(
     const nome: String = 'PESSOA';
-    const cpf: String = '';
+    const cpfCnpj: String = '';
     const telefone: String = '';
     const dataCadastro: TDate = 0): Variant;
 
   function InsertProprio(
     const nome: String = 'PROPRIO';
-    const cpf: String = '';
+    const cpfCnpj: String = '';
     const telefone: String = '';
     const dataCadastro: TDate = 0): Variant;
 
@@ -106,21 +106,21 @@ end;
 
 function InsertPessoa(
   const nome: String;
-  const cpf: String;
+  const cpfCnpj: String;
   const telefone: String;
   const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpf, telefone, dataCadastro]);
+  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro]);
   Result := TestDB.GetLastInsertRowID();
 end;
 
 function InsertProprio(
   const nome: String;
-  const cpf: String;
+  const cpfCnpj: String;
   const telefone: String;
   const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(PROPRIO_INSERT_COMMAND, [nome, cpf, telefone, dataCadastro]);
+  TestDB.ExecSQL(PROPRIO_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro]);
   Result := TestDB.GetLastInsertRowID();
 end;
 

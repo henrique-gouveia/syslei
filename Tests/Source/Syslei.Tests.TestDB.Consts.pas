@@ -27,7 +27,7 @@ const
   + '[' + PESSOA_TABLE_NAME + '] ('
   + '[ID] INTEGER PRIMARY KEY AUTOINCREMENT, '
   + '[NOME] VARCHAR(60), '
-  + '[CPF] VARCHAR(12), '
+  + '[CPF_CNPJ] VARCHAR(20), '
   + '[FONE1] VARCHAR(15), '
   + '[DATA_CADASTRO] DATE);';
 
@@ -36,7 +36,7 @@ const
   + '[' + PROPRIO_TABLE_NAME + '] ('
   + '[ID] INTEGER PRIMARY KEY AUTOINCREMENT, '
   + '[NOME] VARCHAR(60), '
-  + '[CPF] VARCHAR(12), '
+  + '[CPF_CNPJ] VARCHAR(20), '
   + '[FONE1] VARCHAR(15), '
   + '[DATA_CADASTRO] DATE);';
 
@@ -58,12 +58,12 @@ const
   PESSOA_INSERT_COMMAND =
     'INSERT INTO '
   + '[' + PESSOA_TABLE_NAME + '] ( '
-  + '[NOME], [CPF], [FONE1], [DATA_CADASTRO]) VALUES (?, ?, ?, ?);';
+  + '[NOME], [CPF_CNPJ], [FONE1], [DATA_CADASTRO]) VALUES (?, ?, ?, ?);';
 
   PROPRIO_INSERT_COMMAND =
     'INSERT INTO '
   + '[' + PROPRIO_TABLE_NAME + '] ( '
-  + '[NOME], [CPF], [FONE1], [DATA_CADASTRO]) VALUES (?, ?, ?, ?);';
+  + '[NOME], [CPF_CNPJ], [FONE1], [DATA_CADASTRO]) VALUES (?, ?, ?, ?);';
 
   VENDA_LOTE_INSERT_COMMAND =
     'INSERT INTO '
