@@ -57,7 +57,7 @@
         <UsingDelphiRTL>true</UsingDelphiRTL>
         <SanitizedProjectName>Syslei_Tests</SanitizedProjectName>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>.\External\SQLite3;..\Source\Conversions;..\Source\Models\Entities;..\Source\Models\Finders;..\Source\Modules;..\Source\PresentationModel;..\Source\Registrations;..\Source\ViewModels;..\Source\Views;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>.\External\SQLite3;..\Source\Conversions;..\Source\Models\Domains;..\Source\Models\Entities;..\Source\Models\Finders;..\Source\Modules;..\Source\PresentationModel;..\Source\Registrations;..\Source\ViewModels;..\Source\Views;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <DCC_DcuOutput>.\Dcu\Delphi10Seattle\$(Platform)</DCC_DcuOutput>
         <DCC_ExeOutput>.\Bin\Delphi10Seattle\$(Platform)</DCC_ExeOutput>
@@ -108,7 +108,8 @@
         <DCCReference Include="Source\Syslei.Tests.Conversions.Lote.ObjectListDataSet.FireDAC.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Conversions.Lote.Venda.ObjectListDataSet.FireDAC.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC.pas"/>
-        <DCCReference Include="Source\Syslei.Tests.Finders.Lote.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Finders.Lote.Filter.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Finders.Lote.Simple.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Finders.Pessoa.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.Venda.pas"/>
@@ -116,6 +117,7 @@
         <DCCReference Include="Source\Syslei.Tests.Repositories.Proprio.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Consts.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestDB.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestSession.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Registrations.ResolverTypes.pas"/>
         <BuildConfiguration Include="Release">
@@ -139,7 +141,6 @@
                     <Source Name="MainSource">Syslei.Tests.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\TCFDsg230.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\TCFDsg230.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>

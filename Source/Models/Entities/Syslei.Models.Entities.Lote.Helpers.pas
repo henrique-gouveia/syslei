@@ -8,17 +8,20 @@ uses
 type
   TSexoHelper = record helper for TSexo
   public
+    function ToInteger: Integer;
     function ToLongString: String;
     function ToShortString: String;
   end;
 
   TStatusLoteHelper = record helper for TStatusLote
   public
+    function ToInteger: Integer;
     function ToLongString: String;
   end;
 
   TTipoLoteHelper = record helper for TTipoLote
   public
+    function ToInteger: Integer;
     function ToLongString: String;
     function ToShortString: String;
   end;
@@ -29,6 +32,11 @@ uses
   System.SysUtils;
 
 {$REGION 'TSexoHelper' }
+
+function TSexoHelper.ToInteger: Integer;
+begin
+  Result := Integer(Self);
+end;
 
 function TSexoHelper.ToLongString: String;
 begin
@@ -50,6 +58,11 @@ end;
 
 {$REGION 'TStatusLoteHelper' }
 
+function TStatusLoteHelper.ToInteger: Integer;
+begin
+  Result := Integer(Self);
+end;
+
 function TStatusLoteHelper.ToLongString: String;
 begin
   case Self of
@@ -62,6 +75,11 @@ end;
 {$ENDREGION}
 
 {$REGION 'TTipoLoteHelper' }
+
+function TTipoLoteHelper.ToInteger: Integer;
+begin
+  Result := Integer(Self);
+end;
 
 function TTipoLoteHelper.ToLongString: String;
 begin

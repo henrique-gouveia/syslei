@@ -20,7 +20,7 @@ const
   + '[TIPO] INTEGER, '
   + '[IDADE] INTEGER, '
   + '[SEXO] INTEGER, '
-  + '[DATA_CADASTRO]);';
+  + '[DATA_CADASTRO] DATE);';
 
   PESSOA_CREATE_COMMAND =
     'CREATE TABLE IF NOT EXISTS '

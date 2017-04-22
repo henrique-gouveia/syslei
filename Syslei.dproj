@@ -116,12 +116,15 @@
             <Form>ObjectListProprioDataSetConverter</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Source\Models\Domains\Syslei.Models.Domains.Lote.Filter.pas"/>
+        <DCCReference Include="Source\Models\Domains\Syslei.Models.Domains.Lote.Filter.Helpers.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.Helpers.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Lote.Venda.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Pessoa.pas"/>
         <DCCReference Include="Source\Models\Entities\Syslei.Models.Entities.Proprio.pas"/>
         <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Interfaces.pas"/>
+        <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Lote.Filter.pas"/>
         <DCCReference Include="Source\Models\Finders\Syslei.Models.Finders.Simple.pas"/>
         <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Consts.pas"/>
         <DCCReference Include="Source\Modules\Syslei.Modules.Connections.Firebird.pas">
@@ -134,12 +137,12 @@
         <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.ResourceStrings.pas"/>
         <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.View.Interfaces.pas"/>
         <DCCReference Include="Source\PresentationModel\Syslei.PresentationModel.View.VCLForm.pas"/>
+        <DCCReference Include="Source\Registrations\Syslei.Registrations.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Connections.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Conversions.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Finders.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Interfaces.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Modules.pas"/>
-        <DCCReference Include="Source\Registrations\Syslei.Registrations.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.Repositories.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.SpringRegisters.pas"/>
         <DCCReference Include="Source\Registrations\Syslei.Registrations.ViewModels.pas"/>
@@ -161,37 +164,48 @@
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Managers.Proprio.pas"/>
         <DCCReference Include="Source\Views\Syslei.Views.Base.pas">
             <Form>BaseView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Base.Filter.pas">
             <Form>FilterBaseView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Base.Finder.pas">
             <Form>FinderBaseView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Base.Manager.pas">
             <Form>ManagerBaseView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Base.Report.pas">
             <Form>ReportBaseView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Consts.pas"/>
         <DCCReference Include="Source\Views\Syslei.Views.Finders.Lote.pas">
             <Form>LoteFinderView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Finders.Pessoa.pas">
             <Form>PessoaFinderView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Main.pas">
             <Form>MainView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Managers.Lote.pas">
             <Form>LoteManagerView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Managers.Lote.Venda.pas">
             <Form>VendaLoteManagerView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Managers.Pessoa.pas">
             <Form>PessoaManagerView</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Reports.Venda.Promissoria.pas">
             <Form>PromissoriaVendaReportView</Form>
