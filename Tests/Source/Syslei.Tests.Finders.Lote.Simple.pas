@@ -15,7 +15,7 @@ type
   TSimpleLoteFinderTest = class
   private
     FSimpleLoteFinder: IEntityFinder<TLote>;
-    FLoteDataInsert: TDataInsert;
+    FLoteDataInsert: TLoteDataInsert;
     FLotes: TArray<TLoteRecord>;
   public
     [Setup]
@@ -101,19 +101,22 @@ procedure TSimpleLoteFinderTest.TestFindWithCriteriaAndRestrictionLikeAnyware;
 var
   lotes: IList<TLote>;
   table: ISQLiteTable;
+  loteDescricao: String;
   index, count: Integer;
 begin
-  count := TestDB.GetUniTableIntf(
+  loteDescricao := 'TER';
+
+  count := TestDB.GetUniTableIntf(Format(
     'SELECT COUNT(*) FROM '
   + '[' + LOTE_TABLE_NAME + ']'
-  + 'WHERE DESCRICAO LIKE "%TER%"').Fields[0].Value;
+  + 'WHERE DESCRICAO LIKE "%s%s%s"', ['%', loteDescricao, '%'])).Fields[0].Value;
 
-  table := TestDB.GetUniTableIntf(
+  table := TestDB.GetUniTableIntf(Format(
     'SELECT * FROM '
   + '[' + LOTE_TABLE_NAME + '] '
-  + 'WHERE DESCRICAO LIKE "%TER%"');
+  + 'WHERE DESCRICAO LIKE "%s%s%s"', ['%', loteDescricao, '%']));
 
-  lotes := FSimpleLoteFinder.FindLikeAnyware('DESCRICAO', 'TER');
+  lotes := FSimpleLoteFinder.FindLikeAnyware('DESCRICAO', loteDescricao);
 
   Assert.IsNotNull(lotes, 'Nenhum Lote localizado');
   Assert.AreEqual(count, lotes.Count, 'Total de registros difere dos experados');
@@ -132,18 +135,21 @@ var
   lotes: IList<TLote>;
   table: ISQLiteTable;
   index, count: Integer;
+  loteDescricao: String;
 begin
-  count := TestDB.GetUniTableIntf(
+  loteDescricao := 'TOU';
+
+  count := TestDB.GetUniTableIntf(Format(
     'SELECT COUNT(*) FROM '
   + '[' + LOTE_TABLE_NAME + ']'
-  + 'WHERE DESCRICAO LIKE "TOU%"').Fields[0].Value;
+  + 'WHERE DESCRICAO LIKE "%s%s"', [loteDescricao, '%'])).Fields[0].Value;
 
-  table := TestDB.GetUniTableIntf(
+  table := TestDB.GetUniTableIntf(Format(
     'SELECT * FROM '
   + '[' + LOTE_TABLE_NAME + '] '
-  + 'WHERE DESCRICAO LIKE "TOU%"');
+  + 'WHERE DESCRICAO LIKE "%s%s"', [loteDescricao, '%']));
 
-  lotes := FSimpleLoteFinder.FindLikeStart('DESCRICAO', 'TOU');
+  lotes := FSimpleLoteFinder.FindLikeStart('DESCRICAO', loteDescricao);
 
   Assert.IsNotNull(lotes, 'Nenhum Lote localizado');
   Assert.AreEqual(count, lotes.Count, 'Total de registros difere dos experados');

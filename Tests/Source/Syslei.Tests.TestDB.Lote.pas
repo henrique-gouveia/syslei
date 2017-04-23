@@ -10,12 +10,12 @@ uses
   Spring.Collections;
 
 type
-  TDataInsert = record
+  TLoteDataInsert = record
   private
     FDoadorIds: IList<TValue>;
     FLoteIds: IList<TValue>;
   public
-    class function Create: TDataInsert; inline; static;
+    class function Create: TLoteDataInsert; inline; static;
     property DoadorIds: IList<TValue> read FDoadorIds;
     property LoteIds: IList<TValue> read FLoteIds;
   end;
@@ -29,7 +29,7 @@ type
   end;
 
   function GetDefaultLotes: TArray<TLoteRecord>;
-  function InsertDoadoresAndLotes(const lotes: TArray<TLoteRecord>): TDataInsert;
+  function InsertDoadoresAndLotes(const lotes: TArray<TLoteRecord>): TLoteDataInsert;
 
 implementation
 
@@ -38,9 +38,9 @@ uses
   System.DateUtils,
   Syslei.Tests.TestDB;
 
-{$REGION 'TDataInsert' }
+{$REGION 'TLoteDataInsert' }
 
-class function TDataInsert.Create: TDataInsert;
+class function TLoteDataInsert.Create: TLoteDataInsert;
 begin
   Result.FDoadorIds := TCollections.CreateList<TValue>();
   Result.FLoteIds := TCollections.CreateList<TValue>();
@@ -116,12 +116,12 @@ begin
   Result := lotes;
 end;
 
-function InsertDoadoresAndLotes(const lotes: TArray<TLoteRecord>): TDataInsert;
+function InsertDoadoresAndLotes(const lotes: TArray<TLoteRecord>): TLoteDataInsert;
 var
   lote: TLoteRecord;
   pessoaId, loteId: Integer;
 begin
-  Result := TDataInsert.Create;
+  Result := TLoteDataInsert.Create;
 
   for lote in lotes do
   begin
@@ -133,7 +133,7 @@ begin
       lote.Descricao, '', 0,
       lote.Status.ToInteger(),
       lote.Tipo.ToInteger(), 0, 0,
-      Trunc(Now()));
+      lote.DataCadastro);
     Result.LoteIds.Add(loteId);
   end;
 end;

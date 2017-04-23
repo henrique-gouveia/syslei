@@ -110,7 +110,8 @@
         <DCCReference Include="Source\Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Finders.Lote.Filter.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Finders.Lote.Simple.pas"/>
-        <DCCReference Include="Source\Syslei.Tests.Finders.Pessoa.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Finders.Lote.Venda.Filter.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.Finders.Pessoa.Simple.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Lote.Venda.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Repositories.Pessoa.pas"/>
@@ -118,6 +119,7 @@
         <DCCReference Include="Source\Syslei.Tests.TestDB.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Consts.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Lote.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestDB.Lote.Venda.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestSession.pas"/>
         <DCCReference Include="Source\Syslei.Tests.Registrations.ResolverTypes.pas"/>
         <BuildConfiguration Include="Release">
@@ -166,16 +168,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -489,7 +482,16 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

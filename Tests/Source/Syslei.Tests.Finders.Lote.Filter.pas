@@ -6,6 +6,7 @@ uses
   DUnitX.TestFramework,
 
   Syslei.Models.Domains.Lote.Filter,
+  Syslei.Models.Domains.Lote.Filter.Helpers,
   Syslei.Models.Entities.Lote,
   Syslei.Models.Finders.Interfaces,
 
@@ -16,7 +17,7 @@ type
   TFilterLoteFinderTest = class
   private
     FFilterLoteFinder: IEntityFinder<TLote, TLoteFilter>;
-    FLoteDataInsert: TDataInsert;
+    FLoteDataInsert: TLoteDataInsert;
     FLotes: TArray<TLoteRecord>;
   public
     [Setup]
@@ -29,7 +30,7 @@ type
     [Test(False)]
     procedure TestFindFilterByDataCadastroBetween;
     [Test]
-    procedure TestFindFilterByDoador;
+    procedure TestFindFilterByDoadorId;
     [Test]
     procedure TestFindFilterByStatus;
     [Test]
@@ -47,7 +48,6 @@ uses
 
   Syslei.Models.Entities.Pessoa,
   Syslei.Models.Finders.Lote.Filter,
-  Syslei.Models.Domains.Lote.Filter.Helpers,
 
   Syslei.Tests.TestDB,
   Syslei.Tests.TestDB.Consts,
@@ -114,24 +114,20 @@ begin
   end;
 end;
 
-procedure TFilterLoteFinderTest.TestFindFilterByDoador;
+procedure TFilterLoteFinderTest.TestFindFilterByDoadorId;
 var
   count: Integer;
   lotes: IList<TLote>;
   filter: TLoteFilter;
-  doadorRepository: IPagedRepository<TPessoa, Integer>;
 begin
   filter := TLoteFilter.CreateLoteFilterEmpty();
   try
-    doadorRepository := TSimpleRepository<TPessoa, Integer>.Create(
-      TTestSession.GetInstance().GetSession());
-
-    filter.Doador := doadorRepository.FindOne(FLoteDataInsert.DoadorIds.First.AsInteger);
-
     count := TestDB.GetUniTableIntf(
       'SELECT COUNT(*) FROM '
     + '[' + LOTE_TABLE_NAME + ']'
     + 'WHERE DOADOR_ID = ?', [FLoteDataInsert.DoadorIds.First.AsInteger]).Fields[0].Value;
+
+    filter.Doador.Id := FLoteDataInsert.DoadorIds.First.AsInteger;
     lotes := FFilterLoteFinder.Find(filter);
 
     Assert.IsNotNull(lotes, 'Nenhum Lote localizado');
@@ -218,7 +214,7 @@ begin
     Assert.AreEqual(countAnimal, lotesAnimal.Count, 'Total de registros de Lotes Animal difere dos experados');
     Assert.IsNotNull(lotesImovel, 'Nenhum Lote Imóvel localizado');
     Assert.AreEqual(countImovel, lotesImovel.Count, 'Total de registros de Lotes Imóvel difere dos experados');
-    Assert.IsNotNull(lotesPrenda, 'Nenhum Lote Prenad localizado');
+    Assert.IsNotNull(lotesPrenda, 'Nenhum Lote Prenda localizado');
     Assert.AreEqual(countPrenda, lotesPrenda.Count, 'Total de registros de Lotes Prenda difere dos experados');
   finally
     filter.Free;

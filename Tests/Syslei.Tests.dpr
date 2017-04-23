@@ -21,7 +21,8 @@ uses
   Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC in 'Source\Syslei.Tests.Conversions.Proprio.ObjectListDataSet.FireDAC.pas',
   Syslei.Tests.Finders.Lote.Filter in 'Source\Syslei.Tests.Finders.Lote.Filter.pas',
   Syslei.Tests.Finders.Lote.Simple in 'Source\Syslei.Tests.Finders.Lote.Simple.pas',
-  Syslei.Tests.Finders.Pessoa in 'Source\Syslei.Tests.Finders.Pessoa.pas',
+  Syslei.Tests.Finders.Lote.Venda.Filter in 'Source\Syslei.Tests.Finders.Lote.Venda.Filter.pas',
+  Syslei.Tests.Finders.Pessoa.Simple in 'Source\Syslei.Tests.Finders.Pessoa.Simple.pas',
   Syslei.Tests.Repositories.Lote in 'Source\Syslei.Tests.Repositories.Lote.pas',
   Syslei.Tests.Repositories.Lote.Venda in 'Source\Syslei.Tests.Repositories.Lote.Venda.pas',
   Syslei.Tests.Repositories.Pessoa in 'Source\Syslei.Tests.Repositories.Pessoa.pas',
@@ -29,6 +30,7 @@ uses
   Syslei.Tests.TestDB in 'Source\Syslei.Tests.TestDB.pas',
   Syslei.Tests.TestDB.Consts in 'Source\Syslei.Tests.TestDB.Consts.pas',
   Syslei.Tests.TestDB.Lote in 'Source\Syslei.Tests.TestDB.Lote.pas',
+  Syslei.Tests.TestDB.Lote.Venda in 'Source\Syslei.Tests.TestDB.Lote.Venda.pas',
   Syslei.Tests.TestSession in 'Source\Syslei.Tests.TestSession.pas',
   Syslei.Tests.Registrations.ResolverTypes in 'Source\Syslei.Tests.Registrations.ResolverTypes.pas';
 

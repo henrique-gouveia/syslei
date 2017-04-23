@@ -1,4 +1,4 @@
-unit Syslei.Tests.Finders.Pessoa;
+unit Syslei.Tests.Finders.Pessoa.Simple;
 
 interface
 
@@ -12,9 +12,9 @@ uses
 
 type
   [TestFixture]
-  TPessoaFinderTest = class
+  TSimplePessoaFinderTest = class
   private
-    FPessoaFinder: IEntityFinder<TPessoa>;
+    FSimplePessoaFinder: IEntityFinder<TPessoa>;
     procedure InsertPessoas;
   public
     [Setup]
@@ -45,14 +45,14 @@ uses
 
 {$REGION 'TFinderPessoaTest' }
 
-procedure TPessoaFinderTest.Setup;
+procedure TSimplePessoaFinderTest.Setup;
 var
   pessoaRepository: IPagedRepository<TPessoa,Integer>;
 begin
   pessoaRepository := TSimpleRepository<TPessoa,Integer>.Create(
     TTestSession.GetInstance().GetSession());
 
-  FPessoaFinder := TSimpleEntityFinder<TPessoa, Integer>.Create(pessoaRepository);
+  FSimplePessoaFinder := TSimpleEntityFinder<TPessoa, Integer>.Create(pessoaRepository);
 
   InsertPessoas();
 end;
@@ -60,7 +60,7 @@ end;
 var
   Nomes: array of String = ['JOÃO', 'MARIA', 'JOSÉ'];
 
-procedure TPessoaFinderTest.InsertPessoas;
+procedure TSimplePessoaFinderTest.InsertPessoas;
 var
   nome: String;
 begin
@@ -68,27 +68,27 @@ begin
     InsertPessoa(nome);
 end;
 
-procedure TPessoaFinderTest.TearDown;
+procedure TSimplePessoaFinderTest.TearDown;
 begin
   ClearTables();
 end;
 
-procedure TPessoaFinderTest.TestFindWithCriteriaAndRestrictionEqual;
+procedure TSimplePessoaFinderTest.TestFindWithCriteriaAndRestrictionEqual;
 var
   pessoas: IList<TPessoa>;
 begin
-  pessoas := FPessoaFinder.FindEqual('NOME', 'JOSÉ');
+  pessoas := FSimplePessoaFinder.FindEqual('NOME', 'JOSÉ');
 
   Assert.IsNotNull(pessoas, 'Nenhuma Pessoa localizada');
   Assert.AreEqual(1, pessoas.Count, 'Total de registros difere dos experados');
   Assert.AreEqual(pessoas.Items[0].Nome, Nomes[2]);
 end;
 
-procedure TPessoaFinderTest.TestFindWithCriteriaAndRestrictionLikeAnyware;
+procedure TSimplePessoaFinderTest.TestFindWithCriteriaAndRestrictionLikeAnyware;
 var
   pessoas: IList<TPessoa>;
 begin
-  pessoas := FPessoaFinder.FindLikeAnyware('NOME', 'JO');
+  pessoas := FSimplePessoaFinder.FindLikeAnyware('NOME', 'JO');
 
   Assert.IsNotNull(pessoas, 'Nenhuma Pessoa localizada');
   Assert.AreEqual(2, pessoas.Count, 'Total de registros difere dos experados');
@@ -96,11 +96,11 @@ begin
   Assert.AreEqual(pessoas.Items[1].Nome, Nomes[2]);
 end;
 
-procedure TPessoaFinderTest.TestFindWithCriteriaAndRestrictionLikeStart;
+procedure TSimplePessoaFinderTest.TestFindWithCriteriaAndRestrictionLikeStart;
 var
   pessoas: IList<TPessoa>;
 begin
-  pessoas := FPessoaFinder.FindLikeStart('NOME', 'M');
+  pessoas := FSimplePessoaFinder.FindLikeStart('NOME', 'M');
 
   Assert.IsNotNull(pessoas, 'Nenhuma Pessoa localizada');
   Assert.AreEqual(1, pessoas.Count, 'Total de registros difere dos experados');
@@ -110,6 +110,6 @@ end;
 {$ENDREGION}
 
 initialization
-  TDUnitX.RegisterTestFixture(TPessoaFinderTest);
+  TDUnitX.RegisterTestFixture(TSimplePessoaFinderTest);
 
 end.
