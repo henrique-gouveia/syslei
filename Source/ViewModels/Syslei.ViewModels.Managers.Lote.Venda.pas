@@ -37,9 +37,11 @@ type
     function Validate: Boolean; override;
   public
     destructor Destroy; override;
+    procedure AfterConstruction; override;
 
     procedure Novo(Sender: TObject); override;
     procedure Buscar(Sender: TObject); override;
+    procedure Promissoria(Sender: TObject);
 
     property Comprador: TPessoa read FComprador write SetComprador;
     property CompradorId: Integer read FCompradorId write SetCompradorId;
@@ -53,7 +55,11 @@ uses
   System.SysUtils,
 
   Syslei.ViewModels.Base.Finder,
+  Syslei.ViewModels.Finders.Lote.Venda,
+  Syslei.ViewModels.Reports.Lote.Venda,
+
   Syslei.Views.Consts,
+
   Syslei.PresentationModel.Dialog,
   Syslei.PresentationModel.ResourceStrings,
   Syslei.PresentationModel.View.Interfaces,
@@ -69,13 +75,28 @@ begin
   inherited;
 end;
 
+procedure TVendaLoteManagerViewModel.AfterConstruction;
+begin
+  inherited;
+  AfterSaveAction :=
+    procedure
+    begin
+      Dialog.ShowConfirmationMessage('Registro gravado com sucesso. Deseja emitir a promissória ?',
+        procedure(const result: TModalResult)
+        begin
+          if (result = mrYes) then
+            Promissoria(Self);
+        end);
+    end;
+end;
+
 procedure TVendaLoteManagerViewModel.Novo(Sender: TObject);
 begin
   inherited;
-  Comprador := TPessoa.Create;
   CompradorId := 0;
-  Lote := TLote.Create;
+  Comprador := TPessoa.Create;
   LoteId := 0;
+  Lote := TLote.Create;
 
   ActiveControl := ID_CONTROL_NAME;
 end;
@@ -115,26 +136,57 @@ var
       end;
     end;
   end;
+
+  procedure ShowVendaLoteFinderView;
+  var
+    vendaLotefinderViewModel: TVendaLoteFinderViewModel;
+  begin
+    view := GlobalContainer.Resolve<IView>(VENDA_LOTE_FINDER_VIEW_NAME);
+    if Assigned(view) and (view.ShowModalView() = mrOk) then
+    begin
+      if view.GetDataContext() is TVendaLoteFinderViewModel then
+      begin
+        vendaLotefinderViewModel := TVendaLoteFinderViewModel(view.GetDataContext());
+        EntityId := vendaLotefinderViewModel.Entity.Id;
+        ActiveControl := ID_CONTROL_NAME;
+      end;
+    end;
+  end;
   {$ENDREGION}
 begin
   inherited;
   if ActiveControl.Equals(COMPRADOR_ID_CONTROL_NAME) then
     ShowCompradorFinderView()
   else if ActiveControl.Equals(LOTE_ID_CONTROL_NAME) then
-    ShowLoteFinderView();
+    ShowLoteFinderView()
+  else
+    ShowVendaLoteFinderView();
+end;
+
+procedure TVendaLoteManagerViewModel.Promissoria(Sender: TObject);
+var
+  reportPreview: IReportPreview;
+begin
+  inherited;
+  reportPreview := GlobalContainer.Resolve<IReportPreview>(PROMISSORIA_VENDA_LOTE_REPORT_VIEW_NAME);
+  if Assigned(reportPreview) and (reportPreview.GetDataContext() is TVendaLoteReportViewModel)  then
+  begin
+    TVendaLoteReportViewModel(reportPreview.GetDataContext()).VendaLote := EntityRepository.FindOne(Entity.Id);
+    reportPreview.PreviewModal();
+  end;
 end;
 
 procedure TVendaLoteManagerViewModel.SetComprador(const Value: TPessoa);
 begin
-  if Assigned(Value) then
-  begin
-    if Assigned(FComprador) then
-      FreeAndNil(FComprador);
-
-    FComprador := Value;
-  end;
   if Assigned(FComprador) then
-    DoPropertyChanged('Comprador');
+    FreeAndNil(FComprador);
+
+  if Assigned(Value) then
+    FComprador := Value
+  else
+    FComprador := TPessoa.Create;
+
+  DoPropertyChanged('Comprador');
 end;
 
 procedure TVendaLoteManagerViewModel.SetCompradorId(const Value: Integer);
@@ -148,16 +200,15 @@ end;
 
 procedure TVendaLoteManagerViewModel.SetLote(const Value: TLote);
 begin
-  if Assigned(Value) then
-  begin
-    if Assigned(FLote) then
-      FreeAndNil(FLote);
-
-    FLote := Value;
-  end;
-
   if Assigned(FLote) then
-    DoPropertyChanged('Lote');
+    FreeAndNil(FLote);
+
+  if Assigned(Value) then
+    FLote := Value
+  else
+    FLote := TLote.Create;
+
+  DoPropertyChanged('Lote');
 end;
 
 procedure TVendaLoteManagerViewModel.SetLoteId(const Value: Integer);

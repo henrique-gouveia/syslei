@@ -18,11 +18,13 @@ uses
   Syslei.ViewModels.Consts,
   Syslei.ViewModels.Main,
   Syslei.ViewModels.Finders.Lote,
+  Syslei.ViewModels.Finders.Lote.Venda,
   Syslei.ViewModels.Finders.Pessoa,
   Syslei.ViewModels.Managers.Lote,
   Syslei.ViewModels.Managers.Lote.Venda,
   Syslei.ViewModels.Managers.Pessoa,
-  Syslei.ViewModels.Managers.Proprio;
+  Syslei.ViewModels.Managers.Proprio,
+  Syslei.ViewModels.Reports.Lote.Venda;
 
 {$REGION 'TViewModelsRegiterType' }
 
@@ -53,8 +55,16 @@ begin
     .RegisterType<TObject, TProprioManagerViewModel>(PROPRIO_MANAGER_VIEW_MODEL_NAME)
     .AsSingleton();
 
+ container
+    .RegisterType<TObject, TVendaLoteFinderViewModel>(VENDA_LOTE_FINDER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
   container
     .RegisterType<TObject, TVendaLoteManagerViewModel>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TVendaLoteReportViewModel>(VENDA_LOTE_REPORT_VIEW_MODEL_NAME)
     .AsSingleton();
 end;
 

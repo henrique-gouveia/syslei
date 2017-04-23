@@ -13,7 +13,9 @@ const
 
   PROPRIO_MANAGER_VIEW_MODEL_NAME = 'proprioManagerViewModel';
 
+  VENDA_LOTE_FINDER_VIEW_MODEL_NAME = 'vendaLoteFinderViewModel';
   VENDA_LOTE_MANAGER_VIEW_MODEL_NAME = 'vendaLoteManagerViewModel';
+  VENDA_LOTE_REPORT_VIEW_MODEL_NAME = 'vendaLoteReportViewModel';
 
 implementation
 

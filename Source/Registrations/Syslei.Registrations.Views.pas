@@ -21,10 +21,12 @@ uses
   Syslei.Views.Consts,
   Syslei.Views.Main,
   Syslei.Views.Finders.Lote,
+  Syslei.Views.Finders.Lote.Venda,
   Syslei.Views.Finders.Pessoa,
   Syslei.Views.Managers.Lote,
   Syslei.Views.Managers.Lote.Venda,
   Syslei.Views.Managers.Pessoa,
+  Syslei.Views.Reports.Lote.Venda.Promissoria,
 
   Syslei.ViewModels.Consts,
 
@@ -118,6 +120,16 @@ begin
       end);
 
   container
+    .RegisterType<TVendaLoteFinderView>(VENDA_LOTE_FINDER_VIEW_NAME)
+    .DelegateTo(
+      function: TVendaLoteFinderView
+      begin
+        Application.CreateForm(TVendaLoteFinderView, Result);
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(container.Resolve<TObject>(VENDA_LOTE_FINDER_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
     .RegisterType<TVendaLoteManagerView>(VENDA_LOTE_MANAGER_VIEW_NAME)
     .DelegateTo(
       function: TVendaLoteManagerView
@@ -125,6 +137,14 @@ begin
         Application.CreateForm(TVendaLoteManagerView, Result);
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TPromissoriaVendaLoteReportView>(PROMISSORIA_VENDA_LOTE_REPORT_VIEW_NAME)
+    .DelegateTo(
+      function: TPromissoriaVendaLoteReportView
+      begin
+        Application.CreateForm(TPromissoriaVendaLoteReportView, Result);
       end);
 end;
 

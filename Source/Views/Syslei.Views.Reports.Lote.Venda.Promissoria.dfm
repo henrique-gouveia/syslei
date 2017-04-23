@@ -1,4 +1,4 @@
-object PromissoriaVendaReportView: TPromissoriaVendaReportView
+object PromissoriaVendaLoteReportView: TPromissoriaVendaLoteReportView
   Left = 0
   Top = 0
   Caption = 'Nota Promiss'#243'ria'
@@ -11,6 +11,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object report: TRLReport
@@ -18,6 +19,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
     Top = 0
     Width = 794
     Height = 1123
+    DataSource = dataSource
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -34,10 +36,10 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
       Borders.DrawTop = True
       Borders.DrawRight = True
       Borders.DrawBottom = True
-      object numeroVendaPanel: TRLPanel
-        Left = 8
+      object numeroVendaInfoPanel: TRLPanel
+        Left = 208
         Top = 8
-        Width = 250
+        Width = 191
         Height = 81
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
@@ -46,7 +48,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         Borders.DrawBottom = True
         object codigoVendaLabel: TRLLabel
           Left = 8
-          Top = 28
+          Top = 13
           Width = 28
           Height = 24
           Caption = 'N'#186
@@ -59,10 +61,39 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         end
         object codigoVendaText: TRLDBText
           Left = 42
-          Top = 28
+          Top = 13
           Width = 23
           Height = 24
           DataField = 'Id'
+          DataSource = dataSource
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object dataVendaLabel: TRLLabel
+          Left = 8
+          Top = 43
+          Width = 52
+          Height = 24
+          Caption = 'Data'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object dataVendaText: TRLDBText
+          Left = 66
+          Top = 43
+          Width = 51
+          Height = 24
+          DataField = 'Data'
+          DataSource = dataSource
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -21
@@ -72,10 +103,10 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Text = ''
         end
       end
-      object tituloPanel: TRLPanel
-        Left = 264
+      object tituloInfoPanel: TRLPanel
+        Left = 8
         Top = 8
-        Width = 189
+        Width = 194
         Height = 81
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
@@ -83,7 +114,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         Borders.DrawRight = True
         Borders.DrawBottom = True
         object tituloLabel: TRLLabel
-          Left = 5
+          Left = 7
           Top = 28
           Width = 179
           Height = 24
@@ -97,10 +128,10 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           ParentFont = False
         end
       end
-      object valorVendaPanel: TRLPanel
-        Left = 459
+      object valorVendaInfoPanel: TRLPanel
+        Left = 405
         Top = 8
-        Width = 250
+        Width = 304
         Height = 81
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
@@ -120,12 +151,16 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object valorText: TRLDBText
-          Left = 118
+        object valorResult: TRLDBResult
+          Left = 116
           Top = 28
-          Width = 126
+          Width = 180
           Height = 24
+          Alignment = taRightJustify
+          AutoSize = False
           DataField = 'LanceArremate'
+          DataSource = dataSource
+          DisplayMask = ',0.00'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -21
@@ -133,9 +168,10 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Font.Style = []
           ParentFont = False
           Text = ''
+          OnCompute = ResultCompute
         end
       end
-      object compradorPanel: TRLPanel
+      object compradorInfoPanel: TRLPanel
         Left = 8
         Top = 95
         Width = 701
@@ -145,12 +181,12 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         Borders.DrawTop = True
         Borders.DrawRight = True
         Borders.DrawBottom = True
-        object compradorNomeLabel: TRLLabel
+        object compradorCpfCnpjLabel: TRLLabel
           Left = 8
-          Top = 4
-          Width = 75
+          Top = 26
+          Width = 68
           Height = 16
-          Caption = 'Comprador'
+          Caption = 'CPF/CPNJ'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -158,31 +194,13 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object compradorCpfLabel: TRLLabel
-          Left = 8
+        object compradorCpfCnpjText: TRLDBText
+          Left = 82
           Top = 26
-          Width = 30
+          Width = 112
           Height = 16
-          Caption = 'CPF'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object compradorNomeText: TRLDBText
-          Left = 89
-          Top = 4
-          Width = 124
-          Height = 16
-          Text = ''
-        end
-        object compradorCpfText: TRLDBText
-          Left = 44
-          Top = 26
-          Width = 109
-          Height = 16
+          DataField = 'CompradorCpfCnpj'
+          DataSource = dataSource
           Text = ''
         end
         object compradorTelefoneLabel: TRLLabel
@@ -201,16 +219,58 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         object compradorTelefoneText: TRLDBText
           Left = 74
           Top = 46
-          Width = 138
+          Width = 115
           Height = 16
+          DataField = 'CompradorTelefone'
+          DataSource = dataSource
           Text = ''
         end
+        object compradorPanel: TRLPanel
+          Left = 8
+          Top = 4
+          Width = 688
+          Height = 16
+          object compradorLabel: TRLLabel
+            Left = 0
+            Top = 0
+            Width = 83
+            Height = 16
+            Align = faLeftTop
+            Caption = 'Comprador  '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object compradorIdText: TRLDBText
+            Left = 83
+            Top = 0
+            Width = 77
+            Height = 16
+            Align = faLeftTop
+            DataField = 'CompradorId'
+            DataSource = dataSource
+            Text = ''
+          end
+          object compradorNomeText: TRLDBText
+            Left = 160
+            Top = 0
+            Width = 113
+            Height = 16
+            Align = faLeftTop
+            DataField = 'CompradorNome'
+            DataSource = dataSource
+            Text = ' - '
+          end
+        end
       end
-      object lotePanel: TRLPanel
+      object loteInfoPanel: TRLPanel
         Left = 8
         Top = 167
         Width = 701
-        Height = 82
+        Height = 84
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
         Borders.DrawTop = True
@@ -245,25 +305,30 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         object LoteDescricaoText: TRLDBText
           Left = 80
           Top = 24
-          Width = 112
+          Width = 87
           Height = 16
+          DataField = 'LoteDescricao'
+          DataSource = dataSource
           Text = ''
         end
         object loteNumeroText: TRLDBText
           Left = 64
           Top = 4
-          Width = 95
+          Width = 74
           Height = 16
+          DataField = 'LoteNumero'
+          DataSource = dataSource
           Text = ''
         end
         object loteAnimalPanel: TRLPanel
           Left = 8
           Top = 39
           Width = 333
-          Height = 39
+          Height = 43
+          BeforePrint = LoteAnimalPanelBeforePrint
           object loteAnimalIdadeLabel: TRLLabel
             Left = 0
-            Top = 0
+            Top = 4
             Width = 40
             Height = 16
             Caption = 'Idade'
@@ -276,7 +341,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           end
           object loteAnimalSexoLabel: TRLLabel
             Left = 0
-            Top = 22
+            Top = 26
             Width = 37
             Height = 16
             Caption = 'Sexo'
@@ -289,23 +354,27 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           end
           object loteAnimalIdadeText: TRLDBText
             Left = 46
-            Top = 0
-            Width = 121
+            Top = 4
+            Width = 60
             Height = 16
+            DataField = 'LoteIdade'
+            DataSource = dataSource
             Text = ''
           end
           object loteAnimalSexoText: TRLDBText
             Left = 43
-            Top = 22
-            Width = 120
+            Top = 26
+            Width = 59
             Height = 16
+            DataField = 'LoteSexo'
+            DataSource = dataSource
             Text = ''
           end
         end
       end
-      object emitentePanel: TRLPanel
+      object emitenteInfoPanel: TRLPanel
         Left = 8
-        Top = 255
+        Top = 257
         Width = 701
         Height = 66
         Borders.Sides = sdCustom
@@ -326,12 +395,12 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object emitenteCpfLabel: TRLLabel
+        object emitenteCpfCnpjLabel: TRLLabel
           Left = 8
           Top = 24
-          Width = 30
+          Width = 68
           Height = 16
-          Caption = 'CPF'
+          Caption = 'CPF/CNPJ'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -339,18 +408,22 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object emitenteCpfText: TRLDBText
-          Left = 44
+        object emitenteCpfCnpjText: TRLDBText
+          Left = 82
           Top = 24
-          Width = 98
+          Width = 49
           Height = 16
+          DataField = 'CpfCnpj'
+          DataSource = proprioDataSource
           Text = ''
         end
         object emitenteNomeText: TRLDBText
-          Left = 89
+          Left = 74
           Top = 4
-          Width = 113
+          Width = 38
           Height = 16
+          DataField = 'Nome'
+          DataSource = proprioDataSource
           Text = ''
         end
         object emitenteTelefoneLabel: TRLLabel
@@ -369,8 +442,10 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         object emitenteTelefoneText: TRLDBText
           Left = 74
           Top = 46
-          Width = 127
+          Width = 52
           Height = 16
+          DataField = 'Telefone'
+          DataSource = proprioDataSource
           Text = ''
         end
       end
@@ -423,7 +498,7 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
           Align = faCenterBottom
           Alignment = taCenter
           AutoSize = False
-          Caption = 'Assinatura do Emitente'
+          Caption = 'Assinatura do Comprador'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -447,5 +522,18 @@ object PromissoriaVendaReportView: TPromissoriaVendaReportView
         end
       end
     end
+  end
+  object dataSource: TDataSource
+    Left = 276
+    Top = 409
+  end
+  object bindings: TBindingGroup
+    Left = 489
+    Top = 409
+    Bindings = <>
+  end
+  object proprioDataSource: TDataSource
+    Left = 383
+    Top = 409
   end
 end
