@@ -15,10 +15,12 @@ type
 implementation
 
 uses
+  Syslei.Models.Domains.Lote.Filter,
   Syslei.Models.Domains.Lote.Venda.Filter,
 
   Syslei.Models.Finders.Interfaces,
   Syslei.Models.Finders.Simple,
+  Syslei.Models.Finders.Lote.Filter,
   Syslei.Models.Finders.Lote.Venda.Filter,
 
   Syslei.Models.Entities.Lote,
@@ -36,6 +38,9 @@ begin
 
   container
     .RegisterType<IEntityFinder<TPessoa>, TSimpleEntityFinder<TPessoa, Integer>>();
+
+  container
+    .RegisterType<IEntityFinder<TLote, TLoteFilter>, TFilterLoteFinder>();
 
   container
     .RegisterType<IEntityFinder<TVendaLote, TVendaLoteFilter>, TFilterVendaLoteFinder>();

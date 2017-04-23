@@ -20,12 +20,14 @@ uses
 
   Syslei.Views.Consts,
   Syslei.Views.Main,
+  Syslei.Views.Filters.Lote,
   Syslei.Views.Finders.Lote,
   Syslei.Views.Finders.Lote.Venda,
   Syslei.Views.Finders.Pessoa,
   Syslei.Views.Managers.Lote,
   Syslei.Views.Managers.Lote.Venda,
   Syslei.Views.Managers.Pessoa,
+  Syslei.Views.Reports.Lote,
   Syslei.Views.Reports.Lote.Venda.Promissoria,
 
   Syslei.ViewModels.Consts,
@@ -53,6 +55,24 @@ begin
         Application.CreateForm(TMainView, Result);
         // connect controls to viewmodel properties
         ViewModelBinder.Bind(container.Resolve<TObject>(MAIN_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TLoteFilterView>(LOTE_FILTER_VIEW_NAME)
+    .DelegateTo(
+      function: TLoteFilterView
+      begin
+        Application.CreateForm(TLoteFilterView, Result);
+        // connect controls to viewmodel properties
+        ViewModelBinder.Bind(container.Resolve<TObject>(LOTE_FILTER_VIEW_MODEL_NAME), Result);
+      end);
+
+  container
+    .RegisterType<TLoteReportView>(LOTE_REPORT_VIEW_NAME)
+    .DelegateTo(
+      function: TLoteReportView
+      begin
+        Application.CreateForm(TLoteReportView, Result);
       end);
 
   container

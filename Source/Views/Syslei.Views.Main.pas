@@ -12,6 +12,7 @@ uses
   System.Classes,
   System.ImageList,
   System.UITypes,
+  Vcl.Imaging.pngimage,
 
   Vcl.Graphics,
   Vcl.Controls,
@@ -21,7 +22,8 @@ uses
   Vcl.ToolWin,
   Vcl.ComCtrls,
   Vcl.ActnList,
-  Vcl.ImgList;
+  Vcl.ImgList,
+  Vcl.Menus, Extra.Components.Enter, RLXLSXFilter, RLXLSFilter, RLPDFFilter, RLHTMLFilter, RLFilters, RLRichFilter;
 
 type
   TMainView = class(TForm)
@@ -29,11 +31,14 @@ type
     ProprioManager: TAction;
     PessoaManager: TAction;
     LoteManager: TAction;
+    LoteReport: TAction;
     VendaLoteManager: TAction;
+    VendaLoteReport: TAction;
     Sair: TAction;
     toolBar: TToolBar;
     toolBarImages: TImageList;
     backgroundImage: TImage;
+    logoImage: TImage;
     proprioManagerButton: TToolButton;
     pessoaManagerButton: TToolButton;
     loteManagerButton: TToolButton;
@@ -41,6 +46,19 @@ type
     vendaLoteManagerButton: TToolButton;
     separador2: TToolButton;
     sairButton: TToolButton;
+    loteMenu: TPopupMenu;
+    loteManagerMenuItem: TMenuItem;
+    loteReportMenuItem: TMenuItem;
+    vendaLoteMenu: TPopupMenu;
+    vendaLoteManagerMenuItem: TMenuItem;
+    vendaLoteReportMenuItem: TMenuItem;
+    richFilter: TRLRichFilter;
+    htmlFilter: TRLHTMLFilter;
+    pdfFilter: TRLPDFFilter;
+    xlsFilter: TRLXLSFilter;
+    xlsxFilter: TRLXLSXFilter;
+    enter: TExEnter;
+
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure SairExecute(Sender: TObject);
   end;

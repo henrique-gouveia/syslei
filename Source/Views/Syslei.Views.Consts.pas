@@ -5,8 +5,10 @@ interface
 const
   MAIN_VIEW_NAME = 'mainFormView';
 
+  LOTE_FILTER_VIEW_NAME = 'loteFilterView';
   LOTE_FINDER_VIEW_NAME = 'loteFinderView';
   LOTE_MANAGER_VIEW_NAME = 'loteManagerView';
+  LOTE_REPORT_VIEW_NAME = 'loteReportView';
 
   PESSOA_FINDER_VIEW_NAME = 'pessoaFinderView';
   PESSOA_MANAGER_VIEW_NAME = 'pessoaManagerView';

@@ -8,6 +8,7 @@ type
     procedure InternalShowModalView(const serviceName: String);
   public
     procedure LoteManager(Sender: TObject);
+    procedure LoteReport(Sender: TObject);
     procedure PessoaManager(Sender: TObject);
     procedure ProprioManager(Sender: TObject);
     procedure VendaLoteManager(Sender: TObject);
@@ -26,6 +27,11 @@ uses
 procedure TMainViewModel.LoteManager(Sender: TObject);
 begin
   InternalShowModalView(LOTE_MANAGER_VIEW_NAME);
+end;
+
+procedure TMainViewModel.LoteReport(Sender: TObject);
+begin
+  InternalShowModalView(LOTE_FILTER_VIEW_NAME);
 end;
 
 procedure TMainViewModel.PessoaManager(Sender: TObject);

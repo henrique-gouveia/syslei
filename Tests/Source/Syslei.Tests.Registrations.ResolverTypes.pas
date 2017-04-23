@@ -27,6 +27,9 @@ type
     procedure TestResolveDBConnection;
 
     [Test]
+    procedure TestResolveFilterLoteFinder;
+
+    [Test]
     procedure TestResolveLoteFinder;
     [Test]
     procedure TestResolvePessoaFinder;
@@ -41,6 +44,11 @@ type
     procedure TestResolveProprioRepository;
     [Test]
     procedure TestResolveVendaLoteRepository;
+
+    [Test]
+    procedure TestResolveLoteFilterView;
+    [Test]
+    procedure TestResolveLoteFilterViewModel;
 
     [Test]
     procedure TestResolveLoteFinderView;
@@ -72,6 +80,11 @@ type
     [Test]
     procedure TestResolveVendaLoteManagerViewModel;
 
+
+    [Test]
+    procedure TestResolveLoteReportView;
+    [Test]
+    procedure TestResolveLoteReportViewModel;
     [Test]
     procedure TestResolveVendaLoteReportView;
     [Test]
@@ -95,19 +108,28 @@ uses
   Spring.Persistence.Core.Session,
 
   Syslei.Conversions.Consts,
+
+  Syslei.Models.Domains.Lote.Filter,
   Syslei.Models.Domains.Lote.Venda.Filter,
+
   Syslei.Models.Entities.Lote,
   Syslei.Models.Entities.Lote.Venda,
   Syslei.Models.Entities.Pessoa,
   Syslei.Models.Entities.Proprio,
+
   Syslei.Models.Finders.Interfaces,
+
   Syslei.Modules.Connections.Consts,
   Syslei.Modules.Connections.Firebird,
   Syslei.Modules.Connections.Interfaces,
+
   Syslei.PresentationModel.View.Interfaces,
+
   Syslei.Registrations,
+
   Syslei.Views.Consts,
   Syslei.ViewModels.Consts,
+
   Syslei.Tests.TestSession;
 
 {$REGION 'TSpringResolverTest' }
@@ -217,6 +239,19 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveFilterLoteFinder;
+var
+  filterLoteFinder: IEntityFinder<TLote, TLoteFilter>;
+begin
+  try
+    filterLoteFinder := GlobalContainer.Resolve<IEntityFinder<TLote, TLoteFilter>>();
+    Assert.IsNotNull(filterLoteFinder, 'Tipo IEntityFinder<TLote, TLoterFilter> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolveLoteFinder;
 var
   loteFinder: IEntityFinder<TLote>;
@@ -302,6 +337,36 @@ begin
   try
     vendaLoteRepository := GlobalContainer.Resolve<IPagedRepository<TVendaLote,Integer>>();
     Assert.IsNotNull(vendaLoteRepository, 'Tipo IPagedRepository<TVendaLote,Integer> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveLoteFilterView;
+var
+  loteFilterView: IView;
+begin
+  try
+    loteFilterView := GlobalContainer.Resolve<IView>(LOTE_FILTER_VIEW_NAME);
+    Assert.IsNotNull(loteFilterView, 'Tipo TLoteFilterView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveLoteFilterViewModel;
+var
+  loteFilterViewModelOne, loteFilterViewModelTwo: TObject;
+begin
+  try
+    loteFilterViewModelOne := GlobalContainer.Resolve<TObject>(LOTE_FILTER_VIEW_MODEL_NAME);
+    loteFilterViewModelTwo := GlobalContainer.Resolve<TObject>(LOTE_FILTER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(loteFilterViewModelOne, 'Tipo TLoteFilterViewModel não foi resolvido');
+    Assert.IsNotNull(loteFilterViewModelTwo, 'Tipo TLoteFilterViewModel não foi resolvido');
+    Assert.AreEqual(loteFilterViewModelOne, loteFilterViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);
@@ -518,6 +583,36 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveLoteReportView;
+var
+  loteReportView: IReportPreview;
+begin
+  try
+    loteReportView := GlobalContainer.Resolve<IReportPreview>(LOTE_REPORT_VIEW_NAME);
+    Assert.IsNotNull(loteReportView, 'Tipo TLoteReportView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end
+end;
+
+procedure TResolverTypeTest.TestResolveLoteReportViewModel;
+var
+  loteReportViewModelOne, loteReportViewModelTwo: TObject;
+begin
+  try
+    loteReportViewModelOne := GlobalContainer.Resolve<TObject>(LOTE_REPORT_VIEW_MODEL_NAME);
+    loteReportViewModelTwo := GlobalContainer.Resolve<TObject>(LOTE_REPORT_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(loteReportViewModelOne, 'Tipo TLoteReportViewModel não foi resolvido');
+    Assert.IsNotNull(loteReportViewModelTwo, 'Tipo TLoteReportViewModel não foi resolvido');
+    Assert.AreEqual(loteReportViewModelOne, loteReportViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolveVendaLoteReportView;
 var
   vendaLoteReportView: IReportPreview;
@@ -536,8 +631,8 @@ var
   vendaLoteReportViewModelOne, vendaLoteReportViewModelTwo: TObject;
 begin
   try
-    vendaLoteReportViewModelOne := GlobalContainer.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME);
-    vendaLoteReportViewModelTwo := GlobalContainer.Resolve<TObject>(VENDA_LOTE_MANAGER_VIEW_MODEL_NAME);
+    vendaLoteReportViewModelOne := GlobalContainer.Resolve<TObject>(VENDA_LOTE_REPORT_VIEW_MODEL_NAME);
+    vendaLoteReportViewModelTwo := GlobalContainer.Resolve<TObject>(VENDA_LOTE_REPORT_VIEW_MODEL_NAME);
 
     Assert.IsNotNull(vendaLoteReportViewModelOne, 'Tipo TVendaLoteReportViewModel não foi resolvido');
     Assert.IsNotNull(vendaLoteReportViewModelTwo, 'Tipo TVendaLoteReportViewModel não foi resolvido');

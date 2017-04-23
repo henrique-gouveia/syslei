@@ -15,8 +15,10 @@ type
 implementation
 
 uses
+  Syslei.ViewModels.Base.Report,
   Syslei.ViewModels.Consts,
   Syslei.ViewModels.Main,
+  Syslei.ViewModels.Filters.Lote,
   Syslei.ViewModels.Finders.Lote,
   Syslei.ViewModels.Finders.Lote.Venda,
   Syslei.ViewModels.Finders.Pessoa,
@@ -36,7 +38,15 @@ begin
     .AsSingleton();
 
   container
+    .RegisterType<TObject, TLoteFilterViewModel>(LOTE_FILTER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
     .RegisterType<TObject, TLoteFinderViewModel>(LOTE_FINDER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TReportViewModelBase>(LOTE_REPORT_VIEW_MODEL_NAME)
     .AsSingleton();
 
   container
