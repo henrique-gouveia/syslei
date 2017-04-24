@@ -1,4 +1,4 @@
-inherited LoteFilterView: TLoteFilterView
+inherited VendaLoteFilterView: TVendaLoteFilterView
   Caption = 'Filtro'
   ClientHeight = 242
   OnDestroy = FormDestroy
@@ -24,18 +24,18 @@ inherited LoteFilterView: TLoteFilterView
   inherited contentPanel: TPanel
     Height = 187
     ExplicitHeight = 187
-    object doadorGroup: TGroupBox
+    object compradorGroup: TGroupBox
       Left = 10
       Top = 5
       Width = 463
       Height = 50
       Anchors = [akLeft, akTop, akRight]
-      Caption = 'Doador'
+      Caption = 'Comprador'
       TabOrder = 0
       DesignSize = (
         463
         50)
-      object doadorIdEdit: TEdit
+      object compradorIdEdit: TEdit
         Tag = 1
         Left = 9
         Top = 20
@@ -46,7 +46,7 @@ inherited LoteFilterView: TLoteFilterView
         NumbersOnly = True
         TabOrder = 0
       end
-      object doadorNomeEdit: TEdit
+      object compradorNomeEdit: TEdit
         Left = 104
         Top = 20
         Width = 351
@@ -57,24 +57,10 @@ inherited LoteFilterView: TLoteFilterView
         TabOrder = 1
       end
     end
-    object statusGroup: TRadioGroup
-      Left = 9
-      Top = 61
-      Width = 160
-      Height = 110
-      Caption = 'Status'
-      ItemIndex = 3
-      Items.Strings = (
-        'Aguardando'
-        'Agendado'
-        'Arrematado'
-        'Todos')
-      TabOrder = 1
-    end
     object tipoGroup: TRadioGroup
-      Left = 175
+      Left = 10
       Top = 61
-      Width = 158
+      Width = 323
       Height = 110
       Caption = 'Tipo'
       ItemIndex = 3
@@ -83,33 +69,33 @@ inherited LoteFilterView: TLoteFilterView
         'Im'#243'vel'
         'Prenda'
         'Todos')
-      TabOrder = 2
+      TabOrder = 1
     end
     object periodoCadastroGroup: TGroupBox
       Left = 339
       Top = 61
       Width = 134
       Height = 110
-      Caption = 'Per'#237'odo Cadastro'
-      TabOrder = 3
+      Caption = 'Per'#237'odo Venda'
+      TabOrder = 2
       DesignSize = (
         134
         110)
-      object dataCadastroInicialLabel: TLabel
+      object dataVendaInicialLabel: TLabel
         Left = 9
         Top = 20
         Width = 74
         Height = 16
         Caption = 'Data Inicial'
       end
-      object dataCadastroFinalLabel: TLabel
+      object dataVendaFinalLabel: TLabel
         Left = 9
         Top = 64
         Width = 66
         Height = 16
         Caption = 'Data Final'
       end
-      object dataCadastroInicialDtp: TDateTimePicker
+      object dataVendaInicialDtp: TDateTimePicker
         Tag = 1
         Left = 9
         Top = 36
@@ -123,7 +109,7 @@ inherited LoteFilterView: TLoteFilterView
         Time = 0.983644016203470600
         TabOrder = 0
       end
-      object dataCadastroFinalDtp: TDateTimePicker
+      object dataVendaFinalDtp: TDateTimePicker
         Tag = 1
         Left = 9
         Top = 80

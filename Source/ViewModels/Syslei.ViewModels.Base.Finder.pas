@@ -96,12 +96,7 @@ end;
 
 procedure TFinderViewModelBase<TEntity>.SetEntity(const Value: TEntity);
 begin
-  if Assigned(Value) then
-    FEntity := Value
-  else
-    FEntity := TEntity.Create;
-
-  DoPropertyChanged('Entities');
+  FEntity := Value
 end;
 
 function TFinderViewModelBase<TEntity>.GetEntities: IObjectList;

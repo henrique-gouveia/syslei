@@ -103,7 +103,6 @@ inherited LoteReportView: TLoteReportView
         DataSource = dataSource
         DisplayMask = ',0.00'
         Text = ''
-        OnCompute = ResultCompute
       end
     end
     object reportColumnHeaderBand: TRLBand
@@ -254,7 +253,6 @@ inherited LoteReportView: TLoteReportView
         DisplayMask = ',0.00'
         Info = riSum
         Text = ''
-        OnCompute = ResultCompute
       end
       object registrosCountLabel: TRLLabel
         Left = 0

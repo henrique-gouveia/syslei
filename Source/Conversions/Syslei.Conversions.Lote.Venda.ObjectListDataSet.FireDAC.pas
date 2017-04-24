@@ -25,7 +25,7 @@ type
     vendaLoteDataSet: TFDMemTable;
     vendaLoteDataSetId: TIntegerField;
     vendaLoteDataSetData: TDateField;
-    vendaLoteDataSetLanceArremate: TFMTBCDField;
+    vendaLoteDataSetLanceArremate: TCurrencyField;
     vendaLoteDataSetCompradorId: TIntegerField;
     vendaLoteDataSetCompradorNome: TStringField;
     vendaLoteDataSetCompradorCpfCnpj: TStringField;

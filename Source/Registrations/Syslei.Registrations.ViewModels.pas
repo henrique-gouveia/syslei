@@ -19,6 +19,7 @@ uses
   Syslei.ViewModels.Consts,
   Syslei.ViewModels.Main,
   Syslei.ViewModels.Filters.Lote,
+  Syslei.ViewModels.Filters.Lote.Venda,
   Syslei.ViewModels.Finders.Lote,
   Syslei.ViewModels.Finders.Lote.Venda,
   Syslei.ViewModels.Finders.Pessoa,
@@ -63,6 +64,10 @@ begin
 
   container
     .RegisterType<TObject, TProprioManagerViewModel>(PROPRIO_MANAGER_VIEW_MODEL_NAME)
+    .AsSingleton();
+
+  container
+    .RegisterType<TObject, TVendaLoteFilterViewModel>(VENDA_LOTE_FILTER_VIEW_MODEL_NAME)
     .AsSingleton();
 
  container

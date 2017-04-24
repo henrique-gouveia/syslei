@@ -35,10 +35,8 @@ object ObjectListLoteDataSetConverter: TObjectListLoteDataSetConverter
       FieldName = 'Sexo'
       Size = 12
     end
-    object loteDataSetLanceInicial: TFMTBCDField
+    object loteDataSetLanceInicial: TCurrencyField
       FieldName = 'LanceInicial'
-      DisplayFormat = ',0.00'
-      Size = 15
     end
   end
 end

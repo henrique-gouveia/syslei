@@ -1,11 +1,11 @@
-unit Syslei.ViewModels.Filters.Lote;
+unit Syslei.ViewModels.Filters.Lote.Venda;
 
 interface
 
 uses
-  Syslei.Models.Domains.Lote.Filter,
+  Syslei.Models.Domains.Lote.Venda.Filter,
 
-  Syslei.Models.Entities.Lote,
+  Syslei.Models.Entities.Lote.Venda,
   Syslei.Models.Entities.Pessoa,
 
   Syslei.Models.Finders.Interfaces,
@@ -17,20 +17,20 @@ uses
   Spring.Persistence.Core.Interfaces;
 
 type
-  TLoteFilterViewModel = class(TFilterViewModelBase<TLote, TLoteFilter>)
+  TVendaLoteFilterViewModel = class(TFilterViewModelBase<TVendaLote, TVendaLoteFilterReport>)
   private const
-    DOADOR_ID_CONTROL_NAME = 'doadorIdEdit';
+    COMPRADOR_ID_CONTROL_NAME = 'compradorIdEdit';
   private
-    FDoadorId: Integer;
+    FCompradorId: Integer;
     [Inject]
-    FDoadorRepository: IPagedRepository<TPessoa, Integer>;
-    procedure SetDoadorId(const Value: Integer);
+    FCompradorRepository: IPagedRepository<TPessoa, Integer>;
+    procedure SetCompradorId(const Value: Integer);
   public
     procedure Novo(Sender: TObject); override;
     procedure Buscar(Sender: TObject);
     procedure Ok(Sender: TObject); override;
 
-    property DoadorId: Integer read FDoadorId write SetDoadorId;
+    property CompradorId: Integer read FCompradorId write SetCompradorId;
   end;
 
 implementation
@@ -48,13 +48,13 @@ uses
 
 {$REGION 'TLoteFilterViewModel' }
 
-procedure TLoteFilterViewModel.Novo(Sender: TObject);
+procedure TVendaLoteFilterViewModel.Novo(Sender: TObject);
 begin
   inherited;
-  DoadorId := 0;
+  CompradorId := 0;
 end;
 
-procedure TLoteFilterViewModel.Buscar(Sender: TObject);
+procedure TVendaLoteFilterViewModel.Buscar(Sender: TObject);
 var
   view: IView;
   finderViewModel: TFinderViewModelBase<TPessoa>;
@@ -66,18 +66,18 @@ begin
     if view.GetDataContext() is TFinderViewModelBase<TPessoa> then
     begin
       finderViewModel := TFinderViewModelBase<TPessoa>(view.GetDataContext());
-      DoadorId := finderViewModel.Entity.Id;
-      ActiveControl := DOADOR_ID_CONTROL_NAME;
+      CompradorId := finderViewModel.Entity.Id;
+      ActiveControl := COMPRADOR_ID_CONTROL_NAME;
     end;
   end;
 end;
 
-procedure TLoteFilterViewModel.Ok(Sender: TObject);
+procedure TVendaLoteFilterViewModel.Ok(Sender: TObject);
 var
   reportPreview: IReportPreview;
 begin
   inherited;
-  reportPreview := GlobalContainer.Resolve<IReportPreview>(LOTE_REPORT_VIEW_NAME);
+  reportPreview := GlobalContainer.Resolve<IReportPreview>(VENDA_LOTE_REPORT_VIEW_NAME);
   if Assigned(reportPreview) and (reportPreview.GetDataContext() is TReportViewModelBase)  then
   begin
     TReportViewModelBase(reportPreview.GetDataContext()).Entities := Entities;
@@ -85,12 +85,12 @@ begin
   end;
 end;
 
-procedure TLoteFilterViewModel.SetDoadorId(const Value: Integer);
+procedure TVendaLoteFilterViewModel.SetCompradorId(const Value: Integer);
 begin
-  if (FDoadorId <> Value) then
+  if (FCompradorId <> Value) then
   begin
-    FDoadorId := Value;
-    Filter.Doador := FDoadorRepository.FindOne(FDoadorId);
+    FCompradorId := Value;
+    Filter.Comprador := FCompradorRepository.FindOne(FCompradorId);
     DoPropertyChanged('Filter');
   end;
 end;

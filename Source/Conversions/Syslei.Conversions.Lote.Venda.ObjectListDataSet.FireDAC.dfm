@@ -18,10 +18,8 @@ object ObjectListVendaLoteDataSetConverter: TObjectListVendaLoteDataSetConverter
     object vendaLoteDataSetData: TDateField
       FieldName = 'Data'
     end
-    object vendaLoteDataSetLanceArremate: TFMTBCDField
+    object vendaLoteDataSetLanceArremate: TCurrencyField
       FieldName = 'LanceArremate'
-      DisplayFormat = ',0.00'
-      Size = 15
     end
     object vendaLoteDataSetCompradorId: TIntegerField
       FieldName = 'CompradorId'

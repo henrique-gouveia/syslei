@@ -15,24 +15,24 @@ uses
   Spring.Persistence.Criteria.Interfaces;
 
 type
-  TAbstractFilterVendaLoteFinder = class abstract(TInterfacedObject, IEntityFinder<TVendaLote, TVendaLoteFilter>)
+  TAbstractFilterVendaLoteFinder<TFilter: class, constructor> = class abstract(TInterfacedObject, IEntityFinder<TVendaLote, TFilter>)
   private
     FVendaLoteRepository: IPagedRepository<TVendaLote, Integer>;
   protected
-    function Find(const filter: TVendaLoteFilter): IList<TVendaLote>; virtual; abstract;
+    function Find(const filter: TFilter): IList<TVendaLote>; virtual; abstract;
     property VendaLoteRepository: IPagedRepository<TVendaLote, Integer> read FVendaLoteRepository;
   public
     constructor Create(const entityRepository: IPagedRepository<TVendaLote,Integer>); virtual;
   end;
 
-  TFilterVendaLoteFinder = class(TAbstractFilterVendaLoteFinder)
+  TFilterVendaLoteFinder = class(TAbstractFilterVendaLoteFinder<TVendaLoteFilter>)
   protected
     function Find(const filter: TVendaLoteFilter): IList<TVendaLote>; override;
   end;
 
-  TFilterVendaLoteFinderReport = class(TAbstractFilterVendaLoteFinder)
+  TFilterVendaLoteFinderReport = class(TAbstractFilterVendaLoteFinder<TVendaLoteFilterReport>)
   protected
-    function Find(const filter: TVendaLoteFilter): IList<TVendaLote>; override;
+    function Find(const filter: TVendaLoteFilterReport): IList<TVendaLote>; override;
   end;
 
 implementation
@@ -50,7 +50,8 @@ uses
 
 {$REGION 'TAbstractVendaLoteFinder' }
 
-constructor TAbstractFilterVendaLoteFinder.Create(const entityRepository: IPagedRepository<TVendaLote, Integer>);
+constructor TAbstractFilterVendaLoteFinder<TFilter>.Create(
+  const entityRepository: IPagedRepository<TVendaLote, Integer>);
 begin
   inherited Create;
   FVendaLoteRepository := entityRepository;
@@ -111,7 +112,7 @@ end;
 
 {$REGION 'TVendaLoteFinderReport' }
 
-function TFilterVendaLoteFinderReport.Find(const filter: TVendaLoteFilter): IList<TVendaLote>;
+function TFilterVendaLoteFinderReport.Find(const filter: TVendaLoteFilterReport): IList<TVendaLote>;
 var
   criteria: ICriteria<TVendaLote>;
   criteriaProperty: IProperty;

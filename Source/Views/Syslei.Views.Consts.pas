@@ -17,6 +17,7 @@ const
 
   PROPRIO_MANAGER_VIEW_NAME = 'proprioManagerView';
 
+  VENDA_LOTE_FILTER_VIEW_NAME = 'vendaLoteFilterView';
   VENDA_LOTE_FINDER_VIEW_NAME = 'vendaLoteFinderView';
   VENDA_LOTE_MANAGER_VIEW_NAME = 'vendaLoteManagerView';
   VENDA_LOTE_REPORT_VIEW_NAME = 'vendaLoteReportView';

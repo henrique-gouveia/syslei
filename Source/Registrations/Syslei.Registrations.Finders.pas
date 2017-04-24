@@ -44,6 +44,9 @@ begin
 
   container
     .RegisterType<IEntityFinder<TVendaLote, TVendaLoteFilter>, TFilterVendaLoteFinder>();
+
+  container
+    .RegisterType<IEntityFinder<TVendaLote, TVendaLoteFilterReport>, TFilterVendaLoteFinderReport>();
 end;
 
 {$ENDREGIOn}

@@ -23,7 +23,14 @@ uses
   Vcl.ComCtrls,
   Vcl.ActnList,
   Vcl.ImgList,
-  Vcl.Menus, Extra.Components.Enter, RLXLSXFilter, RLXLSFilter, RLPDFFilter, RLHTMLFilter, RLFilters, RLRichFilter;
+  Vcl.Menus,
+
+  RLXLSXFilter,
+  RLXLSFilter,
+  RLPDFFilter,
+  RLHTMLFilter,
+  RLFilters,
+  RLRichFilter;
 
 type
   TMainView = class(TForm)
@@ -57,7 +64,6 @@ type
     pdfFilter: TRLPDFFilter;
     xlsFilter: TRLXLSFilter;
     xlsxFilter: TRLXLSXFilter;
-    enter: TExEnter;
 
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure SairExecute(Sender: TObject);

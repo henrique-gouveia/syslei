@@ -28,6 +28,10 @@ type
 
     [Test]
     procedure TestResolveFilterLoteFinder;
+    [Test]
+    procedure TestResolveFilterVendaLote;
+    [Test]
+    procedure TestResolveFilterVendaLoteReport;
 
     [Test]
     procedure TestResolveLoteFinder;
@@ -49,6 +53,10 @@ type
     procedure TestResolveLoteFilterView;
     [Test]
     procedure TestResolveLoteFilterViewModel;
+    [Test]
+    procedure TestResolveVendaLoteFilterView;
+    [Test]
+    procedure TestResolveVendaLoteFilterViewModel;
 
     [Test]
     procedure TestResolveLoteFinderView;
@@ -80,11 +88,12 @@ type
     [Test]
     procedure TestResolveVendaLoteManagerViewModel;
 
-
     [Test]
     procedure TestResolveLoteReportView;
     [Test]
     procedure TestResolveLoteReportViewModel;
+    [Test]
+    procedure TestResolvePromissoriaVendaLoteReportView;
     [Test]
     procedure TestResolveVendaLoteReportView;
     [Test]
@@ -252,6 +261,32 @@ begin
   end;
 end;
 
+procedure TResolverTypeTest.TestResolveFilterVendaLote;
+var
+  filterVendaLoteFinder: IEntityFinder<TVendaLote, TVendaLoteFilter>;
+begin
+  try
+    filterVendaLoteFinder := GlobalContainer.Resolve<IEntityFinder<TVendaLote, TVendaLoteFilter>>();
+    Assert.IsNotNull(filterVendaLoteFinder, 'Tipo IEntityFinder<TLote, TVendaLoterFilter> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveFilterVendaLoteReport;
+var
+  filterVendaLoteFinderReport: IEntityFinder<TVendaLote, TVendaLoteFilterReport>;
+begin
+  try
+    filterVendaLoteFinderReport := GlobalContainer.Resolve<IEntityFinder<TVendaLote, TVendaLoteFilterReport>>();
+    Assert.IsNotNull(filterVendaLoteFinderReport, 'Tipo IEntityFinder<TVendaLote, TVendaLoteFilterReport> não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
 procedure TResolverTypeTest.TestResolveLoteFinder;
 var
   loteFinder: IEntityFinder<TLote>;
@@ -367,6 +402,36 @@ begin
     Assert.IsNotNull(loteFilterViewModelOne, 'Tipo TLoteFilterViewModel não foi resolvido');
     Assert.IsNotNull(loteFilterViewModelTwo, 'Tipo TLoteFilterViewModel não foi resolvido');
     Assert.AreEqual(loteFilterViewModelOne, loteFilterViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveVendaLoteFilterView;
+var
+  vendaLoteFilterView: IView;
+begin
+  try
+    vendaLoteFilterView := GlobalContainer.Resolve<IView>(VENDA_LOTE_FILTER_VIEW_NAME);
+    Assert.IsNotNull(vendaLoteFilterView, 'Tipo TVendaLoteFilterView não foi resolvido');
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolveVendaLoteFilterViewModel;
+var
+  vendaLoteFilterViewModelOne, vendaLoteFilterViewModelTwo: TObject;
+begin
+  try
+    vendaLoteFilterViewModelOne := GlobalContainer.Resolve<TObject>(VENDA_LOTE_FILTER_VIEW_MODEL_NAME);
+    vendaLoteFilterViewModelTwo := GlobalContainer.Resolve<TObject>(VENDA_LOTE_FILTER_VIEW_MODEL_NAME);
+
+    Assert.IsNotNull(vendaLoteFilterViewModelOne, 'Tipo TVendaLoteFilterViewModel não foi resolvido');
+    Assert.IsNotNull(vendaLoteFilterViewModelTwo, 'Tipo TVendaLoteFilterViewModel não foi resolvido');
+    Assert.AreEqual(vendaLoteFilterViewModelOne, vendaLoteFilterViewModelTwo);
   except
     on E: Exception do
       Assert.Fail(E.Message);
@@ -607,6 +672,19 @@ begin
     Assert.IsNotNull(loteReportViewModelOne, 'Tipo TLoteReportViewModel não foi resolvido');
     Assert.IsNotNull(loteReportViewModelTwo, 'Tipo TLoteReportViewModel não foi resolvido');
     Assert.AreEqual(loteReportViewModelOne, loteReportViewModelTwo);
+  except
+    on E: Exception do
+      Assert.Fail(E.Message);
+  end;
+end;
+
+procedure TResolverTypeTest.TestResolvePromissoriaVendaLoteReportView;
+var
+  promissoriaVendaLoteReportView: IReportPreview;
+begin
+  try
+    promissoriaVendaLoteReportView := GlobalContainer.Resolve<IReportPreview>(PROMISSORIA_VENDA_LOTE_REPORT_VIEW_NAME);
+    Assert.IsNotNull(promissoriaVendaLoteReportView, 'Tipo TVendaLoteReportView não foi resolvido');
   except
     on E: Exception do
       Assert.Fail(E.Message);

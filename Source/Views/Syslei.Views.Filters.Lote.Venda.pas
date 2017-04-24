@@ -1,4 +1,4 @@
-unit Syslei.Views.Filters.Lote;
+unit Syslei.Views.Filters.Lote.Venda;
 
 interface
 
@@ -35,19 +35,18 @@ uses
   Spring.Container.Common;
 
 type
-  TLoteFilterView = class(TFilterBaseView)
+  TVendaLoteFilterView = class(TFilterBaseView)
     Buscar: TAction;
     buscarButton: TSpeedButton;
-    doadorGroup: TGroupBox;
-    doadorIdEdit: TEdit;
-    doadorNomeEdit: TEdit;
-    statusGroup: TRadioGroup;
+    compradorGroup: TGroupBox;
+    compradorIdEdit: TEdit;
+    compradorNomeEdit: TEdit;
     tipoGroup: TRadioGroup;
     periodoCadastroGroup: TGroupBox;
-    dataCadastroInicialLabel: TLabel;
-    dataCadastroInicialDtp: TDateTimePicker;
-    dataCadastroFinalLabel: TLabel;
-    dataCadastroFinalDtp: TDateTimePicker;
+    dataVendaInicialLabel: TLabel;
+    dataVendaInicialDtp: TDateTimePicker;
+    dataVendaFinalLabel: TLabel;
+    dataVendaFinalDtp: TDateTimePicker;
     bindings: TBindingGroup;
     procedure FormDestroy(Sender: TObject);
   private
@@ -55,7 +54,7 @@ type
   protected
     procedure SetDataContext(const Value: TObject); override;
   public
-    [Inject(LOTE_FILTER_VIEW_MODEL_NAME)]
+    [Inject(VENDA_LOTE_FILTER_VIEW_MODEL_NAME)]
     property DataContext: TObject read GetDataContext write SetDataContext;
   end;
 
@@ -70,37 +69,36 @@ uses
 
 {$REGION 'TLoteFilterView' }
 
-procedure TLoteFilterView.FormDestroy(Sender: TObject);
+procedure TVendaLoteFilterView.FormDestroy(Sender: TObject);
 begin
   inherited;
   GlobalContainer.Release(DataContext);
 end;
 
-procedure TLoteFilterView.SetDataContext(const Value: TObject);
+procedure TVendaLoteFilterView.SetDataContext(const Value: TObject);
 begin
   inherited;
   ConfigureBind();
 end;
 
-procedure TLoteFilterView.ConfigureBind;
+procedure TVendaLoteFilterView.ConfigureBind;
 var
   binding: TBinding;
 begin
   bindings.AddBinding(DataContext, 'ActiveControl', Self, 'ActiveControl', bmTwoWay,
     GlobalContainer.Resolve<IValueConverter>(CONVERSION_CONTROL_STRING_NAME, [Self]));
 
-  binding := bindings.AddBinding(DataContext, 'DoadorId', doadorIdEdit, 'Text', bmOneWayToSource);
+  binding := bindings.AddBinding(DataContext, 'CompradorId', compradorIdEdit, 'Text', bmOneWayToSource);
   binding.SourceUpdateTrigger := utLostFocus;
   binding.UpdateSource();
 
-  bindings.AddBinding(DataContext, 'Filter.Doador.Id', doadorIdEdit, 'Text', bmOneWay);
-  bindings.AddBinding(DataContext, 'Filter.Doador.Nome', doadorNomeEdit, 'Text', bmOneWay);
+  bindings.AddBinding(DataContext, 'Filter.Comprador.Id', compradorIdEdit, 'Text', bmOneWay);
+  bindings.AddBinding(DataContext, 'Filter.Comprador.Nome', compradorNomeEdit, 'Text', bmOneWay);
 
-  bindings.AddBinding(DataContext, 'Filter.Status', statusGroup, 'ItemIndex');
   bindings.AddBinding(DataContext, 'Filter.Tipo', tipoGroup, 'ItemIndex');
 
-  bindings.AddBinding(DataContext, 'Filter.DataCadastroInicial', dataCadastroInicialDtp, 'Date');
-  bindings.AddBinding(DataContext, 'Filter.DataCadastroFinal', dataCadastroFinalDtp, 'Date');
+  bindings.AddBinding(DataContext, 'Filter.DataVendaInicial', dataVendaInicialDtp, 'Date');
+  bindings.AddBinding(DataContext, 'Filter.DataVendaFinal', dataVendaFinalDtp, 'Date');
 end;
 
 {$ENDREGION}

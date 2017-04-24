@@ -12,6 +12,7 @@ type
     procedure PessoaManager(Sender: TObject);
     procedure ProprioManager(Sender: TObject);
     procedure VendaLoteManager(Sender: TObject);
+    procedure VendaLoteReport(Sender: TObject);
   end;
 
 implementation
@@ -47,6 +48,11 @@ end;
 procedure TMainViewModel.VendaLoteManager(Sender: TObject);
 begin
   InternalShowModalView(VENDA_LOTE_MANAGER_VIEW_NAME);
+end;
+
+procedure TMainViewModel.VendaLoteReport(Sender: TObject);
+begin
+  InternalShowModalView(VENDA_LOTE_FILTER_VIEW_NAME);
 end;
 
 procedure TMainViewModel.InternalShowModalView(const serviceName: String);

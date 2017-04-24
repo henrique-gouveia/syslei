@@ -42,7 +42,7 @@ type
   [TestFixture]
   TFilterVendaLoteFinderReportTest = class
   private
-    FFilterVendaLoteFinderReport: IEntityFinder<TVendaLote, TVendaLoteFilter>;
+    FFilterVendaLoteFinderReport: IEntityFinder<TVendaLote, TVendaLoteFilterReport>;
     FVendaLoteDataInsert: TVendaLoteDataInsert;
     FVendaLotes: TArray<TVendaLoteRecord>;
   public
@@ -285,9 +285,9 @@ procedure TFilterVendaLoteFinderReportTest.TestFindFilterByCompradorId;
 var
   count: Integer;
   vendaLotes: IList<TVendaLote>;
-  filter: TVendaLoteFilter;
+  filter: TVendaLoteFilterReport;
 begin
-  filter := TVendaLoteFilter.CreateVendaLoteFilterEmpty();
+  filter := TVendaLoteFilterReport.CreateVendaLoteFilterReportEmpty();
   try
     count := TestDB.GetUniTableIntf(
       'SELECT COUNT(*) FROM '
@@ -309,9 +309,9 @@ var
   count: Integer;
   dataVendaInicial, dataVendaFinal: TDate;
   vendaLotes: IList<TVendaLote>;
-  filter: TVendaLoteFilter;
+  filter: TVendaLoteFilterReport;
 begin
-  filter := TVendaLoteFilter.CreateVendaLoteFilterEmpty();
+  filter := TVendaLoteFilterReport.CreateVendaLoteFilterReportEmpty();
   try
     dataVendaInicial := Trunc(IncMonth(Date(), -4));
     dataVendaFinal := Trunc(IncMonth(Date(), 4));
@@ -343,9 +343,9 @@ const
 var
   countAnimal, countImovel, countPrenda: Integer;
   lotesAnimal, lotesImovel, lotesPrenda: IList<TVendaLote>;
-  filter: TVendaLoteFilter;
+  filter: TVendaLoteFilterReport;
 begin
-  filter := TVendaLoteFilter.CreateVendaLoteFilterEmpty();
+  filter := TVendaLoteFilterReport.CreateVendaLoteFilterReportEmpty();
   try
     countAnimal := TestDB.GetUniTableIntf(
       Format(VENDA_LOTE_SELECT_COUNT_BY_TIPO, [Syslei.Models.Domains.Lote.Venda.Filter.TTipoLote.tlAnimal.ToInteger()])

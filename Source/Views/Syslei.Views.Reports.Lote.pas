@@ -59,7 +59,6 @@ type
     bindings: TBindingGroup;
     procedure ControlTextBeforePrint(Sender: TObject; var Text: string; var PrintIt: Boolean);
     procedure FormDestroy(Sender: TObject);
-    procedure ResultCompute(Sender: TObject; var Value: Variant; var Text: string; var ComputeIt: Boolean);
   private const
     TIPO_LOTE_ANIMAL = 'ANIMAL';
     TIPO_LOTE_IMOVEL = 'IMÓVEL';
@@ -93,12 +92,6 @@ procedure TLoteReportView.FormDestroy(Sender: TObject);
 begin
   inherited;
   GlobalContainer.Release(DataContext);
-end;
-
-procedure TLoteReportView.ResultCompute(Sender: TObject; var Value: Variant; var Text: string; var ComputeIt: Boolean);
-begin
-  inherited;
-  Value := dataSource.DataSet.FieldByName(TRLDBResult(Sender).DataField).AsFloat;
 end;
 
 procedure TLoteReportView.SetDataContext(const Value: TObject);

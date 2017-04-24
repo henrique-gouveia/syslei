@@ -4,12 +4,11 @@ Delphi VCL Application, Sistema de Leilão com foco em exemplificar o uso integr
 
 ## Dependências
 
-DSharp - https://bitbucket.org/sglienke/dsharp.git
+DSharp - ~~https://bitbucket.org/sglienke/dsharp.git~~
+         https://bitbucket.org/henrique-gouveia/dsharp (Ajustes pontuais)
 
 DUnitX - https://github.com/VSoftTechnologies/DUnitX
 
 FortesReport - https://github.com/fortesinformatica/fortesreport-ce
 
 Spring4D - https://bitbucket.org/sglienke/spring4d
-
-User Control ShowDelphi Edition - https://github.com/infussolucoes/usercontrol-sd.git

@@ -159,6 +159,7 @@
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Base.Report.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Consts.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Filters.Lote.pas"/>
+        <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Filters.Lote.Venda.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Finders.Lote.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Finders.Lote.Venda.pas"/>
         <DCCReference Include="Source\ViewModels\Syslei.ViewModels.Finders.Pessoa.pas"/>
@@ -194,6 +195,10 @@
             <Form>LoteFilterView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Source\Views\Syslei.Views.Filters.Lote.Venda.pas">
+            <Form>VendaLoteFilterView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Finders.Lote.pas">
             <Form>LoteFinderView</Form>
             <FormType>dfm</FormType>
@@ -224,6 +229,10 @@
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Reports.Lote.pas">
             <Form>LoteReportView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\Views\Syslei.Views.Reports.Lote.Venda.pas">
+            <Form>VendaLoteReportView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Source\Views\Syslei.Views.Reports.Lote.Venda.Promissoria.pas">

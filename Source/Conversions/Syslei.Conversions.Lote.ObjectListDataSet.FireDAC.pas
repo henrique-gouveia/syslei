@@ -30,7 +30,7 @@ type
     loteDataSetTipo: TStringField;
     loteDataSetIdade: TIntegerField;
     loteDataSetSexo: TStringField;
-    loteDataSetLanceInicial: TFMTBCDField;
+    loteDataSetLanceInicial: TCurrencyField;
   private
     function Convert(const Value: TValue): TValue;
     function ConvertBack(const Value: TValue): TValue;

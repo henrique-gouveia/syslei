@@ -1182,7 +1182,6 @@ object MainView: TMainView
     Images = toolBarImages
     ShowCaptions = True
     TabOrder = 0
-    ExplicitWidth = 584
     object proprioManagerButton: TToolButton
       Left = 0
       Top = 0
@@ -1239,7 +1238,7 @@ object MainView: TMainView
     Left = 616
     Top = 117
     Bitmap = {
-      494C010105000800540020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800580020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2387,42 +2386,5 @@ object MainView: TMainView
     DisplayName = 'Planilha Excel'
     Left = 536
     Top = 276
-  end
-  object enter: TExEnter
-    Active = True
-    AutoSkip = True
-    ClassList.Strings = (
-      'TEdit'
-      'TCheckBox'
-      'TRadioButton'
-      'TListBox'
-      'TComboBox'
-      'TRadioGroup'
-      'TGroupButton'
-      'TMaskEdit'
-      'TStringGrid'
-      'TDrawGrid'
-      'TDateTimePicker'
-      'TTabbedNoteBook'
-      'TDBGrid'
-      'TDBEdit'
-      'TDBCheckBox'
-      'TDBComboBox'
-      'TDBListBox'
-      'TDBRadioGroup'
-      'TDBGroupButton'
-      'TDBLookupComboBox'
-      'TDBLookupListBox'
-      'TExZeroEdit'
-      'TExDateEdit'
-      'TExTimeEdit'
-      'TExNumberEdit')
-    FocusColor = 11457628
-    FocusEnabled = True
-    HintColor = clInfoBk
-    HintEnabled = False
-    KeyBoardArrows = True
-    Left = 456
-    Top = 64
   end
 end
