@@ -50,7 +50,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_Define>SQLITE_DB;$(DCC_Define)</DCC_Define>
+        <DCC_Define>TESTS;SQLITE_DB;$(DCC_Define)</DCC_Define>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
@@ -118,6 +118,7 @@
         <DCCReference Include="Source\Syslei.Tests.Repositories.Proprio.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Consts.pas"/>
+        <DCCReference Include="Source\Syslei.Tests.TestDB.Helpers.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Lote.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestDB.Lote.Venda.pas"/>
         <DCCReference Include="Source\Syslei.Tests.TestSession.pas"/>

@@ -150,11 +150,13 @@ end;
 
 procedure TPromissoriaVendaLoteReportView.ConfigureBind;
 begin
+  {$IFNDEF TESTS}
   bindings.AddBinding(DataContext, 'Entities', dataSource, 'DataSet', bmOneWay,
     GlobalContainer.Resolve<IValueConverter>(CONVERSION_OBJECTLIST_VENDALOTEDATASET_NAME, [Self]));
 
   bindings.AddBinding(DataContext, 'Proprios', proprioDataSource, 'DataSet', bmOneWay,
     GlobalContainer.Resolve<IValueConverter>(CONVERSION_OBJECTLIST_PROPRIODATASET_NAME, [Self]));
+  {$ENDIF}
 end;
 
 {$ENDREGION}

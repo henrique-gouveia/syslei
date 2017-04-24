@@ -102,8 +102,10 @@ end;
 
 procedure TLoteReportView.ConfigureBind;
 begin
+  {$IFNDEF TESTS}
   bindings.AddBinding(DataContext, 'Entities', dataSource, 'DataSet', bmOneWay,
     GlobalContainer.Resolve<IValueConverter>(CONVERSION_OBJECTLIST_LOTEDATASET_NAME, [Self]));
+  {$ENDIF}
 end;
 
 {$ENDREGION}

@@ -27,7 +27,7 @@ type
 
     [Test]
     procedure TestFindWhithoutFilter;
-    [Test(False)]
+    [Test]
     procedure TestFindFilterByDataCadastroBetween;
     [Test]
     procedure TestFindFilterByDoadorId;
@@ -51,6 +51,7 @@ uses
 
   Syslei.Tests.TestDB,
   Syslei.Tests.TestDB.Consts,
+  Syslei.Tests.TestDB.Helpers,
   Syslei.Tests.TestSession;
 
 {$REGION 'TLoteFinderTest' }
@@ -100,7 +101,9 @@ begin
     count := TestDB.GetUniTableIntf(
       'SELECT COUNT(*) FROM '
     + '[' + LOTE_TABLE_NAME + ']'
-    + 'WHERE DATA_CADASTRO BETWEEN ? AND ?', [dataCadastroInicial, dataCadastroFinal]
+    + 'WHERE DATA_CADASTRO BETWEEN ? AND ?', [
+        dataCadastroInicial.ToDateISOString(),
+        dataCadastroFinal.ToDateISOString()]
     ).Fields[0].Value;
 
     filter.DataCadastroInicial := dataCadastroInicial;

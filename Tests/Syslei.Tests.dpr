@@ -29,6 +29,7 @@ uses
   Syslei.Tests.Repositories.Proprio in 'Source\Syslei.Tests.Repositories.Proprio.pas',
   Syslei.Tests.TestDB in 'Source\Syslei.Tests.TestDB.pas',
   Syslei.Tests.TestDB.Consts in 'Source\Syslei.Tests.TestDB.Consts.pas',
+  Syslei.Tests.TestDB.Helpers in 'Source\Syslei.Tests.TestDB.Helpers.pas',
   Syslei.Tests.TestDB.Lote in 'Source\Syslei.Tests.TestDB.Lote.pas',
   Syslei.Tests.TestDB.Lote.Venda in 'Source\Syslei.Tests.TestDB.Lote.Venda.pas',
   Syslei.Tests.TestSession in 'Source\Syslei.Tests.TestSession.pas',

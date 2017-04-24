@@ -76,6 +76,7 @@ uses
 
   Syslei.Tests.TestDB,
   Syslei.Tests.TestDB.Consts,
+  Syslei.Tests.TestDB.Helpers,
   Syslei.Tests.TestSession;
 
 {$REGION 'TFilterVendaLoteFinderTest' }
@@ -121,7 +122,9 @@ begin
     count := TestDB.GetUniTableIntf(
       'SELECT COUNT(*) FROM '
     + '[' + VENDA_LOTE_TABLE_NAME + ']'
-    + 'WHERE DATA BETWEEN ? AND ?', [dataVendaInicial, dataVendaFinal]
+    + 'WHERE DATA BETWEEN ? AND ?', [
+        dataVendaInicial.ToDateISOString(),
+        dataVendaFinal.ToDateISOString()]
     ).Fields[0].Value;
 
     filter.DataVendaInicial := dataVendaInicial;
@@ -319,7 +322,9 @@ begin
     count := TestDB.GetUniTableIntf(
       'SELECT COUNT(*) FROM '
     + '[' + VENDA_LOTE_TABLE_NAME + ']'
-    + 'WHERE DATA BETWEEN ? AND ?', [dataVendaInicial, dataVendaFinal]
+    + 'WHERE DATA BETWEEN ? AND ?', [
+        dataVendaInicial.ToDateISOString(),
+        dataVendaFinal.ToDateISOString()]
     ).Fields[0].Value;
 
     filter.DataVendaInicial := dataVendaInicial;

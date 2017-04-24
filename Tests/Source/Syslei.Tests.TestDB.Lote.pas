@@ -36,7 +36,8 @@ implementation
 uses
   System.SysUtils,
   System.DateUtils,
-  Syslei.Tests.TestDB;
+  Syslei.Tests.TestDB,
+  Syslei.Tests.TestDB.Helpers;
 
 {$REGION 'TLoteDataInsert' }
 

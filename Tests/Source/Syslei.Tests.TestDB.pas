@@ -50,7 +50,8 @@ var
 implementation
 
 uses
-  Syslei.Tests.TestDB.Consts;
+  Syslei.Tests.TestDB.Consts,
+  Syslei.Tests.TestDB.Helpers;
 
 procedure CreateTables;
   function TablesExists: Boolean;
@@ -100,7 +101,7 @@ function InsertLote(
   const dataCadastro: TDate): Variant;
 begin
   TestDB.ExecSQL(LOTE_INSERT_COMMAND, [
-    doadorId, descricao, numero, lanceInicial, status, tipo, idade, sexo, dataCadastro]);
+    doadorId, descricao, numero, lanceInicial, status, tipo, idade, sexo, dataCadastro.ToDateISOString()]);
   Result := TestDB.GetLastInsertRowID();;
 end;
 
@@ -110,7 +111,7 @@ function InsertPessoa(
   const telefone: String;
   const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro]);
+  TestDB.ExecSQL(PESSOA_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro.ToDateISOString()]);
   Result := TestDB.GetLastInsertRowID();
 end;
 
@@ -120,7 +121,7 @@ function InsertProprio(
   const telefone: String;
   const dataCadastro: TDate): Variant;
 begin
-  TestDB.ExecSQL(PROPRIO_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro]);
+  TestDB.ExecSQL(PROPRIO_INSERT_COMMAND, [nome, cpfCnpj, telefone, dataCadastro.ToDateISOString()]);
   Result := TestDB.GetLastInsertRowID();
 end;
 
@@ -130,7 +131,7 @@ function InsertVendaLote(
   const lanceArremate: Double;
   const data: TDate): Variant;
 begin
-  TestDB.ExecSQL(VENDA_LOTE_INSERT_COMMAND, [compradorId, loteId, lanceArremate, data]);
+  TestDB.ExecSQL(VENDA_LOTE_INSERT_COMMAND, [compradorId, loteId, lanceArremate, data.ToDateISOString()]);
   Result := TestDB.GetLastInsertRowID();
 end;
 
