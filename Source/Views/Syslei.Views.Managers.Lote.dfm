@@ -2,13 +2,11 @@ inherited LoteManagerView: TLoteManagerView
   Caption = 'Gerenciar Lote'
   ClientHeight = 221
   OnDestroy = FormDestroy
-  ExplicitWidth = 650
   ExplicitHeight = 259
   PixelsPerInch = 96
   TextHeight = 16
   inherited contentPanel: TPanel
     Height = 166
-    ExplicitTop = 61
     ExplicitHeight = 166
     object idLabel: TLabel
       Left = 8
@@ -237,7 +235,7 @@ inherited LoteManagerView: TLoteManagerView
   end
   inherited images: TImageList
     Bitmap = {
-      494C010105000800040118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000800080118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000005B3531FF5B3531FF0000

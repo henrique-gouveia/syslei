@@ -1,8 +1,6 @@
 inherited VendaLoteReportView: TVendaLoteReportView
   Caption = 'Vendas de Lotes'
   OnDestroy = FormDestroy
-  ExplicitWidth = 810
-  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   inherited report: TRLReport

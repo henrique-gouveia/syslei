@@ -1,11 +1,11 @@
-﻿# SysLe
+﻿# Syslei
 
-Delphi VCL Application, Sistema de Leilão com foco em exemplificar o uso integrado dos frameworks VCL, Spring4D CDI, Spring4D ORM Marshmallow, DSharp e DUnitX.
+
+Delphi VCL Application - Sistema de Leilão desenvolvido sem fins lucrativos para a Associação [FAVOS](https://www.facebook.com/FavosJatai/?fref=ts), uma organização que presta assistência a pacientes que necessitem tratamento de câncer na cidade de Jataí-GO.
 
 ## Dependências
 
-DSharp - ~~https://bitbucket.org/sglienke/dsharp.git~~
-         https://bitbucket.org/henrique-gouveia/dsharp (Ajustes pontuais)
+DSharp - ~~https://bitbucket.org/sglienke/dsharp.git~~ https://bitbucket.org/henrique-gouveia/dsharp (Ajustes pontuais)
 
 DUnitX - https://github.com/VSoftTechnologies/DUnitX
 
